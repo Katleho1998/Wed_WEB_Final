@@ -1,6 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import FlowersImg from '../../assets/Flowers-for-website.png';
 import AppaiyoNavbar from '../layout/AppaiyoNavbar';
+import TextCursor from './TextCursor';
+import SplitText from './SplitText';
+import Particles from './Particles';
 
 
 // Blue heart SVG as a React component
@@ -36,13 +39,27 @@ const HeroSection: React.FC = () => {
     );
   }, []);
 
+ 
+
   return (
     <section
       id="home"
-      className="inset-0 w-screen h-screen flex items-center justify-center bg-cream-50 overflow-hidden z-[100] relative"
+      className="relative inset-0 w-full min-h-screen flex items-center justify-center bg-cream-50 overflow-hidden z-[100] px-2 sm:px-0"
     >
+      {/* Particles background */}
+      <Particles
+        particleColors={['#555c78', '#555c78']}
+        particleCount={200}
+        particleSpread={10}
+        speed={0.1}
+        particleBaseSize={100}
+        moveParticlesOnHover={true}
+        alphaParticles={false}
+        disableRotation={false}
+      />
+
       {/* Navbar overlayed at the top */}
-      <div className="absolute top-0 left-0 w-full z-50 ">
+      <div className="absolute top-0 left-0 w-full z-50">
         <AppaiyoNavbar />
       </div>
 
@@ -51,82 +68,45 @@ const HeroSection: React.FC = () => {
         {/* ...existing flower animation code... */}
       </div>
 
-      {/* Blue Heart Floating Particles */}
-      <div
-        className="pointer-events-none absolute inset-0 w-full h-full z-0"
-        aria-hidden="true"
-      >
-        {hearts.map((heart) => (
-          <span
-            key={heart.id}
-            style={{
-              position: 'absolute',
-              left: `${heart.left}%`,
-              bottom: '-40px',
-              width: `${heart.size}px`,
-              height: `${heart.size}px`,
-              animation: `heart-float ${heart.duration}s linear ${heart.delay}s infinite`,
-              transform: `translateX(0px)`,
-              opacity: 0.7,
-              zIndex: 0,
-              pointerEvents: 'none',
-            }}
-          >
-            <BlueHeart style={{ width: '100%', height: '100%' }} />
-          </span>
-        ))}
-      </div>
-
-      <style>
-        {`
-        @keyframes heart-float {
-          0% {
-            opacity: 0.7;
-            transform: translateY(0) scale(1) translateX(0);
-          }
-          60% {
-            opacity: 0.7;
-            transform: translateY(-60vh) scale(1.1) translateX(var(--drift, 0px));
-          }
-          100% {
-            opacity: 0;
-            transform: translateY(-100vh) scale(1.15) translateX(var(--drift, 0px));
-          }
-        }
-        `}
-      </style>
-
       {/* Main content, centered */}
-      <div className="relative z-20 flex flex-col items-center justify-center w-full h-full px-4 max-w-2xl mx-auto py-12 text-center">
+      <div className="relative z-20 flex flex-col items-center justify-center w-full h-full px-2 sm:px-4 max-w-2xl mx-auto py-8 sm:py-12 text-center">
         <img
           src={FlowersImg}
           alt="Floral decoration"
-          className="mx-auto mb-6 max-w-[180px] md:max-w-[240px] lg:max-w-[300px] drop-shadow-lg"
+          className="mx-auto mb-4 sm:mb-6 max-w-[120px] sm:max-w-[180px] md:max-w-[240px] lg:max-w-[300px] drop-shadow-lg"
           style={{ objectFit: 'contain' }}
         />
 
-        <span className="block mb-2 text-xs md:text-sm lg:text-base font-semibold text-mocha-500 tracking-wide text-center uppercase">
+        <span className="block mb-2 text-xs sm:text-sm md:text-base lg:text-lg font-semibold text-mocha-500 tracking-wide text-center uppercase">
           PLEASE JOIN US FOR THE TRADITIONAL WEDDING OF
         </span>
+        {/* Animated SplitText for names */}
+        <SplitText
+          text="Thabi & Trevor"
+          className="font-serif text-2xl sm:text-4xl md:text-6xl lg:text-7xl text-dusty-800 mb-2 animate-fadeIn leading-tight flex items-center justify-center gap-2 sm:gap-4 text-center"
+          delay={100}
+          duration={0.6}
+          ease="power3.out"
+          splitType="chars"
+          from={{ opacity: 0, y: 40 }}
+          to={{ opacity: 1, y: 0 }}
+          threshold={0.1}
+          rootMargin="-100px"
+          textAlign="center"
+        />
 
-        <h1 className="font-serif text-5xl md:text-7xl lg:text-8xl text-dusty-800 mb-2 animate-fadeIn leading-tight flex items-center justify-center gap-4 text-center">
-          Thabi
-          <span className="font-script text-3xl md:text-4xl lg:text-5xl text-mocha-500 mx-2">&</span>
-          Trevor
-        </h1>
-
-        <div className="mb-8 mt-2 w-full flex flex-col items-center">
-          <p className="text-lg md:text-xl text-dusty-600 animate-fadeIn animation-delay-300 text-center">
+        <div className="mb-6 sm:mb-8 mt-2 w-full flex flex-col items-center">
+          <p className="text-base sm:text-lg md:text-xl text-dusty-600 animatexfadeIn animation-delay-300 text-center">
             September 27th - 28th, 2025
           </p>
-          <p className="text-base md:text-lg text-mocha-500 animate-fadeIn animation-delay-600 text-center">
+          <p className="text-sm sm:text-base md:text-lg text-mocha-500 animate-fadeIn animation-delay-600 text-center">
             Meadowlands • Soweto
           </p>
         </div>
 
         <a
           href="#rsvp"
-          className="inline-flex items-center gap-3 bg-gradient-to-r from-blush-400 via-blush-500 to-blush-600  rounded-full px-12 py-4 transition-colors duration-200 text-xl animate-fadeIn animation-delay-900 uppercase tracking-wider border relative
+          className="inline-flex items-center gap-2 sm:gap-3 bg-gradient-to-r from-blush-400 via-blush-500 to-blush-600 rounded-full px-6 sm:px-12 py-3 sm:py-4 transition-colors duration-200 text-base sm:text-xl animate-fadeIn animation-delay-900 uppercase tracking-wider border relative
             hover:bg-[#555c78] hover:from-[#555c78] hover:to-[#555c78]"
           style={{
             color: '#555c78',
@@ -140,8 +120,6 @@ const HeroSection: React.FC = () => {
         >
           <span className='hover:text-white'>RSVP Now</span>
         </a>
-
-        
       </div>
     </section>
   );

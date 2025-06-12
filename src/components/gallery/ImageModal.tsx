@@ -32,7 +32,7 @@ const ImageModal: React.FC<ImageModalProps> = ({ image, onClose, onPrev, onNext 
   }, [onClose, onPrev, onNext]);
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-90 p-4">
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-90 p-2 sm:p-4">
       {/* Close button */}
       <button
         onClick={onClose}
@@ -60,13 +60,13 @@ const ImageModal: React.FC<ImageModalProps> = ({ image, onClose, onPrev, onNext 
       </button>
 
       {/* Image */}
-      <div className="max-w-5xl max-h-[80vh] animate-fadeIn">
+      <div className="max-w-full sm:max-w-3xl md:max-w-5xl max-h-[60vh] sm:max-h-[80vh] animate-fadeIn">
         <img
           src={image.src}
           alt={image.alt}
-          className="max-w-full max-h-[80vh] object-contain"
+          className="max-w-full max-h-[60vh] sm:max-h-[80vh] object-contain"
         />
-        <p className="text-white text-center mt-4 text-sm opacity-80">{image.alt}</p>
+        <p className="text-white text-center mt-2 sm:mt-4 text-xs sm:text-sm opacity-80">{image.alt}</p>
       </div>
     </div>
   );

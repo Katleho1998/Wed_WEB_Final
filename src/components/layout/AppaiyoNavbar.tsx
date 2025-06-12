@@ -31,7 +31,7 @@ const AppaiyoNavbar: React.FC = () => {
 
   return (
     <nav
-      className="appaiyo-navbar fixed top-0 left-1/2 -translate-x-1/2 w-full max-w-3xl bg-white/80 rounded-full shadow-2xl px-3 py-4 flex items-center justify-between mx-auto mt-4 border border-blush-100 backdrop-blur-sm z-[100]"
+      className="appaiyo-navbar fixed top-0 left-1/2 -translate-x-1/2 w-full max-w-xs sm:max-w-3xl bg-white/80 rounded-full shadow-2xl px-3 py-4 flex items-center justify-between mx-auto mt-4 border border-blush-100 backdrop-blur-sm z-[100] transition-all duration-300"
     >
       {/* Left: Logo and Brand */}
       <a href="#" className="flex items-center space-x-2 pl-8 py-1">

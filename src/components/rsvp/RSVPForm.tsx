@@ -122,10 +122,10 @@ const RSVPForm: React.FC = () => {
   }
 
   return (
-    <section id="rsvp" className="py-20 bg-cream-50 min-h-screen flex items-center justify-center">
-      <div className="w-full max-w-2xl mx-auto px-4">
+    <section id="rsvp" className="py-12 sm:py-20 bg-cream-50 min-h-screen flex items-center justify-center">
+      <div className="w-full max-w-lg sm:max-w-2xl mx-auto px-2 sm:px-4">
         <div
-          className="relative rounded-3xl shadow-2xl border border-blush-100 bg-white/40 backdrop-blur-xl p-8 md:p-12"
+          className="relative rounded-3xl shadow-2xl border border-blush-100 bg-white/40 backdrop-blur-xl p-6 sm:p-8 md:p-12"
           style={{
             background: 'rgba(255,255,255,0.35)',
             boxShadow: '0 8px 32px 0 rgba(31, 38, 135, 0.10)',

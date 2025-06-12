@@ -34,20 +34,19 @@ const Timeline: React.FC = () => {
   }, []);
 
   return (
-    <div className="mb-20" ref={timelineRef}>
-      <h3 className="font-serif text-2xl text-center text-sage-700 mb-10">
+    <div className="mb-12 sm:mb-20" ref={timelineRef}>
+      <h3 className="font-serif text-xl sm:text-2xl md:text-3xl text-center text-sage-700 mb-6 sm:mb-10">
         Wedding Day Timeline
       </h3>
-
       <div className="relative">
         {/* Timeline Line */}
         <div className="absolute left-0 md:left-1/2 top-0 h-full w-px bg-blush-200 transform md:translate-x-px"></div>
 
         {/* Timeline Events */}
-        <div className="space-y-12">
+        <div className="space-y-8 sm:space-y-12">
           {TIMELINE_EVENTS.map((event, index) => (
-            <div 
-              key={index} 
+            <div
+              key={index}
               className={`timeline-item relative flex flex-col md:flex-row transition-all duration-500 opacity-0 translate-y-4 ${
                 index % 2 === 0 ? 'md:flex-row-reverse' : ''
               }`}
@@ -56,18 +55,24 @@ const Timeline: React.FC = () => {
               <div className="absolute left-0 md:left-1/2 top-0 w-8 h-8 rounded-full bg-blush-500 transform -translate-x-1/2 md:-translate-x-4 flex items-center justify-center">
                 <div className="w-4 h-4 rounded-full bg-white"></div>
               </div>
-              
+
               {/* Time */}
-              <div className={`w-full md:w-1/2 pl-12 md:pl-0 ${
-                index % 2 === 0 ? 'md:pr-12 text-left' : 'md:pl-12 text-left'
-              }`}>
+              <div
+                className={`w-full md:w-1/2 pl-12 md:pl-0 ${
+                  index % 2 === 0 ? 'md:pr-12 text-left' : 'md:pl-12 text-left'
+                }`}
+              >
                 <div className="bg-white rounded-lg shadow-md p-6">
-                  <h4 className="font-serif text-xl text-sage-700 mb-2">{event.time}</h4>
-                  <h5 className="font-medium text-blush-500 mb-2">{event.title}</h5>
+                  <h4 className="font-serif text-xl text-sage-700 mb-2">
+                    {event.time}
+                  </h4>
+                  <h5 className="font-medium text-blush-500 mb-2">
+                    {event.title}
+                  </h5>
                   <p className="text-sage-600">{event.description}</p>
                 </div>
               </div>
-              
+
               {/* Spacer for offset layout */}
               <div className="hidden md:block w-1/2"></div>
             </div>
