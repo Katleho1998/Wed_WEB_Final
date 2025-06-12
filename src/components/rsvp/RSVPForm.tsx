@@ -28,91 +28,80 @@ const RSVPForm: React.FC = () => {
   });
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState('');
-  const [isSubmitting, setIsSubmitting] = useState(false);
   const [bringingPartner, setBringingPartner] = useState<'yes' | 'no'>('no');
   const [partnerName, setPartnerName] = useState('');
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
-    if (isSubmitting) return; // Prevent double submission
-    
-    setIsSubmitting(true);
-    setError('');
-
     // Simple validation
     if (!formData.mainGuest.name || !formData.mainGuest.email) {
       setError('Please fill in your name and email');
-      setIsSubmitting(false);
       return;
     }
     if (bringingPartner === 'yes' && !partnerName.trim()) {
       setError('Please enter your partner\'s name');
-      setIsSubmitting(false);
+      return;
+    }
+    setError('');
+
+    // Check if email already RSVP'd
+    const { data: existing, error: checkError } = await supabase
+      .from('rsvps')
+      .select('id')
+      .eq('email', formData.mainGuest.email)
+      .maybeSingle();
+
+    if (checkError) {
+      setError('There was a problem checking your RSVP. Please try again.');
+      return;
+    }
+    if (existing) {
+      setError(
+        "This email has already submitted an RSVP. If you submitted incorrect information, please call Thabi & Trevor to update your RSVP."
+      );
       return;
     }
 
-    try {
-      // Check if email already RSVP'd
-      const { data: existing, error: checkError } = await supabase
-        .from('rsvps')
-        .select('id')
-        .eq('email', formData.mainGuest.email)
-        .maybeSingle();
+    // Prepare data for Supabase
+    const rsvpPayload = {
+      name: formData.mainGuest.name,
+      email: formData.mainGuest.email,
+      attending: formData.mainGuest.attending,
+      partner_name: bringingPartner === 'yes' ? partnerName : null,
+      message: formData.message || null,
+      submitted_at: new Date().toISOString(),
+    };
 
-      if (checkError) {
-        setError('There was a problem checking your RSVP. Please try again.');
-        setIsSubmitting(false);
-        return;
-      }
-      if (existing) {
-        setError(
-          "This email has already submitted an RSVP. If you submitted incorrect information, please call Thabi & Trevor to update your RSVP."
-        );
-        setIsSubmitting(false);
-        return;
-      }
+    // Debug: log payload and supabase client
+    console.log('RSVP Payload:', rsvpPayload);
+    // console.log('Supabase client:', supabase);
 
-      // Prepare data for Supabase
-      const rsvpPayload = {
-        name: formData.mainGuest.name,
-        email: formData.mainGuest.email,
-        attending: formData.mainGuest.attending,
-        partner_name: bringingPartner === 'yes' ? partnerName : null,
-        message: formData.message || null,
-        submitted_at: new Date().toISOString(),
-      };
-
-      // Save to Supabase
-      const { error: supabaseError } = await supabase.from('rsvps').insert([rsvpPayload]);
-      if (supabaseError) {
-        console.error('Supabase insert error:', supabaseError);
-        setError(`There was a problem saving your RSVP. Please try again. (${supabaseError.message})`);
-        setIsSubmitting(false);
-        return;
-      }
-
-      // Call your email function after successful RSVP
-      try {
-        await fetch('https://hcboglxxalnqweuciapp.functions.supabase.co/send-rsvp-email', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            email: formData.mainGuest.email,
-            name: formData.mainGuest.name,
-          }),
-        });
-      } catch (e) {
-        console.error('Email function error:', e);
-      }
-
-      setSubmitted(true);
-    } catch (error) {
-      console.error('Unexpected error:', error);
-      setError('An unexpected error occurred. Please try again.');
-    } finally {
-      setIsSubmitting(false);
+    // Double-check your table name here: is it 'rsvps' or 'rsvp'?
+    // Save to Supabase
+    const { error: supabaseError } = await supabase.from('rsvps').insert([rsvpPayload]);
+    if (supabaseError) {
+      console.error('Supabase insert error:', supabaseError); // Debug log
+      setError(`There was a problem saving your RSVP. Please try again. (${supabaseError.message})`);
+      return;
     }
+
+    // Call your email function after successful RSVP
+    try {
+      await fetch('https://hcboglxxalnqweuciapp.functions.supabase.co/send-rsvp-email', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          email: formData.mainGuest.email,
+          name: formData.mainGuest.name,
+          // ...any other info you want to include
+        }),
+      });
+    } catch (e) {
+      // Optionally log or ignore email errors
+      console.error('Email function error:', e);
+    }
+
+    setSubmitted(true);
   };
 
   if (submitted) {
@@ -183,7 +172,6 @@ const RSVPForm: React.FC = () => {
                     }
                     className="w-full px-4 py-3 border border-sage-200 rounded-xl bg-white/60 focus:outline-none focus:ring-2 focus:ring-blush-400 shadow"
                     required
-                    disabled={isSubmitting}
                   />
                 </div>
                 <div>
@@ -203,7 +191,6 @@ const RSVPForm: React.FC = () => {
                     }
                     className="w-full px-4 py-3 border border-sage-200 rounded-xl bg-white/60 focus:outline-none focus:ring-2 focus:ring-blush-400 shadow"
                     required
-                    disabled={isSubmitting}
                   />
                 </div>
                 <div>
@@ -224,7 +211,6 @@ const RSVPForm: React.FC = () => {
                           })
                         }
                         className="form-radio text-blush-500"
-                        disabled={isSubmitting}
                       />
                       <span className="ml-2 text-sage-600">Yes, I'll be there!</span>
                     </label>
@@ -241,7 +227,6 @@ const RSVPForm: React.FC = () => {
                           })
                         }
                         className="form-radio text-blush-500"
-                        disabled={isSubmitting}
                       />
                       <span className="ml-2 text-sage-600">Sorry, I can't make it</span>
                     </label>
@@ -264,7 +249,6 @@ const RSVPForm: React.FC = () => {
                     className="w-full px-4 py-3 border border-sage-200 rounded-xl bg-white/60 focus:outline-none focus:ring-2 focus:ring-blush-400 shadow"
                     rows={4}
                     placeholder="Share your congratulations, well wishes, or any questions you might have..."
-                    disabled={isSubmitting}
                   ></textarea>
                 </div>
                 <div>
@@ -280,7 +264,6 @@ const RSVPForm: React.FC = () => {
                         checked={bringingPartner === 'yes'}
                         onChange={() => setBringingPartner('yes')}
                         className="form-radio text-blush-500"
-                        disabled={isSubmitting}
                       />
                       <span className="ml-2 text-sage-600">Yes</span>
                     </label>
@@ -292,7 +275,6 @@ const RSVPForm: React.FC = () => {
                         checked={bringingPartner === 'no'}
                         onChange={() => setBringingPartner('no')}
                         className="form-radio text-blush-500"
-                        disabled={isSubmitting}
                       />
                       <span className="ml-2 text-sage-600">No</span>
                     </label>
@@ -311,7 +293,6 @@ const RSVPForm: React.FC = () => {
                       onChange={e => setPartnerName(e.target.value)}
                       className="w-full px-4 py-3 border border-sage-200 rounded-xl bg-white/60 focus:outline-none focus:ring-2 focus:ring-blush-400 shadow"
                       required
-                      disabled={isSubmitting}
                     />
                   </div>
                 )}
@@ -319,31 +300,9 @@ const RSVPForm: React.FC = () => {
               <div className="mt-10 flex justify-center">
                 <button
                   type="submit"
-                  disabled={isSubmitting}
-                  className={`
-                    relative min-h-[48px] min-w-[120px] px-8 py-3 rounded-full font-semibold text-white
-                    transition-all duration-300 shadow-lg
-                    ${isSubmitting 
-                      ? 'bg-gray-400 cursor-not-allowed' 
-                      : 'bg-[#555c78] hover:bg-[#4a5068] active:bg-[#3f4559] hover:shadow-xl active:scale-95'
-                    }
-                    focus:outline-none focus:ring-2 focus:ring-[#555c78] focus:ring-offset-2
-                    touch-manipulation select-none
-                  `}
-                  style={{
-                    WebkitTapHighlightColor: 'transparent',
-                    WebkitUserSelect: 'none',
-                    userSelect: 'none'
-                  }}
+                  className="bg-[#555c78] text-white py-2 px-8 rounded-full hover:from-[#555c78] transition-colors duration-300 shadow"
                 >
-                  {isSubmitting ? (
-                    <div className="flex items-center justify-center">
-                      <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin mr-2"></div>
-                      Submitting...
-                    </div>
-                  ) : (
-                    'Submit RSVP'
-                  )}
+                  Submit RSVP
                 </button>
               </div>
             </form>
