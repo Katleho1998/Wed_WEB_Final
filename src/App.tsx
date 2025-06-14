@@ -27,11 +27,12 @@ function App() {
           />
         </div>*/}
         
-        {/* Floating Countdown Timer */}
-        <CountdownTimer />
-        
         <main>
           <HeroSection />
+          {/* Modern Countdown Timer */}
+          <div className="mb-10 w-full flex flex-col items-center">
+            <CountdownTimer />
+          </div>
           <OurStory />
           <WeddingInfo />
           <Gallery />
