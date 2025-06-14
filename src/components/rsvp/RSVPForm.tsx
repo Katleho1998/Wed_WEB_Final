@@ -85,20 +85,31 @@ const RSVPForm: React.FC = () => {
       return;
     }
 
-    // Call your email function after successful RSVP
+    // Try to call email function, but don't fail the RSVP if it doesn't work
     try {
-      await fetch('https://hcboglxxalnqweuciapp.functions.supabase.co/send-rsvp-email', {
+      const emailFunctionUrl = `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/send-rsvp-email`;
+      
+      const response = await fetch(emailFunctionUrl, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: { 
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${import.meta.env.VITE_SUPABASE_ANON_KEY}`
+        },
         body: JSON.stringify({
           email: formData.mainGuest.email,
           name: formData.mainGuest.name,
-          // ...any other info you want to include
+          attending: formData.mainGuest.attending,
+          partnerName: bringingPartner === 'yes' ? partnerName : null,
+          message: formData.message
         }),
       });
-    } catch (e) {
-      // Optionally log or ignore email errors
-      console.error('Email function error:', e);
+
+      if (!response.ok) {
+        console.warn('Email function returned non-OK status:', response.status);
+      }
+    } catch (emailError) {
+      // Log the error but don't prevent RSVP success
+      console.warn('Email function not available or failed:', emailError);
     }
 
     setSubmitted(true);
