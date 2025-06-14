@@ -200,7 +200,7 @@ const WeddingInfo: React.FC = () => {
           <div className="flex justify-center">
             <div className="group relative max-w-3xl w-full">
               <div className="absolute inset-0 bg-gradient-to-br from-blue-200/20 to-amber-200/20 rounded-3xl blur-xl transform group-hover:scale-105 transition-transform duration-300"></div>
-              <div className="relative rounded-3xl overflow-hidden border-4 border-white">
+              <div className="relative rounded-3xl overflow-hidden">
                 <img
                   src={paletteImg}
                   alt="Wedding color palette showing shades of blue and brown"
