@@ -49,6 +49,18 @@ const RSVPForm: React.FC = () => {
       return;
     }
 
+    // Check if Supabase is properly configured
+    const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
+    const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
+    
+    if (!supabaseUrl || !supabaseAnonKey || 
+        supabaseUrl === 'your_supabase_project_url_here' || 
+        supabaseAnonKey === 'your_supabase_anon_key_here') {
+      showError('Supabase is not configured. Please contact the website administrator.');
+      setIsSubmitting(false);
+      return;
+    }
+
     // Check if email already RSVP'd
     const { data: existing, error: checkError } = await supabase
       .from('rsvps')
@@ -95,13 +107,13 @@ const RSVPForm: React.FC = () => {
 
     // Try to call email function, but don't fail the RSVP if it doesn't work
     try {
-      const emailFunctionUrl = `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/send-rsvp-email`;
+      const emailFunctionUrl = `${supabaseUrl}/functions/v1/send-rsvp-email`;
       
       const response = await fetch(emailFunctionUrl, {
         method: 'POST',
         headers: { 
           'Content-Type': 'application/json',
-          'Authorization': `Bearer ${import.meta.env.VITE_SUPABASE_ANON_KEY}`
+          'Authorization': `Bearer ${supabaseAnonKey}`
         },
         body: JSON.stringify({
           email: formData.mainGuest.email,
