@@ -194,7 +194,7 @@ const WeddingInfo: React.FC = () => {
             <div className="inline-flex items-center gap-3 bg-white/80 rounded-full px-6 py-3 border border-mocha-100 mb-6">
               <h3 className="font-serif text-2xl text-mocha-500 font-semibold">Weekend Theme</h3>
             </div>
-            <h4 className="font-serif text-3xl font-bold text-sage-600 mb-6">Shades of Blue and Brown</h4>
+            <h4 className="font-serif text-3xl text-sage-600 mb-6">Shades of Blue and Brown</h4>
           </div>
           
           <div className="flex justify-center">
