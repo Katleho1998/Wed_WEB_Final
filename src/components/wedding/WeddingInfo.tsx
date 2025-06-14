@@ -172,25 +172,16 @@ const WeddingInfo: React.FC = () => {
               <div className="absolute inset-0 bg-gradient-to-br from-blush-200/20 to-sage-200/20 rounded-3xl blur-xl transform group-hover:scale-105 transition-transform duration-300"></div>
               <div className="relative bg-white/90 backdrop-blur-sm rounded-3xl p-8 border border-blush-100 hover:border-blush-200 transition-all duration-300 h-full flex flex-col">
                 
-                {/* Header with Icon - Centered */}
-                <div className="flex flex-col items-center text-center mb-6">
-                  <div className="w-16 h-16 bg-gradient-to-br from-blush-400 to-sage-400 rounded-2xl flex items-center justify-center mb-4">
-                    <Gift className="w-8 h-8 text-blush-500" />
-                  </div>
-                </div>
-                
                 {/* Gift Details - Centered */}
                 <div className="text-center space-y-4 flex-grow">
-                  
-                    <p className="text-sage-700 text-lg mb-2">
-                      <span className="font-semibold">Preferred gifts:</span> 
-                      <span className="font-bold text-blush-600 block text-xl mt-1">Gift Cards</span>
-                    </p>
-                    <p className="text-sage-600">
-                      <span className="font-medium">Suggested stores:</span><br />
-                      Woolworths, @Home, Volpes, Coricraft
-                    </p>
-                  
+                  <p className="text-sage-700 text-lg mb-2">
+                    <span className="font-semibold">Preferred gifts:</span> 
+                    <span className="font-bold text-blush-600 block text-xl mt-1">Gift Cards</span>
+                  </p>
+                  <p className="text-sage-600">
+                    <span className="font-medium">Suggested stores:</span><br />
+                    Woolworths, @Home, Volpes, Coricraft
+                  </p>
                 </div>
               </div>
             </div>
