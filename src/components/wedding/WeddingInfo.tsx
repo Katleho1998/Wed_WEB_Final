@@ -17,7 +17,7 @@ const WeddingInfo: React.FC = () => {
         {/* Saturday Events - Two Column Layout */}
         <div className="mb-16">
           <div className="text-center mb-10">
-            <div className="inline-flex items-center gap-3 bg-white/80 rounded-full px-6 py-3 shadow-lg border border-blush-100">
+            <div className="inline-flex items-center gap-3 bg-white/80 rounded-full px-6 py-3 border border-blush-100">
               <Calendar className="w-6 h-6 text-mocha-500" />
               <h3 className="font-serif text-2xl text-mocha-500 font-semibold">Saturday, 27th September 2025</h3>
             </div>
@@ -28,11 +28,11 @@ const WeddingInfo: React.FC = () => {
             {/* Matrimony Card */}
             <div className="group relative">
               <div className="absolute inset-0 bg-gradient-to-br from-blush-200/30 to-blush-300/20 rounded-3xl blur-xl transform group-hover:scale-105 transition-transform duration-300"></div>
-              <div className="relative bg-white/90 backdrop-blur-sm rounded-3xl p-8 shadow-xl border border-blush-100 hover:shadow-2xl transition-all duration-300">
+              <div className="relative bg-white/90 backdrop-blur-sm rounded-3xl p-8 border border-blush-100 hover:border-blush-200 transition-all duration-300">
                 
                 {/* Header with Icon */}
                 <div className="flex items-center gap-4 mb-6">
-                  <div className="w-16 h-16 bg-gradient-to-br from-blush-400 to-blush-500 rounded-2xl flex items-center justify-center shadow-lg">
+                  <div className="w-16 h-16 bg-gradient-to-br from-blush-400 to-blush-500 rounded-2xl flex items-center justify-center">
                     <MapPin className="w-8 h-8 text-white" />
                   </div>
                   <div>
@@ -56,7 +56,7 @@ const WeddingInfo: React.FC = () => {
                 {/* Direction Button */}
                 <button
                   onClick={() => window.open(getDirectionsUrl("188 Ingedezi Street, Zone 7, Meadowlands"), '_blank')}
-                  className="w-full bg-[#555c78] hover:bg-[#4a5068] text-white font-semibold py-4 px-6 rounded-2xl transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1 flex items-center justify-center gap-3"
+                  className="w-full bg-[#555c78] hover:bg-[#4a5068] text-white font-semibold py-4 px-6 rounded-2xl transition-all duration-300 transform hover:-translate-y-1 flex items-center justify-center gap-3"
                 >
                   <MapPin className="w-5 h-5" />
                   <span>Get Directions</span>
@@ -67,11 +67,11 @@ const WeddingInfo: React.FC = () => {
             {/* Reception Card */}
             <div className="group relative">
               <div className="absolute inset-0 bg-gradient-to-br from-sage-200/30 to-sage-300/20 rounded-3xl blur-xl transform group-hover:scale-105 transition-transform duration-300"></div>
-              <div className="relative bg-white/90 backdrop-blur-sm rounded-3xl p-8 shadow-xl border border-sage-100 hover:shadow-2xl transition-all duration-300">
+              <div className="relative bg-white/90 backdrop-blur-sm rounded-3xl p-8 border border-sage-100 hover:border-sage-200 transition-all duration-300">
                 
                 {/* Header with Icon */}
                 <div className="flex items-center gap-4 mb-6">
-                  <div className="w-16 h-16 bg-gradient-to-br from-sage-400 to-sage-500 rounded-2xl flex items-center justify-center shadow-lg">
+                  <div className="w-16 h-16 bg-gradient-to-br from-sage-400 to-sage-500 rounded-2xl flex items-center justify-center">
                     <MapPin className="w-8 h-8 text-white" />
                   </div>
                   <div>
@@ -95,7 +95,7 @@ const WeddingInfo: React.FC = () => {
                 {/* Direction Button */}
                 <button
                   onClick={() => window.open(getDirectionsUrl("12278, Zone 9, Meadowlands, Mjakes Truckshop"), '_blank')}
-                  className="w-full bg-[#555c78] hover:bg-[#4a5068] text-white font-semibold py-4 px-6 rounded-2xl transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1 flex items-center justify-center gap-3"
+                  className="w-full bg-[#555c78] hover:bg-[#4a5068] text-white font-semibold py-4 px-6 rounded-2xl transition-all duration-300 transform hover:-translate-y-1 flex items-center justify-center gap-3"
                 >
                   <MapPin className="w-5 h-5" />
                   <span>Get Directions</span>
@@ -108,7 +108,7 @@ const WeddingInfo: React.FC = () => {
         {/* Sunday Event */}
         <div className="mb-16">
           <div className="text-center mb-10">
-            <div className="inline-flex items-center gap-3 bg-white/80 rounded-full px-6 py-3 shadow-lg border border-cream-100">
+            <div className="inline-flex items-center gap-3 bg-white/80 rounded-full px-6 py-3 border border-cream-100">
               <Calendar className="w-6 h-6 text-mocha-500" />
               <h3 className="font-serif text-2xl text-mocha-500 font-semibold">Sunday, 28th September 2025</h3>
             </div>
@@ -117,11 +117,11 @@ const WeddingInfo: React.FC = () => {
           <div className="flex justify-center">
             <div className="group relative max-w-md w-full">
               <div className="absolute inset-0 bg-gradient-to-br from-cream-200/30 to-cream-300/20 rounded-3xl blur-xl transform group-hover:scale-105 transition-transform duration-300"></div>
-              <div className="relative bg-white/90 backdrop-blur-sm rounded-3xl p-8 shadow-xl border border-cream-100 hover:shadow-2xl transition-all duration-300">
+              <div className="relative bg-white/90 backdrop-blur-sm rounded-3xl p-8 border border-cream-100 hover:border-cream-200 transition-all duration-300">
                 
                 {/* Header with Icon */}
                 <div className="flex items-center gap-4 mb-6">
-                  <div className="w-16 h-16 bg-gradient-to-br from-cream-400 to-cream-500 rounded-2xl flex items-center justify-center shadow-lg">
+                  <div className="w-16 h-16 bg-gradient-to-br from-cream-400 to-cream-500 rounded-2xl flex items-center justify-center">
                     <MapPin className="w-8 h-8 text-white" />
                   </div>
                   <div>
@@ -146,7 +146,7 @@ const WeddingInfo: React.FC = () => {
         {/* Gifts Section */}
         <div className="mb-16">
           <div className="text-center mb-10">
-            <div className="inline-flex items-center gap-3 bg-white/80 rounded-full px-6 py-3 shadow-lg border border-blush-100">
+            <div className="inline-flex items-center gap-3 bg-white/80 rounded-full px-6 py-3 border border-blush-100">
               <Gift className="w-6 h-6 text-mocha-500" />
               <h3 className="font-serif text-2xl text-mocha-500 font-semibold">Gifts</h3>
             </div>
@@ -155,10 +155,10 @@ const WeddingInfo: React.FC = () => {
           <div className="flex justify-center">
             <div className="group relative max-w-lg w-full">
               <div className="absolute inset-0 bg-gradient-to-br from-blush-200/20 to-sage-200/20 rounded-3xl blur-xl transform group-hover:scale-105 transition-transform duration-300"></div>
-              <div className="relative bg-white/90 backdrop-blur-sm rounded-3xl p-8 shadow-xl border border-blush-100 hover:shadow-2xl transition-all duration-300">
+              <div className="relative bg-white/90 backdrop-blur-sm rounded-3xl p-8 border border-blush-100 hover:border-blush-200 transition-all duration-300">
                 
                 <div className="text-center space-y-4">
-                  <div className="w-16 h-16 bg-gradient-to-br from-blush-400 to-sage-400 rounded-2xl flex items-center justify-center shadow-lg mx-auto">
+                  <div className="w-16 h-16 bg-gradient-to-br from-blush-400 to-sage-400 rounded-2xl flex items-center justify-center mx-auto">
                     <Gift className="w-8 h-8 text-white" />
                   </div>
                   
@@ -181,7 +181,7 @@ const WeddingInfo: React.FC = () => {
         {/* Theme Section */}
         <div className="text-center">
           <div className="mb-8">
-            <div className="inline-flex items-center gap-3 bg-white/80 rounded-full px-6 py-3 shadow-lg border border-mocha-100 mb-6">
+            <div className="inline-flex items-center gap-3 bg-white/80 rounded-full px-6 py-3 border border-mocha-100 mb-6">
               <div className="w-6 h-6 rounded-full bg-gradient-to-r from-blue-400 to-amber-600"></div>
               <h3 className="font-serif text-2xl text-mocha-500 font-semibold">Weekend Theme</h3>
             </div>
@@ -191,7 +191,7 @@ const WeddingInfo: React.FC = () => {
           <div className="flex justify-center">
             <div className="group relative max-w-3xl w-full">
               <div className="absolute inset-0 bg-gradient-to-br from-blue-200/20 to-amber-200/20 rounded-3xl blur-xl transform group-hover:scale-105 transition-transform duration-300"></div>
-              <div className="relative rounded-3xl overflow-hidden shadow-2xl border-4 border-white">
+              <div className="relative rounded-3xl overflow-hidden border-4 border-white">
                 <img
                   src={paletteImg}
                   alt="Wedding color palette showing shades of blue and brown"
