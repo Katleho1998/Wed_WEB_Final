@@ -73,7 +73,7 @@ const HeroSection: React.FC = () => {
         <img
           src={FlowersImg}
           alt="Floral decoration"
-          className="mx-auto mb-2 sm:mb-6 max-w-[100px] sm:max-w-[180px] md:max-w-[240px] lg:max-w-[300px] drop-shadow-lg"
+          className="mx-auto mb-2 sm:mb-6 max-w-[140px] sm:max-w-[180px] md:max-w-[240px] lg:max-w-[300px] drop-shadow-lg"
           style={{ objectFit: 'contain' }}
         />
 
