@@ -17,7 +17,7 @@ const WeddingInfo: React.FC = () => {
         {/* Saturday Events - Side by Side Layout */}
         <div className="mb-16">
           <div className="text-center mb-12">
-            <div className="inline-flex items-center gap-3 bg-white/80 rounded-full px-8 py-4 border border-blush-100">
+            <div className="inline-flex items-center gap-3 bg-white/80 rounded-full px-8 py-4">
               <Calendar className="w-6 h-6 text-mocha-500" />
               <h3 className="font-serif text-2xl text-mocha-500 font-semibold">Saturday, 27th September 2025</h3>
             </div>
@@ -34,7 +34,7 @@ const WeddingInfo: React.FC = () => {
                 {/* Header with Icon - Centered */}
                 <div className="flex flex-col items-center text-center mb-6">
                   <div className="w-16 h-16 bg-gradient-to-br from-blush-400 to-blush-500 rounded-2xl flex items-center justify-center mb-4">
-                    <MapPin className="w-8 h-8 text-blush-500" />
+                    <MapPin className="w-8 h-8 text-white" />
                   </div>
                   <div>
                     <h4 className="font-serif text-2xl text-sage-800 font-bold mb-2">Matrimony</h4>
@@ -75,7 +75,7 @@ const WeddingInfo: React.FC = () => {
                 {/* Header with Icon - Centered */}
                 <div className="flex flex-col items-center text-center mb-6">
                   <div className="w-16 h-16 bg-gradient-to-br from-sage-400 to-sage-500 rounded-2xl flex items-center justify-center mb-4">
-                    <Wine className="w-8 h-8 text-blush-500" />
+                    <Wine className="w-8 h-8 text-white" />
                   </div>
                   <div>
                     <h4 className="font-serif text-2xl text-sage-800 font-bold mb-2">Reception</h4>
