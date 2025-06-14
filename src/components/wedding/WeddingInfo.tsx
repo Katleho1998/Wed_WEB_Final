@@ -127,7 +127,7 @@ const WeddingInfo: React.FC = () => {
                 {/* Header with Icon - Centered */}
                 <div className="flex flex-col items-center text-center mb-6">
                   <div>
-                    <h4 className="font-serif text-2xl text-sage-800 font-bold mb-2">Celebration</h4>
+                    <h4 className="font-serif text-2xl text-sage-800 font-bold mb-2"></h4>
                     <div className="flex items-center justify-center gap-2 text-sage-600">
                       <Clock className="w-4 h-4 text-blush-500" />
                       <span className="font-medium">12:30 PM for 1:00 PM</span>
