@@ -113,7 +113,7 @@ const WeddingInfo: React.FC = () => {
         {/* Sunday Event - Centered */}
         <div className="mb-16">
           <div className="text-center mb-10">
-            <div className="inline-flex items-center gap-3 bg-white/80 rounded-full px-6 py-3 border border-cream-100">
+            <div className="inline-flex items-center gap-3 bg-white/80 rounded-full px-6 py-3">
               <Calendar className="w-6 h-6 text-mocha-500" />
               <h3 className="font-serif text-2xl text-mocha-500 font-semibold">Sunday, 28th September 2025</h3>
             </div>
