@@ -77,7 +77,7 @@ const HeroSection: React.FC = () => {
           style={{ objectFit: 'contain' }}
         />
 
-        <span className="block mb-2 text-[14px] sm:text-sm md:text-base lg:text-lg font-semibold text-mocha-500 tracking-wide text-center uppercase">
+        <span className="block mb-2 text-[6px] sm:text-sm md:text-base lg:text-lg font-semibold text-mocha-500 tracking-wide text-center uppercase">
           PLEASE JOIN US FOR THE TRADITIONAL WEDDING OF
         </span>
         {/* Animated SplitText for names - Increased mobile size from text-2xl to text-4xl */}
