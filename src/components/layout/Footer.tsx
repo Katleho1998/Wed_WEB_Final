@@ -18,7 +18,7 @@ const Footer: React.FC = () => {
             <span className="text-blush-500 mx-2">
               <Heart size={20} fill="currentColor" />
             </span>
-            <p className="text-sage-600">September 27, 2024</p>
+            <p className="text-sage-600">September 27, 2025</p>
             <span className="text-blush-500 mx-2">
               <Heart size={20} fill="currentColor" />
             </span>
@@ -26,7 +26,7 @@ const Footer: React.FC = () => {
           
           
           
-          <p className="text-sage-400 text-xs">
+          <p className="text-sage-400 text-xs text-center">
             &copy; {year} Design by Katleho - 065 897 4018. All Rights Reserved.
           </p>
         </div>
