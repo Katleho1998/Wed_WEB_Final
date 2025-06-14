@@ -83,7 +83,7 @@ const HeroSection: React.FC = () => {
         {/* Animated SplitText for names - Increased mobile size from text-2xl to text-4xl */}
         <SplitText
           text="Thabi & Trevor"
-          className="font-serif text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-dusty-800 mb-2 animate-fadeIn leading-tight flex items-center justify-center gap-2 sm:gap-4 text-center"
+          className="font-serif text-bold text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-dusty-800 mb-2 animate-fadeIn leading-tight flex items-center justify-center gap-2 sm:gap-4 text-center"
           delay={100}
           duration={0.6}
           ease="power3.out"
