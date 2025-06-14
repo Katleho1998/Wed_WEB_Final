@@ -17,7 +17,7 @@ const WeddingInfo: React.FC = () => (
               <div className="text-sage-600 mb-1">Time: <span className="font-bold">10:00 AM</span></div>
               <div className="text-sage-600 mb-1">
                 Venue: <span className="font-bold">Church @ Allen Temple</span><br />
-                188 Ingededi Street, Zone 7, Meadowlands
+                188 Ingedezi Street, Zone 7, Meadowlands
               </div>
             </div>
             <div className="flex-1 bg-white/60 rounded-2xl p-6 shadow border border-blush-100">
