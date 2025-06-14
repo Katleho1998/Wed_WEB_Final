@@ -5,7 +5,7 @@ const Footer: React.FC = () => {
   const year = new Date().getFullYear();
   
   return (
-    <footer className="bg-sage-50 py-12 z-[50]">
+    <footer className="bg-sage-50 py-12">
       <div className="container mx-auto px-4">
         <div className="flex flex-col items-center">
           <h3 className="font-serif text-2xl text-sage-700 mb-4 flex items-center gap-2">

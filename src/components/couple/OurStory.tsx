@@ -48,7 +48,7 @@ const storyEvents = [
 	{
 		year: '2025',
 		title: '9 Years & Our Wedding',
-		description: 'We celebrate 9 years of love and begin our wedding celebrations, surrounded by family and friends. Here\'s to forever!',
+		description: 'We celebrate 9 years of love and begin our wedding celebrations, surrounded by family and friends. Here’s to forever!',
 		flower: flower6,
 		color: 'from-blush-100 to-blush-50',
 	},
@@ -89,7 +89,7 @@ const OurStory: React.FC = () => {
 	return (
 		<section
 			id="our-story"
-			className="relative py-28 bg-gradient-to-br from-sage-50 via-cream-50 to-blush-50 overflow-hidden min-h-screen z-[50]"
+			className="relative py-28 bg-gradient-to-br from-sage-50 via-cream-50 to-blush-50 overflow-hidden min-h-screen"
 		>
 			{/* Heading */}
 			<h1 className="text-center font-serif text-5xl md:text-6xl text-blush-600 mb-8 tracking-tight z-20 relative drop-shadow-lg">

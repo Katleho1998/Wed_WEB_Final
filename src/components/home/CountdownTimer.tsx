@@ -24,8 +24,8 @@ const CountdownTimer: React.FC = () => {
   }, []);
 
   return (
-    <div className="mt-8 flex flex-col items-center animate-fadeIn animation-delay-1000 relative z-[100]">
-      <div className="backdrop-blur-xl bg-white/40 border border-blush-100 rounded-2xl px-8 py-5 shadow-lg flex gap-6 md:gap-10 relative z-[100]">
+    <div className="mt-8 flex flex-col items-center animate-fadeIn animation-delay-1000 relative z-[200]">
+      <div className="backdrop-blur-xl bg-white/40 border border-blush-100 rounded-2xl px-8 py-5 shadow-lg flex gap-6 md:gap-10 relative z-[200]">
         {[
           { label: 'Days', value: timeLeft.days },
           { label: 'Hours', value: timeLeft.hours },

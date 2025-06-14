@@ -59,7 +59,7 @@ const HeroSection: React.FC = () => {
       />
 
       {/* Navbar overlayed at the top */}
-      <div className="absolute top-0 left-0 w-full z-[9999]">
+      <div className="absolute top-0 left-0 w-full z-50">
         <AppaiyoNavbar />
       </div>
 

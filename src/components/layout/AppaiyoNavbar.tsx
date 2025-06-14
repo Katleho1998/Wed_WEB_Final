@@ -2,6 +2,9 @@ import React, { useState, useRef } from 'react';
 import { Menu, X } from 'lucide-react';
 import { NAV_ITEMS } from '../../utils/constants';
 
+
+;
+
 const AppaiyoNavbar: React.FC = () => {
   const [open, setOpen] = useState(false);
   const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
@@ -28,7 +31,7 @@ const AppaiyoNavbar: React.FC = () => {
 
   return (
     <nav
-      className="appaiyo-navbar fixed top-0 left-1/2 -translate-x-1/2 w-full max-w-xs sm:max-w-3xl bg-white/80 rounded-full shadow-2xl px-3 py-4 flex items-center justify-between mx-auto mt-4 border border-blush-100 backdrop-blur-sm z-[9999] transition-all duration-300"
+      className="appaiyo-navbar fixed top-0 left-1/2 -translate-x-1/2 w-full max-w-xs sm:max-w-3xl bg-white/80 rounded-full shadow-2xl px-3 py-4 flex items-center justify-between mx-auto mt-4 border border-blush-100 backdrop-blur-sm z-[100] transition-all duration-300"
     >
       {/* Left: Logo and Brand */}
       <a href="#" className="flex items-center space-x-2 pl-8 py-1">
@@ -48,7 +51,7 @@ const AppaiyoNavbar: React.FC = () => {
         </button>
         {open && (
           <nav
-            className="absolute right-0 mt-2 w-56 bg-cream-50 shadow-xl rounded-2xl z-[10000] border border-blush-100"
+            className="absolute right-0 mt-2 w-56 bg-cream-50 shadow-xl rounded-2xl z-50 border border-blush-100"
             onMouseEnter={handleMenuMouseEnter}
             onMouseLeave={handleMenuMouseLeave}
           >

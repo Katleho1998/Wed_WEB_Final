@@ -8,7 +8,7 @@ const WeddingInfo: React.FC = () => {
   };
 
   return (
-    <section id="wedding-info" className="relative py-24 bg-gradient-to-br from-sage-50 via-cream-50 to-blush-50 z-[50]">
+    <section id="wedding-info" className="relative py-24 bg-gradient-to-br from-sage-50 via-cream-50 to-blush-50">
       <div className="container mx-auto px-4 max-w-7xl">
         <h2 className="font-serif text-4xl md:text-5xl text-center text-blush-700 mb-16 tracking-tight">
           Wedding Information
