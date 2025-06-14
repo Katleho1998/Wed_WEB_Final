@@ -40,7 +40,7 @@ const WeddingInfo: React.FC = () => {
                     <h4 className="font-serif text-2xl text-sage-800 font-bold mb-2">Matrimony</h4>
                     <div className="flex items-center justify-center gap-2 text-sage-600">
                       <Clock className="w-4 h-4 text-blush-500" />
-                      <span className="font-medium">10:00 AM</span>
+                      <span className="font-medium text-mocha-500">10:00 AM</span>
                     </div>
                   </div>
                 </div>
