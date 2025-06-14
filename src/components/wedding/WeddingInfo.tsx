@@ -39,7 +39,7 @@ const WeddingInfo: React.FC = () => {
                   <div>
                     <h4 className="font-serif text-2xl text-sage-800 font-bold mb-2">Matrimony</h4>
                     <div className="flex items-center justify-center gap-2 text-sage-600">
-                      <Clock className="w-4 h-4" />
+                      <Clock className="w-4 h-4 text-white" />
                       <span className="font-medium">10:00 AM</span>
                     </div>
                   </div>
@@ -60,7 +60,7 @@ const WeddingInfo: React.FC = () => {
                     onClick={() => window.open(getDirectionsUrl("188 Ingedezi Street, Zone 7, Meadowlands"), '_blank')}
                     className="bg-[#555c78] hover:bg-[#4a5068] text-white font-semibold py-3 px-6 rounded-2xl transition-all duration-300 transform hover:-translate-y-1 flex items-center justify-center gap-2"
                   >
-                    <MapPin className="w-4 h-4" />
+                    <MapPin className="w-4 h-4 text-white" />
                     <span>Directions</span>
                   </button>
                 </div>
@@ -80,7 +80,7 @@ const WeddingInfo: React.FC = () => {
                   <div>
                     <h4 className="font-serif text-2xl text-sage-800 font-bold mb-2">Reception</h4>
                     <div className="flex items-center justify-center gap-2 text-sage-600">
-                      <Clock className="w-4 h-4" />
+                      <Clock className="w-4 h-4 text-white" />
                       <span className="font-medium">12:30 PM (for 1:00 PM)</span>
                     </div>
                   </div>
@@ -101,7 +101,7 @@ const WeddingInfo: React.FC = () => {
                     onClick={() => window.open(getDirectionsUrl("12278, Zone 9, Meadowlands, Mjakes Truckshop"), '_blank')}
                     className="bg-[#555c78] hover:bg-[#4a5068] text-white font-semibold py-3 px-6 rounded-2xl transition-all duration-300 transform hover:-translate-y-1 flex items-center justify-center gap-2"
                   >
-                    <MapPin className="w-4 h-4" />
+                    <MapPin className="w-4 h-4 text-white" />
                     <span>Directions</span>
                   </button>
                 </div>
@@ -132,7 +132,7 @@ const WeddingInfo: React.FC = () => {
                   <div>
                     <h4 className="font-serif text-2xl text-sage-800 font-bold mb-2">Celebration</h4>
                     <div className="flex items-center justify-center gap-2 text-sage-600">
-                      <Clock className="w-4 h-4" />
+                      <Clock className="w-4 h-4 text-white" />
                       <span className="font-medium">12:30 PM for 1:00 PM</span>
                     </div>
                   </div>
