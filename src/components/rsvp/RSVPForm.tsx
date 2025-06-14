@@ -38,7 +38,7 @@ const RSVPForm: React.FC = () => {
       setError('Please fill in your name and email');
       return;
     }
-    if (bringingPartner === 'yes' && !partnerName.trim()) {
+    if (formData.mainGuest.attending && bringingPartner === 'yes' && !partnerName.trim()) {
       setError('Please enter your partner\'s name');
       return;
     }
@@ -67,7 +67,7 @@ const RSVPForm: React.FC = () => {
       name: formData.mainGuest.name,
       email: formData.mainGuest.email,
       attending: formData.mainGuest.attending,
-      partner_name: bringingPartner === 'yes' ? partnerName : null,
+      partner_name: formData.mainGuest.attending && bringingPartner === 'yes' ? partnerName : null,
       message: formData.message || null,
       submitted_at: new Date().toISOString(),
     };
@@ -99,7 +99,7 @@ const RSVPForm: React.FC = () => {
           email: formData.mainGuest.email,
           name: formData.mainGuest.name,
           attending: formData.mainGuest.attending,
-          partnerName: bringingPartner === 'yes' ? partnerName : null,
+          partnerName: formData.mainGuest.attending && bringingPartner === 'yes' ? partnerName : null,
           message: formData.message
         }),
       });
@@ -262,50 +262,55 @@ const RSVPForm: React.FC = () => {
                     placeholder="Share your congratulations, well wishes, or any questions you might have..."
                   ></textarea>
                 </div>
-                <div>
-                  <label className="block text-sage-700 mb-2 font-semibold">
-                    Bringing a partner?
-                  </label>
-                  <div className="flex space-x-4">
-                    <label className="inline-flex items-center">
-                      <input
-                        type="radio"
-                        name="bringingPartner"
-                        value="yes"
-                        checked={bringingPartner === 'yes'}
-                        onChange={() => setBringingPartner('yes')}
-                        className="form-radio text-blush-500"
-                      />
-                      <span className="ml-2 text-sage-600">Yes</span>
-                    </label>
-                    <label className="inline-flex items-center">
-                      <input
-                        type="radio"
-                        name="bringingPartner"
-                        value="no"
-                        checked={bringingPartner === 'no'}
-                        onChange={() => setBringingPartner('no')}
-                        className="form-radio text-blush-500"
-                      />
-                      <span className="ml-2 text-sage-600">No</span>
-                    </label>
-                  </div>
-                </div>
-                {bringingPartner === 'yes' && (
-                  <div>
-                    <label className="block text-sage-700 mb-2 font-semibold" htmlFor="partnerName">
-                      Partner's Name*
-                    </label>
-                    <input
-                      type="text"
-                      id="partnerName"
-                      name="partnerName"
-                      value={partnerName}
-                      onChange={e => setPartnerName(e.target.value)}
-                      className="w-full px-4 py-3 border border-sage-200 rounded-xl bg-white/60 focus:outline-none focus:ring-2 focus:ring-blush-400 shadow"
-                      required
-                    />
-                  </div>
+                {/* Only show partner section if attending */}
+                {formData.mainGuest.attending && (
+                  <>
+                    <div>
+                      <label className="block text-sage-700 mb-2 font-semibold">
+                        Bringing a partner?
+                      </label>
+                      <div className="flex space-x-4">
+                        <label className="inline-flex items-center">
+                          <input
+                            type="radio"
+                            name="bringingPartner"
+                            value="yes"
+                            checked={bringingPartner === 'yes'}
+                            onChange={() => setBringingPartner('yes')}
+                            className="form-radio text-blush-500"
+                          />
+                          <span className="ml-2 text-sage-600">Yes</span>
+                        </label>
+                        <label className="inline-flex items-center">
+                          <input
+                            type="radio"
+                            name="bringingPartner"
+                            value="no"
+                            checked={bringingPartner === 'no'}
+                            onChange={() => setBringingPartner('no')}
+                            className="form-radio text-blush-500"
+                          />
+                          <span className="ml-2 text-sage-600">No</span>
+                        </label>
+                      </div>
+                    </div>
+                    {bringingPartner === 'yes' && (
+                      <div>
+                        <label className="block text-sage-700 mb-2 font-semibold" htmlFor="partnerName">
+                          Partner's Name*
+                        </label>
+                        <input
+                          type="text"
+                          id="partnerName"
+                          name="partnerName"
+                          value={partnerName}
+                          onChange={e => setPartnerName(e.target.value)}
+                          className="w-full px-4 py-3 border border-sage-200 rounded-xl bg-white/60 focus:outline-none focus:ring-2 focus:ring-blush-400 shadow"
+                          required
+                        />
+                      </div>
+                    )}
+                  </>
                 )}
               </div>
               <div className="mt-10 flex justify-center">
