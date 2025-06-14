@@ -44,7 +44,7 @@ const HeroSection: React.FC = () => {
   return (
     <section
       id="home"
-      className="relative inset-0 w-full h-[70vh] sm:min-h-screen flex items-center justify-center bg-cream-50 overflow-hidden z-10 px-2 sm:px-0"
+      className="relative inset-0 w-full h-[70vh] sm:min-h-screen flex items-center justify-center bg-cream-50 overflow-hidden z-[100] px-2 sm:px-0"
     >
       {/* Particles background */}
       <Particles
