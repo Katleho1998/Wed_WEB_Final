@@ -75,7 +75,7 @@ const WeddingInfo: React.FC = () => {
                 {/* Header with Icon - Centered */}
                 <div className="flex flex-col items-center text-center mb-6">
                   <div className="w-16 h-16 bg-gradient-to-br from-sage-400 to-sage-500 rounded-2xl flex items-center justify-center mb-4">
-                    <MapPin className="w-8 h-8 text-white" />
+                    <MapPin className="w-8 h-8 text-blush-500" />
                   </div>
                   <div>
                     <h4 className="font-serif text-2xl text-sage-800 font-bold mb-2">Reception</h4>
