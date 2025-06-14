@@ -155,7 +155,7 @@ const RSVPForm: React.FC = () => {
   }
 
   return (
-    <section id="rsvp" className="py-12 sm:py-20 bg-cream-50 min-h-screen flex items-center justify-center">
+    <section id="rsvp" className="py-12 sm:py-20 bg-cream-50 min-h-screen flex items-center justify-center z-[50]">
       <div className="w-full max-w-lg sm:max-w-2xl mx-auto px-2 sm:px-4">
         <div
           className="relative rounded-3xl shadow-2xl border border-blush-100 bg-white/40 backdrop-blur-xl p-6 sm:p-8 md:p-12"

@@ -43,7 +43,7 @@ const Gallery: React.FC = () => {
   return (
     <section
       id="gallery"
-      className="py-24 bg-gradient-to-br from-blue-50 via-white to-blue-100 relative"
+      className="py-24 bg-gradient-to-br from-blue-50 via-white to-blue-100 relative z-[50]"
       style={{ fontFamily: "'Cormorant Garamond', serif" }}
     >
       <div className="container mx-auto px-4">

@@ -6,7 +6,7 @@ const GOOGLE_CALENDAR_URL =
   'https://calendar.google.com/calendar/render?action=TEMPLATE&text=Thabi+%26+Trevor+Traditional+Wedding&dates=20250927T080000Z/20250928T170000Z&details=Traditional+Wedding+of+Thabi+and+Trevor%0A%0ASaturday+27th+Sep%3A+Matrimony+10%3A00+AM+at+Church+%40+Allen+Temple%2C+188+Ingedezi+Street%2C+Zone+7%2C+Meadowlands%0AReception+12%3A30+PM+at+12278%2C+Zone+9%2C+Meadowlands%0A%0ASunday+28th+Sep%3A+Molapo+Park+12%3A30+PM%0A%0ATheme%3A+Shades+of+Blue+and+Brown&location=188+Ingedezi+Street,+Zone+7,+Meadowlands';
 
 const MapAndCalendar: React.FC = () => (
-  <section className="py-20 bg-gradient-to-br from-sage-50 via-cream-50 to-blush-50">
+  <section className="py-20 bg-gradient-to-br from-sage-50 via-cream-50 to-blush-50 z-[50]">
     <div className="container mx-auto px-0 max-w-full">
       <h2 className="font-serif text-4xl md:text-5xl text-center text-blush-700 mb-12 tracking-tight">
         Find Us & Save the Date
