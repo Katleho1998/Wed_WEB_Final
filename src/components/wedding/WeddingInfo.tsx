@@ -181,7 +181,7 @@ const WeddingInfo: React.FC = () => {
                 
                 {/* Gift Details - Centered */}
                 <div className="text-center space-y-4 flex-grow">
-                  <div>
+                  
                     <p className="text-sage-700 text-lg mb-2">
                       <span className="font-semibold">Preferred gifts:</span> 
                       <span className="font-bold text-blush-600 block text-xl mt-1">Gift Cards</span>
@@ -190,7 +190,7 @@ const WeddingInfo: React.FC = () => {
                       <span className="font-medium">Suggested stores:</span><br />
                       Woolworths, @Home, Volpes, Coricraft
                     </p>
-                  </div>
+                  
                 </div>
               </div>
             </div>
