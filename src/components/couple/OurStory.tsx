@@ -48,7 +48,7 @@ const storyEvents = [
 	{
 		year: '2025',
 		title: '9 Years & Our Wedding',
-		description: 'We celebrate 9 years of love and begin our wedding celebrations, surrounded by family and friends. Here's to forever!',
+		description: 'We celebrate 9 years of love and begin our wedding celebrations, surrounded by family and friends. Here\'s to forever!',
 		flower: flower6,
 		color: 'from-blush-100 to-blush-50',
 	},
