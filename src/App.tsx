@@ -30,8 +30,7 @@ function App() {
         <main>
           <HeroSection />
           {/* Modern Countdown Timer - Moved up more */}
-          <div className="-mt-(15
-          ) mb-(14) w-full flex flex-col items-center">
+          <div className="-mt-0 mb-(14) w-full flex flex-col items-center">
             <CountdownTimer />
           </div>
           <OurStory />
