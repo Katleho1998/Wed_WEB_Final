@@ -148,6 +148,19 @@ const WeddingInfo: React.FC = () => {
           </div>
         </div>
 
+        {/* Beverage Note */}
+        <div className="mb-8">
+          <div className="flex justify-center">
+            <div className="bg-amber-50 border border-amber-200 rounded-2xl p-6 max-w-2xl w-full">
+              <div className="text-center">
+                <p className="text-amber-800 font-semibold text-lg mb-2">
+                  <span className="font-bold">NOTE:</span> Attendees are encouraged to cater for their own beverage needs
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
         {/* Gifts Section - Centered */}
         <div className="mb-16">
           <div className="text-center mb-10">
