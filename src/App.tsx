@@ -7,37 +7,40 @@ import Footer from './components/layout/Footer';
 import Gallery from './components/gallery/Gallery';
 import CountdownTimer from './components/home/CountdownTimer';
 import TextCursor from './components/home/TextCursor';
+import { ToastProvider } from './context/ToastContext';
 
 function App() {
   return (
-    <div className="relative font-sans text-gray-800 min-h-screen w-full">
-      {/* Global TextCursor overlay 
-      <div className="absolute inset-0 z-[9999]">
-        <TextCursor
-          text="❤️"
-          delay={0.01}
-          spacing={80}
-          followMouseDirection={true}
-          randomFloat={true}
-          exitDuration={0.3}
-          removalInterval={20}
-          maxPoints={10}
-        />
-      </div>*/}
-      <main>
-        <HeroSection />
-        {/* Modern Countdown Timer */}
-        <div className=" mb-10 w-full flex flex-col items-center">
-          <CountdownTimer />
-        </div>
-        <OurStory />
-        <WeddingInfo />
-        <Gallery />
-        <RSVPForm />
-        <MapAndCalendar />
-      </main>
-      <Footer />
-    </div>
+    <ToastProvider>
+      <div className="relative font-sans text-gray-800 min-h-screen w-full">
+        {/* Global TextCursor overlay 
+        <div className="absolute inset-0 z-[9999]">
+          <TextCursor
+            text="❤️"
+            delay={0.01}
+            spacing={80}
+            followMouseDirection={true}
+            randomFloat={true}
+            exitDuration={0.3}
+            removalInterval={20}
+            maxPoints={10}
+          />
+        </div>*/}
+        <main>
+          <HeroSection />
+          {/* Modern Countdown Timer */}
+          <div className=" mb-10 w-full flex flex-col items-center">
+            <CountdownTimer />
+          </div>
+          <OurStory />
+          <WeddingInfo />
+          <Gallery />
+          <RSVPForm />
+          <MapAndCalendar />
+        </main>
+        <Footer />
+      </div>
+    </ToastProvider>
   );
 }
 

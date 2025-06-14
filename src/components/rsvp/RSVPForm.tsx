@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import FlowersImg from '../../assets/Flowers-for-website.png';
 import { supabase } from '../../utils/supabaseClient';
+import { useToastContext } from '../../context/ToastContext';
 
 interface Guest {
   name: string;
@@ -16,6 +17,7 @@ interface RSVPData {
 }
 
 const RSVPForm: React.FC = () => {
+  const { showError, showSuccess } = useToastContext();
   const [formData, setFormData] = useState<RSVPData>({
     mainGuest: {
       name: '',
@@ -27,22 +29,25 @@ const RSVPForm: React.FC = () => {
     message: '',
   });
   const [submitted, setSubmitted] = useState(false);
-  const [error, setError] = useState('');
   const [bringingPartner, setBringingPartner] = useState<'yes' | 'no'>('no');
   const [partnerName, setPartnerName] = useState('');
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setIsSubmitting(true);
+    
     // Simple validation
     if (!formData.mainGuest.name || !formData.mainGuest.email) {
-      setError('Please fill in your name and email');
+      showError('Please fill in your name and email');
+      setIsSubmitting(false);
       return;
     }
     if (formData.mainGuest.attending && bringingPartner === 'yes' && !partnerName.trim()) {
-      setError('Please enter your partner\'s name');
+      showError('Please enter your partner\'s name');
+      setIsSubmitting(false);
       return;
     }
-    setError('');
 
     // Check if email already RSVP'd
     const { data: existing, error: checkError } = await supabase
@@ -52,13 +57,15 @@ const RSVPForm: React.FC = () => {
       .maybeSingle();
 
     if (checkError) {
-      setError('There was a problem checking your RSVP. Please try again.');
+      showError('There was a problem checking your RSVP. Please try again.');
+      setIsSubmitting(false);
       return;
     }
     if (existing) {
-      setError(
+      showError(
         "This email has already submitted an RSVP. If you submitted incorrect information, please call Thabi & Trevor to update your RSVP."
       );
+      setIsSubmitting(false);
       return;
     }
 
@@ -81,7 +88,8 @@ const RSVPForm: React.FC = () => {
     const { error: supabaseError } = await supabase.from('rsvps').insert([rsvpPayload]);
     if (supabaseError) {
       console.error('Supabase insert error:', supabaseError); // Debug log
-      setError(`There was a problem saving your RSVP. Please try again. (${supabaseError.message})`);
+      showError(`There was a problem saving your RSVP. Please try again. (${supabaseError.message})`);
+      setIsSubmitting(false);
       return;
     }
 
@@ -112,7 +120,9 @@ const RSVPForm: React.FC = () => {
       console.warn('Email function not available or failed:', emailError);
     }
 
+    showSuccess('Your RSVP has been submitted successfully! We\'re looking forward to celebrating with you!');
     setSubmitted(true);
+    setIsSubmitting(false);
   };
 
   if (submitted) {
@@ -159,11 +169,7 @@ const RSVPForm: React.FC = () => {
               Please let us know if you'll be joining us on our special day by <br/><span className='font-bold'>August 1, 2025.</span> <br />
               We're excited to celebrate with you!
             </p>
-            {error && (
-              <div className="bg-red-100/70 text-red-700 p-4 rounded-xl mb-6 text-center shadow">
-                {error}
-              </div>
-            )}
+            
             <form onSubmit={handleSubmit}>
               <div className="space-y-6">
                 <div>
@@ -183,6 +189,7 @@ const RSVPForm: React.FC = () => {
                     }
                     className="w-full px-4 py-3 border border-sage-200 rounded-xl bg-white/60 focus:outline-none focus:ring-2 focus:ring-blush-400 shadow"
                     required
+                    disabled={isSubmitting}
                   />
                 </div>
                 <div>
@@ -202,6 +209,7 @@ const RSVPForm: React.FC = () => {
                     }
                     className="w-full px-4 py-3 border border-sage-200 rounded-xl bg-white/60 focus:outline-none focus:ring-2 focus:ring-blush-400 shadow"
                     required
+                    disabled={isSubmitting}
                   />
                 </div>
                 <div>
@@ -222,6 +230,7 @@ const RSVPForm: React.FC = () => {
                           })
                         }
                         className="form-radio text-blush-500"
+                        disabled={isSubmitting}
                       />
                       <span className="ml-2 text-sage-600">Yes, I'll be there!</span>
                     </label>
@@ -238,6 +247,7 @@ const RSVPForm: React.FC = () => {
                           })
                         }
                         className="form-radio text-blush-500"
+                        disabled={isSubmitting}
                       />
                       <span className="ml-2 text-sage-600">Sorry, I can't make it</span>
                     </label>
@@ -260,6 +270,7 @@ const RSVPForm: React.FC = () => {
                     className="w-full px-4 py-3 border border-sage-200 rounded-xl bg-white/60 focus:outline-none focus:ring-2 focus:ring-blush-400 shadow"
                     rows={4}
                     placeholder="Share your congratulations, well wishes, or any questions you might have..."
+                    disabled={isSubmitting}
                   ></textarea>
                 </div>
                 {/* Only show partner section if attending */}
@@ -278,6 +289,7 @@ const RSVPForm: React.FC = () => {
                             checked={bringingPartner === 'yes'}
                             onChange={() => setBringingPartner('yes')}
                             className="form-radio text-blush-500"
+                            disabled={isSubmitting}
                           />
                           <span className="ml-2 text-sage-600">Yes</span>
                         </label>
@@ -289,6 +301,7 @@ const RSVPForm: React.FC = () => {
                             checked={bringingPartner === 'no'}
                             onChange={() => setBringingPartner('no')}
                             className="form-radio text-blush-500"
+                            disabled={isSubmitting}
                           />
                           <span className="ml-2 text-sage-600">No</span>
                         </label>
@@ -307,6 +320,7 @@ const RSVPForm: React.FC = () => {
                           onChange={e => setPartnerName(e.target.value)}
                           className="w-full px-4 py-3 border border-sage-200 rounded-xl bg-white/60 focus:outline-none focus:ring-2 focus:ring-blush-400 shadow"
                           required
+                          disabled={isSubmitting}
                         />
                       </div>
                     )}
@@ -316,9 +330,17 @@ const RSVPForm: React.FC = () => {
               <div className="mt-10 flex justify-center">
                 <button
                   type="submit"
-                  className="bg-[#555c78] text-white py-2 px-8 rounded-full hover:from-[#555c78] transition-colors duration-300 shadow"
+                  disabled={isSubmitting}
+                  className="bg-[#555c78] text-white py-2 px-8 rounded-full hover:from-[#555c78] transition-colors duration-300 shadow disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2"
                 >
-                  Submit RSVP
+                  {isSubmitting ? (
+                    <>
+                      <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+                      Submitting...
+                    </>
+                  ) : (
+                    'Submit RSVP'
+                  )}
                 </button>
               </div>
             </form>
