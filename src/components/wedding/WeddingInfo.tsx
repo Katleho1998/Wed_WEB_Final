@@ -9,26 +9,27 @@ const WeddingInfo: React.FC = () => {
 
   return (
     <section id="wedding-info" className="relative py-24 bg-gradient-to-br from-sage-50 via-cream-50 to-blush-50">
-      <div className="container mx-auto px-4 max-w-6xl">
+      <div className="container mx-auto px-4 max-w-7xl">
         <h2 className="font-serif text-4xl md:text-5xl text-center text-blush-700 mb-16 tracking-tight">
           Wedding Information
         </h2>
         
-        {/* Saturday Events - Two Column Layout */}
+        {/* Saturday Events - Side by Side Layout */}
         <div className="mb-16">
-          <div className="text-center mb-10">
-            <div className="inline-flex items-center gap-3 bg-white/80 rounded-full px-6 py-3 border border-blush-100">
+          <div className="text-center mb-12">
+            <div className="inline-flex items-center gap-3 bg-white/80 rounded-full px-8 py-4 border border-blush-100">
               <Calendar className="w-6 h-6 text-mocha-500" />
               <h3 className="font-serif text-2xl text-mocha-500 font-semibold">Saturday, 27th September 2025</h3>
             </div>
           </div>
           
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
+          {/* Two Column Grid - Side by Side */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
             
-            {/* Matrimony Card */}
-            <div className="group relative">
+            {/* Left Side - Matrimony Card */}
+            <div className="group relative h-full">
               <div className="absolute inset-0 bg-gradient-to-br from-blush-200/30 to-blush-300/20 rounded-3xl blur-xl transform group-hover:scale-105 transition-transform duration-300"></div>
-              <div className="relative bg-white/90 backdrop-blur-sm rounded-3xl p-8 border border-blush-100 hover:border-blush-200 transition-all duration-300">
+              <div className="relative bg-white/90 backdrop-blur-sm rounded-3xl p-8 border border-blush-100 hover:border-blush-200 transition-all duration-300 h-full flex flex-col">
                 
                 {/* Header with Icon */}
                 <div className="flex items-center gap-4 mb-6">
@@ -45,7 +46,7 @@ const WeddingInfo: React.FC = () => {
                 </div>
                 
                 {/* Venue Details */}
-                <div className="mb-6 space-y-2">
+                <div className="mb-8 space-y-3 flex-grow">
                   <h5 className="font-semibold text-sage-700 text-lg">Church @ Allen Temple</h5>
                   <p className="text-sage-600 flex items-start gap-2">
                     <MapPin className="w-4 h-4 mt-1 text-blush-500 flex-shrink-0" />
@@ -53,23 +54,23 @@ const WeddingInfo: React.FC = () => {
                   </p>
                 </div>
                 
-                {/* Direction Button - Shortened */}
-                <div className="flex justify-center">
+                {/* Direction Button - Shortened and Centered */}
+                <div className="flex justify-center mt-auto">
                   <button
                     onClick={() => window.open(getDirectionsUrl("188 Ingedezi Street, Zone 7, Meadowlands"), '_blank')}
-                    className="bg-[#555c78] hover:bg-[#4a5068] text-white font-semibold py-3 px-8 rounded-2xl transition-all duration-300 transform hover:-translate-y-1 flex items-center justify-center gap-2"
+                    className="bg-[#555c78] hover:bg-[#4a5068] text-white font-semibold py-3 px-6 rounded-2xl transition-all duration-300 transform hover:-translate-y-1 flex items-center justify-center gap-2"
                   >
                     <MapPin className="w-4 h-4" />
-                    <span>Get Directions</span>
+                    <span>Directions</span>
                   </button>
                 </div>
               </div>
             </div>
 
-            {/* Reception Card */}
-            <div className="group relative">
+            {/* Right Side - Reception Card */}
+            <div className="group relative h-full">
               <div className="absolute inset-0 bg-gradient-to-br from-sage-200/30 to-sage-300/20 rounded-3xl blur-xl transform group-hover:scale-105 transition-transform duration-300"></div>
-              <div className="relative bg-white/90 backdrop-blur-sm rounded-3xl p-8 border border-sage-100 hover:border-sage-200 transition-all duration-300">
+              <div className="relative bg-white/90 backdrop-blur-sm rounded-3xl p-8 border border-sage-100 hover:border-sage-200 transition-all duration-300 h-full flex flex-col">
                 
                 {/* Header with Icon */}
                 <div className="flex items-center gap-4 mb-6">
@@ -86,7 +87,7 @@ const WeddingInfo: React.FC = () => {
                 </div>
                 
                 {/* Venue Details */}
-                <div className="mb-6 space-y-2">
+                <div className="mb-8 space-y-3 flex-grow">
                   <h5 className="font-semibold text-sage-700 text-lg">12278, Zone 9, Meadowlands</h5>
                   <p className="text-sage-600 flex items-start gap-2">
                     <MapPin className="w-4 h-4 mt-1 text-sage-500 flex-shrink-0" />
@@ -94,14 +95,14 @@ const WeddingInfo: React.FC = () => {
                   </p>
                 </div>
                 
-                {/* Direction Button - Shortened */}
-                <div className="flex justify-center">
+                {/* Direction Button - Shortened and Centered */}
+                <div className="flex justify-center mt-auto">
                   <button
                     onClick={() => window.open(getDirectionsUrl("12278, Zone 9, Meadowlands, Mjakes Truckshop"), '_blank')}
-                    className="bg-[#555c78] hover:bg-[#4a5068] text-white font-semibold py-3 px-8 rounded-2xl transition-all duration-300 transform hover:-translate-y-1 flex items-center justify-center gap-2"
+                    className="bg-[#555c78] hover:bg-[#4a5068] text-white font-semibold py-3 px-6 rounded-2xl transition-all duration-300 transform hover:-translate-y-1 flex items-center justify-center gap-2"
                   >
                     <MapPin className="w-4 h-4" />
-                    <span>Get Directions</span>
+                    <span>Directions</span>
                   </button>
                 </div>
               </div>
