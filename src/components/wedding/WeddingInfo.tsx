@@ -50,7 +50,7 @@ const WeddingInfo: React.FC = () => {
                   <h5 className="font-semibold text-sage-700 text-lg">Church @ Allen Temple</h5>
                   <div className="flex items-center justify-center gap-2">
                     <MapPin className="w-4 h-4 text-blush-500 flex-shrink-0" />
-                    <span className="text-sage-600">188 Ingedezi Street, Zone 7, Meadowlands</span>
+                    <span className="text-mocha-500">188 Ingedezi Street, Zone 7, Meadowlands</span>
                   </div>
                 </div>
                 
