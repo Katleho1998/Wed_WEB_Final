@@ -18,7 +18,7 @@ const WeddingInfo: React.FC = () => {
         <div className="mb-16">
           <div className="text-center mb-12">
             <div className="inline-flex items-center gap-3 bg-white/80 rounded-full px-8 py-4">
-              <Calendar className="w-6 h-6 text-blush-500" />
+              <Calendar className="w-6 h-6 text-mocha-500" />
               <h3 className="font-serif text-2xl text-mocha-500 font-semibold">Saturday, 27th September 2025</h3>
             </div>
           </div>
@@ -114,7 +114,7 @@ const WeddingInfo: React.FC = () => {
         <div className="mb-16">
           <div className="text-center mb-10">
             <div className="inline-flex items-center gap-3 bg-white/80 rounded-full px-6 py-3">
-              <Calendar className="w-6 h-6 text-blush-500" />
+              <Calendar className="w-6 h-6 text-mocha-500" />
               <h3 className="font-serif text-2xl text-mocha-500 font-semibold">Sunday, 28th September 2025</h3>
             </div>
           </div>
@@ -152,7 +152,7 @@ const WeddingInfo: React.FC = () => {
         <div className="mb-16">
           <div className="text-center mb-10">
             <div className="inline-flex items-center gap-3 bg-white/80 rounded-full px-6 py-3 border border-blush-100">
-              <Gift className="w-6 h-6 text-blush-500" />
+              <Gift className="w-6 h-6 text-mocha-500" />
               <h3 className="font-serif text-2xl text-mocha-500 font-semibold">Gifts</h3>
             </div>
           </div>
