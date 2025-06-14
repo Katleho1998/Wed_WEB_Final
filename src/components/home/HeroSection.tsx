@@ -44,7 +44,7 @@ const HeroSection: React.FC = () => {
   return (
     <section
       id="home"
-      className="relative inset-0 w-full min-h-screen flex items-center justify-center bg-cream-50 overflow-hidden z-[100] px-2 sm:px-0"
+      className="relative inset-0 w-full sm: min-h-34px min-h-screen flex items-center justify-center bg-cream-50 overflow-hidden z-[100] px-2 sm:px-0"
     >
       {/* Particles background */}
       <Particles
@@ -83,46 +83,4 @@ const HeroSection: React.FC = () => {
         {/* Animated SplitText for names - Increased mobile size from text-2xl to text-4xl */}
         <SplitText
           text="Thabi & Trevor"
-          className="font-serif text-bold text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-dusty-800 mb-1 sm:mb-2 animate-fadeIn leading-tight flex items-center justify-center gap-2 sm:gap-4 text-center"
-          delay={100}
-          duration={0.6}
-          ease="power3.out"
-          splitType="chars"
-          from={{ opacity: 0, y: 40 }}
-          to={{ opacity: 1, y: 0 }}
-          threshold={0.1}
-          rootMargin="-100px"
-          textAlign="center"
-        />
-
-        <div className="mb-3 sm:mb-8 mt-1 sm:mt-2 w-full flex flex-col items-center">
-          <p className="text-sm sm:text-lg md:text-xl text-dusty-600 animatexfadeIn animation-delay-300 text-center">
-            September 27th - 28th, 2025
-          </p>
-          <p className="text-xs sm:text-base md:text-lg text-mocha-500 animate-fadeIn animation-delay-600 text-center">
-            Meadowlands • Soweto
-          </p>
-        </div>
-
-        <a
-          href="#rsvp"
-          className="inline-flex items-center gap-2 sm:gap-3 bg-gradient-to-r from-blush-400 via-blush-500 to-blush-600 rounded-full px-4 sm:px-12 py-2 sm:py-4 transition-colors duration-200 text-sm sm:text-xl animate-fadeIn animation-delay-900 uppercase tracking-wider border relative
-            hover:bg-[#555c78] hover:from-[#555c78] hover:to-[#555c78]"
-          style={{
-            color: '#555c78',
-            borderColor: '#555c78',
-            borderWidth: '1px',
-            textShadow: 'none',
-            letterSpacing: '0.08em',
-            boxShadow: 'none',
-            transition: 'background 0.2s, color 0.2s'
-          }}
-        >
-          <span className='hover:text-white'>RSVP Now</span>
-        </a>
-      </div>
-    </section>
-  );
-};
-
-export default HeroSection;
+          className="font-serif text-bold text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-dusty-800 mb-1 sm:mb-2 animate-fadeIn leading-tight flex items-center justify-center ga
