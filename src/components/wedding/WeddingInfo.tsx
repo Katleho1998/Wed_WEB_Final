@@ -53,14 +53,16 @@ const WeddingInfo: React.FC = () => {
                   </p>
                 </div>
                 
-                {/* Direction Button */}
-                <button
-                  onClick={() => window.open(getDirectionsUrl("188 Ingedezi Street, Zone 7, Meadowlands"), '_blank')}
-                  className="w-full bg-[#555c78] hover:bg-[#4a5068] text-white font-semibold py-4 px-6 rounded-2xl transition-all duration-300 transform hover:-translate-y-1 flex items-center justify-center gap-3"
-                >
-                  <MapPin className="w-5 h-5" />
-                  <span>Get Directions</span>
-                </button>
+                {/* Direction Button - Shortened */}
+                <div className="flex justify-center">
+                  <button
+                    onClick={() => window.open(getDirectionsUrl("188 Ingedezi Street, Zone 7, Meadowlands"), '_blank')}
+                    className="bg-[#555c78] hover:bg-[#4a5068] text-white font-semibold py-3 px-8 rounded-2xl transition-all duration-300 transform hover:-translate-y-1 flex items-center justify-center gap-2"
+                  >
+                    <MapPin className="w-4 h-4" />
+                    <span>Get Directions</span>
+                  </button>
+                </div>
               </div>
             </div>
 
@@ -92,14 +94,16 @@ const WeddingInfo: React.FC = () => {
                   </p>
                 </div>
                 
-                {/* Direction Button */}
-                <button
-                  onClick={() => window.open(getDirectionsUrl("12278, Zone 9, Meadowlands, Mjakes Truckshop"), '_blank')}
-                  className="w-full bg-[#555c78] hover:bg-[#4a5068] text-white font-semibold py-4 px-6 rounded-2xl transition-all duration-300 transform hover:-translate-y-1 flex items-center justify-center gap-3"
-                >
-                  <MapPin className="w-5 h-5" />
-                  <span>Get Directions</span>
-                </button>
+                {/* Direction Button - Shortened */}
+                <div className="flex justify-center">
+                  <button
+                    onClick={() => window.open(getDirectionsUrl("12278, Zone 9, Meadowlands, Mjakes Truckshop"), '_blank')}
+                    className="bg-[#555c78] hover:bg-[#4a5068] text-white font-semibold py-3 px-8 rounded-2xl transition-all duration-300 transform hover:-translate-y-1 flex items-center justify-center gap-2"
+                  >
+                    <MapPin className="w-4 h-4" />
+                    <span>Get Directions</span>
+                  </button>
+                </div>
               </div>
             </div>
           </div>
