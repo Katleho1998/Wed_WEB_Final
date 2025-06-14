@@ -18,7 +18,7 @@ const WeddingInfo: React.FC = () => {
         <div className="mb-16">
           <div className="text-center mb-12">
             <div className="inline-flex items-center gap-3 bg-white/80 rounded-full px-8 py-4">
-              <Calendar className="w-6 h-6 text-mocha-500" />
+              <Calendar className="w-6 h-6 text-blush-500" />
               <h3 className="font-serif text-2xl text-mocha-500 font-semibold">Saturday, 27th September 2025</h3>
             </div>
           </div>
@@ -34,7 +34,7 @@ const WeddingInfo: React.FC = () => {
                 {/* Header with Icon - Centered */}
                 <div className="flex flex-col items-center text-center mb-6">
                   <div className="w-16 h-16 bg-gradient-to-br from-blush-400 to-blush-500 rounded-2xl flex items-center justify-center mb-4">
-                    <MapPin className="w-8 h-8 text-white" />
+                    <MapPin className="w-8 h-8 text-blush-500" />
                   </div>
                   <div>
                     <h4 className="font-serif text-2xl text-sage-800 font-bold mb-2">Matrimony</h4>
@@ -75,7 +75,7 @@ const WeddingInfo: React.FC = () => {
                 {/* Header with Icon - Centered */}
                 <div className="flex flex-col items-center text-center mb-6">
                   <div className="w-16 h-16 bg-gradient-to-br from-sage-400 to-sage-500 rounded-2xl flex items-center justify-center mb-4">
-                    <Wine className="w-8 h-8 text-white" />
+                    <Wine className="w-8 h-8 text-blush-500" />
                   </div>
                   <div>
                     <h4 className="font-serif text-2xl text-sage-800 font-bold mb-2">Reception</h4>
@@ -90,7 +90,7 @@ const WeddingInfo: React.FC = () => {
                 <div className="mb-8 space-y-3 flex-grow text-center">
                   <h5 className="font-semibold text-sage-700 text-lg">12278, Zone 9, Meadowlands</h5>
                   <div className="flex items-center justify-center gap-2">
-                    <MapPin className="w-4 h-4 text-sage-500 flex-shrink-0" />
+                    <MapPin className="w-4 h-4 text-blush-500 flex-shrink-0" />
                     <span className="text-sage-600 italic">Use Mjakes Truckshop for directions</span>
                   </div>
                 </div>
@@ -114,7 +114,7 @@ const WeddingInfo: React.FC = () => {
         <div className="mb-16">
           <div className="text-center mb-10">
             <div className="inline-flex items-center gap-3 bg-white/80 rounded-full px-6 py-3">
-              <Calendar className="w-6 h-6 text-mocha-500" />
+              <Calendar className="w-6 h-6 text-blush-500" />
               <h3 className="font-serif text-2xl text-mocha-500 font-semibold">Sunday, 28th September 2025</h3>
             </div>
           </div>
@@ -127,12 +127,12 @@ const WeddingInfo: React.FC = () => {
                 {/* Header with Icon - Centered */}
                 <div className="flex flex-col items-center text-center mb-6">
                   <div className="w-16 h-16 bg-gradient-to-br from-cream-400 to-cream-500 rounded-2xl flex items-center justify-center mb-4">
-                    <MapPin className="w-8 h-8 text-white" />
+                    <MapPin className="w-8 h-8 text-blush-500" />
                   </div>
                   <div>
                     <h4 className="font-serif text-2xl text-sage-800 font-bold mb-2">Celebration</h4>
                     <div className="flex items-center justify-center gap-2 text-sage-600">
-                      <Clock className="w-4 h-4 text-white" />
+                      <Clock className="w-4 h-4 text-blush-500" />
                       <span className="font-medium">12:30 PM for 1:00 PM</span>
                     </div>
                   </div>
@@ -152,7 +152,7 @@ const WeddingInfo: React.FC = () => {
         <div className="mb-16">
           <div className="text-center mb-10">
             <div className="inline-flex items-center gap-3 bg-white/80 rounded-full px-6 py-3 border border-blush-100">
-              <Gift className="w-6 h-6 text-mocha-500" />
+              <Gift className="w-6 h-6 text-blush-500" />
               <h3 className="font-serif text-2xl text-mocha-500 font-semibold">Gifts</h3>
             </div>
           </div>
@@ -164,7 +164,7 @@ const WeddingInfo: React.FC = () => {
                 
                 <div className="text-center space-y-4">
                   <div className="w-16 h-16 bg-gradient-to-br from-blush-400 to-sage-400 rounded-2xl flex items-center justify-center mx-auto">
-                    <Gift className="w-8 h-8 text-white" />
+                    <Gift className="w-8 h-8 text-blush-500" />
                   </div>
                   
                   <div>
