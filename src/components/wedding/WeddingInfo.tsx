@@ -1,5 +1,5 @@
 import React from 'react';
-import { MapPin, Clock, Calendar, Gift } from 'lucide-react';
+import { MapPin, Clock, Calendar, Gift, Wine } from 'lucide-react';
 import paletteImg from '../../assets/pallete.jpg';
 
 const WeddingInfo: React.FC = () => {
