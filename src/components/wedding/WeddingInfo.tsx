@@ -49,8 +49,8 @@ const WeddingInfo: React.FC = () => {
                 <div className="mb-8 space-y-3 flex-grow text-center">
                   <h5 className="font-semibold text-sage-700 text-lg">Church @ Allen Temple</h5>
                   <div className="flex items-center justify-center gap-2">
-                    <MapPin className="w-4 h-4 text-mocha-500 flex-shrink-0" />
-                    <span className="text-mocha-500">188 Ingedezi Street, Zone 7, Meadowlands</span>
+                    <MapPin className="w-4 h-4 text-blush-500 flex-shrink-0" />
+                    <span className="text-sage-600">188 Ingedezi Street, Zone 7, Meadowlands</span>
                   </div>
                 </div>
                 
@@ -81,7 +81,7 @@ const WeddingInfo: React.FC = () => {
                     <h4 className="font-serif text-2xl text-sage-800 font-bold mb-2">Reception</h4>
                     <div className="flex items-center justify-center gap-2 text-sage-600">
                       <Clock className="w-4 h-4 text-blush-500" />
-                      <span className="font-medium">12:30 PM (for 1:00 PM)</span>
+                      <span className=" text-mocha-500 font-medium">12:30 PM (for 1:00 PM)</span>
                     </div>
                   </div>
                 </div>
