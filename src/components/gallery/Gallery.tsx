@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import ImageModal from './ImageModal';
 import CircularGallery from './CircularGallery';
 
@@ -26,6 +26,19 @@ const COUPLE_IMAGES = [
 const Gallery: React.FC = () => {
   const [selectedImage, setSelectedImage] = useState<number | null>(null);
   const [viewMode, setViewMode] = useState<'circular' | 'grid'>('circular');
+  const [isMobile, setIsMobile] = useState(false);
+
+  // Check if device is mobile
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   const openModal = (imageId: number) => setSelectedImage(imageId);
   const closeModal = () => setSelectedImage(null);
@@ -40,6 +53,14 @@ const Gallery: React.FC = () => {
       newIndex = currentIndex < COUPLE_IMAGES.length - 1 ? currentIndex + 1 : 0;
     }
     setSelectedImage(COUPLE_IMAGES[newIndex].id);
+  };
+
+  // Responsive bend value - less bend on mobile
+  const getBendValue = () => {
+    if (isMobile) {
+      return 1.5; // Much less bend on mobile
+    }
+    return 3; // Original bend for desktop
   };
 
   return (
@@ -82,8 +103,12 @@ const Gallery: React.FC = () => {
         {/* Circular Gallery View */}
         {viewMode === 'circular' && (
           <div className="mb-16">
-            <div style={{ height: '600px', position: 'relative' }}>
-              <CircularGallery bend={3} textColor="#ffffff" borderRadius={0.05} />
+            <div style={{ height: isMobile ? '400px' : '600px', position: 'relative' }}>
+              <CircularGallery 
+                bend={getBendValue()} 
+                textColor="#ffffff" 
+                borderRadius={0.05} 
+              />
             </div>
           </div>
         )}
