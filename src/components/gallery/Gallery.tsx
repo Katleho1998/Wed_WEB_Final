@@ -58,20 +58,20 @@ const Gallery: React.FC = () => {
           <div className="bg-white/80 rounded-full p-1 shadow-lg border border-blush-100">
             <button
               onClick={() => setViewMode('circular')}
-              className={`px-6 py-2 rounded-full transition-all duration-300 ${
+              className={`px-6 py-2 rounded-full transition-all duration-300 font-medium ${
                 viewMode === 'circular'
-                  ? 'bg-blush-500 text-white shadow-md'
-                  : 'text-blush-600 hover:bg-blush-50'
+                  ? 'bg-[#555c78] text-white shadow-md'
+                  : 'text-[#555c78] hover:bg-blush-50'
               }`}
             >
               3D View
             </button>
             <button
               onClick={() => setViewMode('grid')}
-              className={`px-6 py-2 rounded-full transition-all duration-300 ${
+              className={`px-6 py-2 rounded-full transition-all duration-300 font-medium ${
                 viewMode === 'grid'
-                  ? 'bg-blush-500 text-white shadow-md'
-                  : 'text-blush-600 hover:bg-blush-50'
+                  ? 'bg-[#555c78] text-white shadow-md'
+                  : 'text-[#555c78] hover:bg-blush-50'
               }`}
             >
               Grid View
