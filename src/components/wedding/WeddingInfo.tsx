@@ -90,7 +90,7 @@ const WeddingInfo: React.FC = () => {
                 <div className="mb-8 space-y-3 flex-grow text-center">
                   <h5 className="font-semibold text-sage-700 text-lg">12278, Zone 9, Meadowlands</h5>
                   <div className="flex items-center justify-center gap-2">
-                    <MapPin className="w-4 h-4 text-blush-500 flex-shrink-0" />
+                    
                     <span className="text-sage-600 italic">Use Mjakes Truckshop for directions</span>
                   </div>
                 </div>
