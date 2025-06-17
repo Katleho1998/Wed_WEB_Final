@@ -17,7 +17,7 @@ interface RSVPData {
 }
 
 const RSVPForm: React.FC = () => {
-  const { showError, showSuccess } = useToastContext();
+  const { showError } = useToastContext(); // Only using showError, not showSuccess
   const [formData, setFormData] = useState<RSVPData>({
     mainGuest: {
       name: '',
@@ -132,7 +132,7 @@ const RSVPForm: React.FC = () => {
       console.warn('Email function not available or failed:', emailError);
     }
 
-    showSuccess('Your RSVP has been submitted successfully! We\'re looking forward to celebrating with you!');
+    // Success - just set submitted to true, don't show toast
     setSubmitted(true);
     setIsSubmitting(false);
   };
@@ -343,7 +343,7 @@ const RSVPForm: React.FC = () => {
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="bg-[#555c78] text-white py-2 px-8 rounded-full hover:from-[#555c78] transition-colors duration-300 shadow disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2"
+                  className="bg-[#555c78] text-white py-2 px-8 rounded-full hover:bg-[#4a5068] transition-colors duration-300 shadow disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2"
                 >
                   {isSubmitting ? (
                     <>
