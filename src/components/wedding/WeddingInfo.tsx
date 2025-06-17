@@ -191,7 +191,7 @@ const WeddingInfo: React.FC = () => {
         {/* Theme Section - Centered */}
         <div className="text-center">
           <div className="mb-8">
-            <div className="inline-flex items-center gap-3 bg-white/80 rounded-full px-6 py-3 border border-mocha-100 mb-6">
+            <div className="inline-flex items-center gap-3 bg-white/80 rounded-full px-6 py-3 mb-6">
               <h3 className="font-serif text-2xl text-mocha-500 font-semibold">Weekend Theme</h3>
             </div>
             <h4 className="font-serif text-3xl text-sage-600 mb-6">Shades of Blue and Brown</h4>
