@@ -130,7 +130,8 @@ class Media {
     bend,
     textColor,
     borderRadius = 0,
-    font
+    font,
+    showText = true
   }) {
     this.extra = 0
     this.geometry = geometry
@@ -147,9 +148,12 @@ class Media {
     this.textColor = textColor
     this.borderRadius = borderRadius
     this.font = font
+    this.showText = showText
     this.createShader()
     this.createMesh()
-    this.createTitle()
+    if (this.showText) {
+      this.createTitle()
+    }
     this.onResize()
   }
   createShader() {
@@ -301,7 +305,7 @@ class Media {
 }
 
 class App {
-  constructor(container, { items, bend, textColor = "#ffffff", borderRadius = 0, font = "bold 30px Figtree" } = {}) {
+  constructor(container, { items, bend, textColor = "#ffffff", borderRadius = 0, font = "bold 30px Figtree", showText = false } = {}) {
     document.documentElement.classList.remove('no-js')
     this.container = container
     this.scroll = { ease: 0.05, current: 0, target: 0, last: 0 }
@@ -311,7 +315,7 @@ class App {
     this.createScene()
     this.onResize()
     this.createGeometry()
-    this.createMedias(items, bend, textColor, borderRadius, font)
+    this.createMedias(items, bend, textColor, borderRadius, font, showText)
     this.update()
     this.addEventListeners()
   }
@@ -335,16 +339,16 @@ class App {
       widthSegments: 100
     })
   }
-  createMedias(items, bend = 1, textColor, borderRadius, font) {
-    // Use the couple images with captions
+  createMedias(items, bend = 1, textColor, borderRadius, font, showText) {
+    // Use the couple images without captions for 3D view
     const coupleImages = [
-      { image: img1, text: 'Thabi & Trevor' },
-      { image: img2, text: 'Thabi & Trevor' },
-      { image: img3, text: 'Thabi & Trevor' },
-      { image: img4, text: 'Thabi & Trevor' },
-      { image: img5, text: 'Thabi & Trevor' },
-      { image: img6, text: 'Thabi & Trevor' },
-      { image: img7, text: 'Thabi & Trevor' },
+      { image: img1, text: '' },
+      { image: img2, text: '' },
+      { image: img3, text: '' },
+      { image: img4, text: '' },
+      { image: img5, text: '' },
+      { image: img6, text: '' },
+      { image: img7, text: '' },
     ]
     
     const galleryItems = items && items.length ? items : coupleImages
@@ -364,7 +368,8 @@ class App {
         bend,
         textColor,
         borderRadius,
-        font
+        font,
+        showText
       })
     })
   }
@@ -465,15 +470,16 @@ export default function CircularGallery({
   bend = 3,
   textColor = "#ffffff",
   borderRadius = 0.05,
-  font = "bold 30px Figtree"
+  font = "bold 30px Figtree",
+  showText = false
 }) {
   const containerRef = useRef(null)
   useEffect(() => {
-    const app = new App(containerRef.current, { items, bend, textColor, borderRadius, font })
+    const app = new App(containerRef.current, { items, bend, textColor, borderRadius, font, showText })
     return () => {
       app.destroy()
     }
-  }, [items, bend, textColor, borderRadius, font])
+  }, [items, bend, textColor, borderRadius, font, showText])
   return (
     <div className='circular-gallery' ref={containerRef} />
   )
