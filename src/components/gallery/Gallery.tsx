@@ -85,11 +85,6 @@ const Gallery: React.FC = () => {
             <div style={{ height: '600px', position: 'relative' }}>
               <CircularGallery bend={3} textColor="#ffffff" borderRadius={0.05} />
             </div>
-            <div className="text-center mt-8">
-              <p className="text-blush-600 text-lg font-serif opacity-80">
-                Move your mouse to explore our memories in 3D
-              </p>
-            </div>
           </div>
         )}
 
