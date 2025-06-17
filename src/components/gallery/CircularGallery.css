@@ -3,38 +3,8 @@
   height: 100%;
   overflow: hidden;
   cursor: grab;
-  touch-action: pan-x;
-  -webkit-touch-callout: none;
-  -webkit-user-select: none;
-  -khtml-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
 }
 
 .circular-gallery:active {
   cursor: grabbing;
-}
-
-.circular-gallery canvas {
-  display: block;
-  width: 100% !important;
-  height: 100% !important;
-  object-fit: contain;
-}
-
-/* Ensure proper touch handling on mobile */
-@media (max-width: 768px) {
-  .circular-gallery {
-    touch-action: pan-x pan-y;
-    overscroll-behavior: contain;
-  }
-}
-
-/* Prevent text selection during drag */
-.circular-gallery * {
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
 }
