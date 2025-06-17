@@ -293,11 +293,42 @@ class Media {
         this.plane.program.uniforms.uViewportSizes.value = [this.viewport.width, this.viewport.height]
       }
     }
-    this.scale = this.screen.height / 1500
-    this.plane.scale.y = (this.viewport.height * (900 * this.scale)) / this.screen.height
-    this.plane.scale.x = (this.viewport.width * (700 * this.scale)) / this.screen.width
+    
+    // Responsive scaling based on screen size
+    const isMobile = this.screen.width < 768
+    const isTablet = this.screen.width >= 768 && this.screen.width < 1024
+    
+    let baseScale
+    if (isMobile) {
+      baseScale = this.screen.height / 2000 // Smaller scale for mobile
+    } else if (isTablet) {
+      baseScale = this.screen.height / 1750 // Medium scale for tablet
+    } else {
+      baseScale = this.screen.height / 1500 // Original scale for desktop
+    }
+    
+    this.scale = baseScale
+    
+    // Responsive image dimensions
+    let imageHeight, imageWidth
+    if (isMobile) {
+      imageHeight = 600 * this.scale // Smaller images on mobile
+      imageWidth = 450 * this.scale
+    } else if (isTablet) {
+      imageHeight = 750 * this.scale // Medium images on tablet
+      imageWidth = 575 * this.scale
+    } else {
+      imageHeight = 900 * this.scale // Original size for desktop
+      imageWidth = 700 * this.scale
+    }
+    
+    this.plane.scale.y = (this.viewport.height * imageHeight) / this.screen.height
+    this.plane.scale.x = (this.viewport.width * imageWidth) / this.screen.width
+    
     this.plane.program.uniforms.uPlaneSizes.value = [this.plane.scale.x, this.plane.scale.y]
-    this.padding = 2
+    
+    // Responsive padding
+    this.padding = isMobile ? 1.5 : 2
     this.width = this.plane.scale.x + this.padding
     this.widthTotal = this.width * this.length
     this.x = this.width * this.index
@@ -388,8 +419,11 @@ class App {
     this.isDown = false
     this.onCheck()
   }
-  onWheel() {
-    this.scroll.target += 2
+  onWheel(e) {
+    // Adjust wheel sensitivity for mobile
+    const isMobile = this.screen.width < 768
+    const sensitivity = isMobile ? 1.5 : 2
+    this.scroll.target += sensitivity
     this.onCheckDebounce()
   }
   onCheck() {

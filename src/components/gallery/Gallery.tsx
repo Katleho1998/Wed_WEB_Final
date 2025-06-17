@@ -82,8 +82,23 @@ const Gallery: React.FC = () => {
         {/* Circular Gallery View */}
         {viewMode === 'circular' && (
           <div className="mb-16">
-            <div style={{ height: '600px', position: 'relative' }}>
+            {/* Responsive container for 3D gallery */}
+            <div className="w-full h-[400px] sm:h-[500px] md:h-[600px] lg:h-[700px] relative overflow-hidden rounded-2xl bg-gradient-to-br from-blush-50/30 to-sage-50/30">
               <CircularGallery bend={3} textColor="#ffffff" borderRadius={0.05} />
+              
+              {/* Mobile instruction overlay */}
+              <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 md:hidden">
+                <div className="bg-black/60 text-white px-4 py-2 rounded-full text-sm backdrop-blur-sm">
+                  Swipe or drag to navigate
+                </div>
+              </div>
+              
+              {/* Desktop instruction overlay */}
+              <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 hidden md:block">
+                <div className="bg-black/60 text-white px-4 py-2 rounded-full text-sm backdrop-blur-sm">
+                  Click and drag or use mouse wheel to navigate
+                </div>
+              </div>
             </div>
           </div>
         )}
