@@ -244,7 +244,7 @@ const RSVPForm: React.FC = () => {
                         className="form-radio text-blush-500"
                         disabled={isSubmitting}
                       />
-                      <span className="ml-2 text-sage-600">Yes, I'll be there!</span>
+                      <span className="ml-2 text-sage-600">Yes!</span>
                     </label>
                     <label className="inline-flex items-center">
                       <input
@@ -261,7 +261,7 @@ const RSVPForm: React.FC = () => {
                         className="form-radio text-blush-500"
                         disabled={isSubmitting}
                       />
-                      <span className="ml-2 text-sage-600">Sorry, I can't make it</span>
+                      <span className="ml-2 text-sage-600">Sorry </span>
                     </label>
                   </div>
                 </div>
