@@ -5,6 +5,7 @@ import RSVPForm from './components/rsvp/RSVPForm';
 import MapAndCalendar from './components/wedding/MapAndCalendar';
 import Footer from './components/layout/Footer';
 import Gallery from './components/gallery/Gallery';
+import CountdownTimer from './components/home/CountdownTimer';
 import TextCursor from './components/home/TextCursor';
 import { ToastProvider } from './context/ToastContext';
 
@@ -28,6 +29,10 @@ function App() {
         
         <main>
           <HeroSection />
+          {/* Modern Countdown Timer - Moved up more */}
+          <div className="-mt-20 mb-(4) w-full flex flex-col items-center">
+            <CountdownTimer />
+          </div>
           <OurStory />
           <WeddingInfo />
           <Gallery />
