@@ -74,8 +74,10 @@ Deno.serve(async (req: Request) => {
     let emailSubject: string;
     let emailContent: string;
 
-    // Use a beautiful floral image that matches your wedding theme
-    const flowerImageUrl = "https://imgur.com/a/8BhkCgQ";
+    // Direct image URL from your Imgur upload - you'll need to get the direct link
+    // To get the direct link: Right-click on your image in Imgur and select "Copy image address"
+    // It should look like: https://i.imgur.com/XXXXXXX.png or similar
+    const flowerImageUrl = "https://i.imgur.com/8BhkCgQ.png"; // Replace with actual direct URL
 
     if (body.attending) {
       emailSubject = "RSVP Confirmed - We Can't Wait to Celebrate with You! 💕";
@@ -99,7 +101,8 @@ Deno.serve(async (req: Request) => {
               <div style="margin-bottom: 20px;">
                 <img src="${flowerImageUrl}" 
                      alt="Wedding Flowers" 
-                     style="width: 140px; height: 140px; border-radius: 50%; object-fit: cover; border: 5px solid rgba(255,255,255,0.4); box-shadow: 0 8px 25px rgba(0,0,0,0.3); filter: brightness(1.1) contrast(1.05);">
+                     style="width: 140px; height: 140px; border-radius: 50%; object-fit: cover; border: 5px solid rgba(255,255,255,0.4); box-shadow: 0 8px 25px rgba(0,0,0,0.3); filter: brightness(1.1) contrast(1.05);"
+                     onerror="this.style.display='none';">
               </div>
               
               <h1 style="color: #ffffff; font-family: 'Playfair Display', serif; font-size: 32px; margin: 0; font-weight: 700; text-shadow: 0 2px 8px rgba(0,0,0,0.2); letter-spacing: -0.5px;">
@@ -200,7 +203,8 @@ Deno.serve(async (req: Request) => {
               <div style="margin-bottom: 20px;">
                 <img src="${flowerImageUrl}" 
                      alt="Wedding Flowers" 
-                     style="width: 140px; height: 140px; border-radius: 50%; object-fit: cover; border: 5px solid rgba(255,255,255,0.4); box-shadow: 0 8px 25px rgba(0,0,0,0.3); filter: brightness(1.1) contrast(1.05);">
+                     style="width: 140px; height: 140px; border-radius: 50%; object-fit: cover; border: 5px solid rgba(255,255,255,0.4); box-shadow: 0 8px 25px rgba(0,0,0,0.3); filter: brightness(1.1) contrast(1.05);"
+                     onerror="this.style.display='none';">
               </div>
               
               <h1 style="color: #ffffff; font-family: 'Playfair Display', serif; font-size: 32px; margin: 0; font-weight: 700; text-shadow: 0 2px 8px rgba(0,0,0,0.2); letter-spacing: -0.5px;">
