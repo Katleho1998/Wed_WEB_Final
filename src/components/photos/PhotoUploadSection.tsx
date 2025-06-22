@@ -30,6 +30,7 @@ const PhotoUploadSection: React.FC = () => {
               <li>• Photos will be reviewed before appearing in the public gallery</li>
               <li>• Please only upload appropriate wedding-related photos</li>
               <li>• Maximum file size: 10MB per photo</li>
+              <li>• <strong>Maximum 30 photos per upload session</strong></li>
               <li>• Supported formats: JPEG, PNG, WebP, HEIC</li>
               <li>• You can upload multiple photos at once</li>
             </ul>

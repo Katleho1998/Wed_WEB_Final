@@ -16,6 +16,8 @@ interface UploadingFile {
   error?: string;
 }
 
+const MAX_FILES_PER_UPLOAD = 30;
+
 const PhotoUpload: React.FC<PhotoUploadProps> = ({ onUploadSuccess }) => {
   const { showError } = useToastContext();
   const [uploadingFiles, setUploadingFiles] = useState<UploadingFile[]>([]);
@@ -101,6 +103,15 @@ const PhotoUpload: React.FC<PhotoUploadProps> = ({ onUploadSuccess }) => {
   };
 
   const handleFiles = useCallback((files: FileList) => {
+    // Check if adding these files would exceed the limit
+    const currentUploadingCount = uploadingFiles.filter(f => f.status === 'uploading').length;
+    const totalFilesAfterUpload = currentUploadingCount + files.length;
+    
+    if (totalFilesAfterUpload > MAX_FILES_PER_UPLOAD) {
+      showError(`You can only upload up to ${MAX_FILES_PER_UPLOAD} photos at a time. You selected ${files.length} files, but you can only add ${MAX_FILES_PER_UPLOAD - currentUploadingCount} more.`);
+      return;
+    }
+
     const validFiles: File[] = [];
     
     for (let i = 0; i < files.length; i++) {
@@ -132,7 +143,7 @@ const PhotoUpload: React.FC<PhotoUploadProps> = ({ onUploadSuccess }) => {
     newUploadingFiles.forEach(({ id, file }) => {
       uploadFile(file, id);
     });
-  }, [showError, onUploadSuccess]);
+  }, [showError, onUploadSuccess, uploadingFiles]);
 
   const handleDrop = useCallback((e: React.DragEvent) => {
     e.preventDefault();
@@ -163,6 +174,9 @@ const PhotoUpload: React.FC<PhotoUploadProps> = ({ onUploadSuccess }) => {
     });
   };
 
+  const currentUploadingCount = uploadingFiles.filter(f => f.status === 'uploading').length;
+  const remainingSlots = MAX_FILES_PER_UPLOAD - currentUploadingCount;
+
   return (
     <div className="bg-white/90 backdrop-blur-sm rounded-3xl p-8 border border-blush-100 shadow-xl">
       <div className="text-center mb-8">
@@ -171,21 +185,33 @@ const PhotoUpload: React.FC<PhotoUploadProps> = ({ onUploadSuccess }) => {
         </div>
         <h3 className="font-serif text-2xl text-sage-800 font-bold mb-2">Share Your Photos</h3>
         <p className="text-sage-600">Upload your favorite moments from our special day</p>
+        {currentUploadingCount > 0 && (
+          <p className="text-sm text-blush-600 mt-2">
+            {remainingSlots > 0 
+              ? `You can upload ${remainingSlots} more photos (${currentUploadingCount}/${MAX_FILES_PER_UPLOAD} uploading)`
+              : `Upload limit reached (${currentUploadingCount}/${MAX_FILES_PER_UPLOAD})`
+            }
+          </p>
+        )}
       </div>
 
       {/* Upload Area */}
       <div
         className={`
           relative border-2 border-dashed rounded-2xl p-8 text-center transition-all duration-300
-          ${isDragOver 
-            ? 'border-blush-400 bg-blush-50' 
-            : 'border-sage-300 hover:border-blush-300 hover:bg-blush-25'
+          ${remainingSlots === 0 
+            ? 'border-gray-300 bg-gray-50 cursor-not-allowed opacity-50' 
+            : isDragOver 
+              ? 'border-blush-400 bg-blush-50' 
+              : 'border-sage-300 hover:border-blush-300 hover:bg-blush-25'
           }
         `}
-        onDrop={handleDrop}
+        onDrop={remainingSlots > 0 ? handleDrop : undefined}
         onDragOver={(e) => {
           e.preventDefault();
-          setIsDragOver(true);
+          if (remainingSlots > 0) {
+            setIsDragOver(true);
+          }
         }}
         onDragLeave={() => setIsDragOver(false)}
       >
@@ -194,71 +220,84 @@ const PhotoUpload: React.FC<PhotoUploadProps> = ({ onUploadSuccess }) => {
           multiple
           accept="image/jpeg,image/jpg,image/png,image/webp,image/heic"
           onChange={handleFileInput}
-          className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
+          disabled={remainingSlots === 0}
+          className="absolute inset-0 w-full h-full opacity-0 cursor-pointer disabled:cursor-not-allowed"
         />
         
-        <Upload className="w-12 h-12 text-sage-400 mx-auto mb-4" />
-        <h4 className="text-lg font-semibold text-sage-700 mb-2">
-          Drop photos here or click to browse
+        <Upload className={`w-12 h-12 mx-auto mb-4 ${remainingSlots === 0 ? 'text-gray-400' : 'text-sage-400'}`} />
+        <h4 className={`text-lg font-semibold mb-2 ${remainingSlots === 0 ? 'text-gray-500' : 'text-sage-700'}`}>
+          {remainingSlots === 0 
+            ? 'Upload limit reached - please wait for current uploads to complete'
+            : 'Drop photos here or click to browse'
+          }
         </h4>
-        <p className="text-sage-500 text-sm">
+        <p className={`text-sm ${remainingSlots === 0 ? 'text-gray-400' : 'text-sage-500'}`}>
           Supports JPEG, PNG, WebP, and HEIC files up to 10MB each
+          <br />
+          <span className="font-medium">Maximum {MAX_FILES_PER_UPLOAD} photos per upload session</span>
         </p>
       </div>
 
       {/* Uploading Files */}
       {uploadingFiles.length > 0 && (
         <div className="mt-6 space-y-3">
-          <h4 className="font-semibold text-sage-700">Uploading Photos</h4>
-          {uploadingFiles.map((file) => (
-            <div key={file.id} className="flex items-center gap-4 p-3 bg-sage-50 rounded-xl">
-              <img
-                src={file.preview}
-                alt="Preview"
-                className="w-12 h-12 object-cover rounded-lg"
-              />
-              
-              <div className="flex-1 min-w-0">
-                <p className="text-sm font-medium text-sage-700 truncate">
-                  {file.file.name}
-                </p>
-                <div className="flex items-center gap-2 mt-1">
-                  {file.status === 'uploading' && (
-                    <>
-                      <div className="flex-1 bg-sage-200 rounded-full h-2">
-                        <div
-                          className="bg-blush-500 h-2 rounded-full transition-all duration-300"
-                          style={{ width: `${file.progress}%` }}
-                        />
+          <div className="flex items-center justify-between">
+            <h4 className="font-semibold text-sage-700">Uploading Photos</h4>
+            <span className="text-sm text-sage-500">
+              {uploadingFiles.filter(f => f.status === 'success').length} of {uploadingFiles.length} completed
+            </span>
+          </div>
+          <div className="max-h-64 overflow-y-auto space-y-3">
+            {uploadingFiles.map((file) => (
+              <div key={file.id} className="flex items-center gap-4 p-3 bg-sage-50 rounded-xl">
+                <img
+                  src={file.preview}
+                  alt="Preview"
+                  className="w-12 h-12 object-cover rounded-lg"
+                />
+                
+                <div className="flex-1 min-w-0">
+                  <p className="text-sm font-medium text-sage-700 truncate">
+                    {file.file.name}
+                  </p>
+                  <div className="flex items-center gap-2 mt-1">
+                    {file.status === 'uploading' && (
+                      <>
+                        <div className="flex-1 bg-sage-200 rounded-full h-2">
+                          <div
+                            className="bg-blush-500 h-2 rounded-full transition-all duration-300"
+                            style={{ width: `${file.progress}%` }}
+                          />
+                        </div>
+                        <span className="text-xs text-sage-500">{file.progress}%</span>
+                      </>
+                    )}
+                    
+                    {file.status === 'success' && (
+                      <div className="flex items-center gap-1 text-green-600">
+                        <CheckCircle className="w-4 h-4" />
+                        <span className="text-xs">Uploaded successfully</span>
                       </div>
-                      <span className="text-xs text-sage-500">{file.progress}%</span>
-                    </>
-                  )}
-                  
-                  {file.status === 'success' && (
-                    <div className="flex items-center gap-1 text-green-600">
-                      <CheckCircle className="w-4 h-4" />
-                      <span className="text-xs">Uploaded successfully</span>
-                    </div>
-                  )}
-                  
-                  {file.status === 'error' && (
-                    <div className="flex items-center gap-1 text-red-600">
-                      <AlertCircle className="w-4 h-4" />
-                      <span className="text-xs">{file.error}</span>
-                    </div>
-                  )}
+                    )}
+                    
+                    {file.status === 'error' && (
+                      <div className="flex items-center gap-1 text-red-600">
+                        <AlertCircle className="w-4 h-4" />
+                        <span className="text-xs">{file.error}</span>
+                      </div>
+                    )}
+                  </div>
                 </div>
+                
+                <button
+                  onClick={() => removeUploadingFile(file.id)}
+                  className="p-1 text-sage-400 hover:text-sage-600 transition-colors"
+                >
+                  <X className="w-4 h-4" />
+                </button>
               </div>
-              
-              <button
-                onClick={() => removeUploadingFile(file.id)}
-                className="p-1 text-sage-400 hover:text-sage-600 transition-colors"
-              >
-                <X className="w-4 h-4" />
-              </button>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       )}
 
