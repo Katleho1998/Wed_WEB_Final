@@ -174,7 +174,7 @@ const WeddingInfo: React.FC = () => {
               <div className="relative bg-white/90 backdrop-blur-sm rounded-3xl p-8 border border-blush-100 hover:border-blush-200 transition-all duration-300 h-full flex flex-col">
                 
                 {/* Gift Details - Centered */}
-                <div className="text-center space-y-8 flex-grow">
+
                   <div>
                     <p className="text-sage-700 text-xl mb-2">
                       <span className="font-semibold">Preferred gifts:</span> 
@@ -200,7 +200,7 @@ const WeddingInfo: React.FC = () => {
                       className="transform hover:scale-105 transition-transform duration-300"
                     />
                   </div>
-                </div>
+              
               </div>
             </div>
           </div>
