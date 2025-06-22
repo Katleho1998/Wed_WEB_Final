@@ -21,8 +21,7 @@ function App() {
           </div>
           <OurStory />
           <WeddingInfo />
-          <Gallery />
-          
+          <Gallery /> 
           <RSVPForm />
           <MapAndCalendar />
           <PhotoUploadSection />
