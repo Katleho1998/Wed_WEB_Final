@@ -99,7 +99,7 @@ Deno.serve(async (req: Request) => {
               <div style="margin-bottom: 20px;">
                 <img src="${flowerImageUrl}" 
                      alt="Wedding Flowers" 
-                     style="width: 140px; height: 140px; filter: brightness(1.1) contrast(1.05);"
+                     style="width: 240px; height: 140px; filter: brightness(1.1) contrast(1.05);"
                      onerror="this.style.display='none';">
               </div>
               
