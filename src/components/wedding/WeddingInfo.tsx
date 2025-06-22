@@ -139,6 +139,16 @@ const WeddingInfo: React.FC = () => {
                 <div className="text-center">
                   <h5 className="font-semibold text-sage-700 text-lg mb-2">Molapo Park</h5>
                   <p className="text-sage-600 text-sm">Join us for the continuation of our celebration</p>
+                  {/* Directions Button for Molapo Park */}
+                  <div className="flex justify-center mt-4">
+                    <button
+                      onClick={() => window.open(getDirectionsUrl("1335 Monnatlala St, Molapo, Soweto, 1818"), '_blank')}
+                      className="bg-[#555c78] hover:bg-[#4a5068] text-white font-semibold py-2 px-5 rounded-2xl transition-all duration-300 transform hover:-translate-y-1 flex items-center justify-center gap-2"
+                    >
+                      <MapPin className="w-4 h-4 text-white" />
+                      <span>Directions</span>
+                    </button>
+                  </div>
                 </div>
               </div>
             </div>
