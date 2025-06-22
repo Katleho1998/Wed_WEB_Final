@@ -1,20 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { Camera } from 'lucide-react';
 
 const FloatingUploadButton: React.FC = () => {
-  const [isVisible, setIsVisible] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      // Show button after scrolling down a bit (after hero section)
-      const scrollY = window.scrollY;
-      setIsVisible(scrollY > 300);
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
   const scrollToUpload = () => {
     const uploadSection = document.getElementById('photo-upload');
     if (uploadSection) {
@@ -24,8 +11,6 @@ const FloatingUploadButton: React.FC = () => {
       });
     }
   };
-
-  if (!isVisible) return null;
 
   return (
     <>
