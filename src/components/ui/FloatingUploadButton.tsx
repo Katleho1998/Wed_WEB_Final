@@ -14,7 +14,7 @@ const FloatingUploadButton: React.FC = () => {
 
   return (
     <>
-      {/* Add inline styles to ensure maximum z-index */}
+      {/* Add inline styles for circular text animation and positioning */}
       <style jsx>{`
         .floating-upload-btn {
           position: fixed !important;
@@ -24,33 +24,99 @@ const FloatingUploadButton: React.FC = () => {
           pointer-events: auto !important;
         }
         
+        .circular-text {
+          animation: rotate 20s linear infinite;
+          transform-origin: center;
+        }
+        
+        .circular-text text {
+          font-size: 11px;
+          font-weight: 600;
+          letter-spacing: 2px;
+          text-transform: uppercase;
+          fill: white;
+          text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+        }
+        
+        @keyframes rotate {
+          from {
+            transform: rotate(0deg);
+          }
+          to {
+            transform: rotate(360deg);
+          }
+        }
+        
         @media (max-width: 640px) {
           .floating-upload-btn {
             bottom: 20px !important;
             right: 20px !important;
           }
+          
+          .circular-text text {
+            font-size: 9px;
+            letter-spacing: 1.5px;
+          }
+        }
+        
+        .button-inner {
+          position: relative;
+          z-index: 2;
+        }
+        
+        .button-bg {
+          position: absolute;
+          inset: 0;
+          border-radius: 50%;
+          background: #555c78;
+          z-index: 1;
         }
       `}</style>
       
       <div className="floating-upload-btn">
         <button
           onClick={scrollToUpload}
-          className="group relative w-14 h-14 sm:w-16 sm:h-16 rounded-full shadow-2xl hover:shadow-3xl transition-all duration-300 flex items-center justify-center hover:scale-110 active:scale-95"
+          className="group relative w-20 h-20 sm:w-24 sm:h-24 rounded-full shadow-2xl hover:shadow-3xl transition-all duration-300 flex items-center justify-center hover:scale-110 active:scale-95"
           style={{
             position: 'relative',
             zIndex: 999999,
             pointerEvents: 'auto',
-            background: '#555c78', // Using the website's blue color
+            background: 'transparent',
             boxShadow: '0 10px 25px rgba(85, 92, 120, 0.4), 0 0 0 1px rgba(255, 255, 255, 0.1)',
           }}
-          aria-label="Upload photos"
+          aria-label="Upload your images"
         >
-          <Camera className="w-6 h-6 sm:w-7 sm:h-7 text-white drop-shadow-sm" />
+          {/* Background circle */}
+          <div className="button-bg"></div>
           
-          {/* Tooltip */}
-          <div className="absolute right-full mr-3 top-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none">
+          {/* Circular Text */}
+          <svg 
+            className="circular-text absolute inset-0 w-full h-full" 
+            viewBox="0 0 100 100"
+            style={{ zIndex: 1 }}
+          >
+            <defs>
+              <path
+                id="circle-path"
+                d="M 50, 50 m -35, 0 a 35,35 0 1,1 70,0 a 35,35 0 1,1 -70,0"
+              />
+            </defs>
+            <text>
+              <textPath href="#circle-path" startOffset="0%">
+                UPLOAD YOUR IMAGES • SHARE MEMORIES • 
+              </textPath>
+            </text>
+          </svg>
+          
+          {/* Camera Icon */}
+          <div className="button-inner">
+            <Camera className="w-7 h-7 sm:w-8 sm:h-8 text-white drop-shadow-sm" />
+          </div>
+          
+          {/* Tooltip - Hidden on mobile since text is now visible */}
+          <div className="hidden sm:block absolute right-full mr-3 top-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none">
             <div className="bg-gray-900 text-white text-sm px-3 py-2 rounded-lg whitespace-nowrap shadow-lg">
-              Share Your Photos
+              Click to upload photos
               <div className="absolute left-full top-1/2 -translate-y-1/2 border-4 border-transparent border-l-gray-900"></div>
             </div>
           </div>
