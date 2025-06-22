@@ -244,15 +244,15 @@ const PhotoUpload: React.FC<PhotoUploadProps> = ({ onUploadSuccess }) => {
   const validSelectedFiles = selectedFiles.filter(f => !f.error);
 
   return (
-    <div className="bg-white/90 backdrop-blur-sm rounded-3xl p-8 border border-blush-100 shadow-xl">
-      <div className="text-center mb-8">
-        <div className="w-16 h-16 bg-gradient-to-br from-blush-400 to-blush-500 rounded-2xl flex items-center justify-center mx-auto mb-4">
-          <Camera className="w-8 h-8 text-white" />
+    <div className="bg-white/90 backdrop-blur-sm rounded-3xl p-4 sm:p-6 md:p-8 border border-blush-100 shadow-xl">
+      <div className="text-center mb-6 sm:mb-8">
+        <div className="w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-br from-blush-400 to-blush-500 rounded-2xl flex items-center justify-center mx-auto mb-3 sm:mb-4">
+          <Camera className="w-6 h-6 sm:w-8 sm:h-8 text-white" />
         </div>
-        <h3 className="font-serif text-2xl text-sage-800 font-bold mb-2">Share Your Photos</h3>
-        <p className="text-sage-600">Upload your favorite moments from our special day</p>
+        <h3 className="font-serif text-xl sm:text-2xl text-sage-800 font-bold mb-2">Share Your Photos</h3>
+        <p className="text-sm sm:text-base text-sage-600 px-2">Upload your favorite moments from our special day</p>
         {(currentUploadingCount > 0 || selectedFiles.length > 0) && (
-          <p className="text-sm text-blush-600 mt-2">
+          <p className="text-xs sm:text-sm text-blush-600 mt-2 px-2">
             {selectedFiles.length > 0 && `${selectedFiles.length} selected • `}
             {currentUploadingCount > 0 && `${currentUploadingCount} uploading • `}
             {remainingSlots > 0 
@@ -278,12 +278,12 @@ const PhotoUpload: React.FC<PhotoUploadProps> = ({ onUploadSuccess }) => {
       {!showPreview && (
         <div
           className={`
-            relative border-2 border-dashed rounded-2xl p-8 text-center transition-all duration-300
+            relative border-2 border-dashed rounded-2xl p-6 sm:p-8 text-center transition-all duration-300 min-h-[200px] sm:min-h-[240px] flex flex-col items-center justify-center
             ${remainingSlots === 0 
               ? 'border-gray-300 bg-gray-50 cursor-not-allowed opacity-50' 
               : isDragOver 
                 ? 'border-blush-400 bg-blush-50' 
-                : 'border-sage-300 hover:border-blush-300 hover:bg-blush-25'
+                : 'border-sage-300 hover:border-blush-300 hover:bg-blush-25 cursor-pointer'
             }
           `}
           onDrop={remainingSlots > 0 ? handleDrop : undefined}
@@ -294,6 +294,7 @@ const PhotoUpload: React.FC<PhotoUploadProps> = ({ onUploadSuccess }) => {
             }
           }}
           onDragLeave={() => setIsDragOver(false)}
+          onClick={remainingSlots > 0 ? triggerFileInput : undefined}
         >
           <input
             type="file"
@@ -304,14 +305,14 @@ const PhotoUpload: React.FC<PhotoUploadProps> = ({ onUploadSuccess }) => {
             className="absolute inset-0 w-full h-full opacity-0 cursor-pointer disabled:cursor-not-allowed"
           />
           
-          <Upload className={`w-12 h-12 mx-auto mb-4 ${remainingSlots === 0 ? 'text-gray-400' : 'text-sage-400'}`} />
-          <h4 className={`text-lg font-semibold mb-2 ${remainingSlots === 0 ? 'text-gray-500' : 'text-sage-700'}`}>
+          <Upload className={`w-10 h-10 sm:w-12 sm:h-12 mx-auto mb-3 sm:mb-4 ${remainingSlots === 0 ? 'text-gray-400' : 'text-sage-400'}`} />
+          <h4 className={`text-base sm:text-lg font-semibold mb-2 px-2 ${remainingSlots === 0 ? 'text-gray-500' : 'text-sage-700'}`}>
             {remainingSlots === 0 
               ? 'Upload limit reached - please wait for current uploads to complete'
               : 'Drop photos here or click to browse'
             }
           </h4>
-          <p className={`text-sm ${remainingSlots === 0 ? 'text-gray-400' : 'text-sage-500'}`}>
+          <p className={`text-xs sm:text-sm px-4 leading-relaxed ${remainingSlots === 0 ? 'text-gray-400' : 'text-sage-500'}`}>
             Supports JPEG, PNG, WebP, and HEIC files up to 10MB each
             <br />
             <span className="font-medium">Maximum {MAX_FILES_PER_UPLOAD} photos per upload session</span>
@@ -321,21 +322,21 @@ const PhotoUpload: React.FC<PhotoUploadProps> = ({ onUploadSuccess }) => {
 
       {/* Photo Preview Section */}
       {showPreview && selectedFiles.length > 0 && (
-        <div className="space-y-6">
-          <div className="flex items-center justify-between">
+        <div className="space-y-4 sm:space-y-6">
+          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
             <div className="flex items-center gap-2">
-              <Eye className="w-5 h-5 text-sage-600" />
-              <h4 className="font-semibold text-sage-700">
+              <Eye className="w-4 h-4 sm:w-5 sm:h-5 text-sage-600" />
+              <h4 className="font-semibold text-sage-700 text-sm sm:text-base">
                 Review Your Photos ({selectedFiles.length} selected)
               </h4>
             </div>
-            <div className="text-sm text-sage-500">
+            <div className="text-xs sm:text-sm text-sage-500">
               {validSelectedFiles.length} valid • {selectedFiles.length - validSelectedFiles.length} with errors
             </div>
           </div>
 
-          {/* Photo Grid */}
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 max-h-96 overflow-y-auto p-2">
+          {/* Photo Grid - Responsive grid with better mobile spacing */}
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3 sm:gap-4 max-h-80 sm:max-h-96 overflow-y-auto p-1 sm:p-2">
             {selectedFiles.map((file) => (
               <div key={file.id} className="relative group">
                 <div className={`
@@ -353,18 +354,18 @@ const PhotoUpload: React.FC<PhotoUploadProps> = ({ onUploadSuccess }) => {
                     />
                   </div>
                   
-                  {/* Remove button */}
+                  {/* Remove button - Larger touch target for mobile */}
                   <button
                     onClick={() => removeSelectedFile(file.id)}
-                    className="absolute top-1 right-1 w-6 h-6 bg-red-500 text-white rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200 hover:bg-red-600"
+                    className="absolute top-1 right-1 w-6 h-6 sm:w-7 sm:h-7 bg-red-500 text-white rounded-full flex items-center justify-center opacity-100 sm:opacity-0 sm:group-hover:opacity-100 transition-opacity duration-200 hover:bg-red-600 touch-manipulation"
                   >
-                    <X className="w-3 h-3" />
+                    <X className="w-3 h-3 sm:w-4 sm:h-4" />
                   </button>
                   
                   {/* Error indicator */}
                   {file.error && (
                     <div className="absolute inset-0 bg-red-500/20 flex items-center justify-center">
-                      <AlertCircle className="w-6 h-6 text-red-600" />
+                      <AlertCircle className="w-5 h-5 sm:w-6 sm:h-6 text-red-600" />
                     </div>
                   )}
                 </div>
@@ -375,32 +376,32 @@ const PhotoUpload: React.FC<PhotoUploadProps> = ({ onUploadSuccess }) => {
                     {file.file.name}
                   </p>
                   {file.error && (
-                    <p className="text-red-600 text-xs mt-1">{file.error}</p>
+                    <p className="text-red-600 text-xs mt-1 leading-tight">{file.error}</p>
                   )}
                 </div>
               </div>
             ))}
           </div>
 
-          {/* Action buttons */}
-          <div className="flex gap-4 justify-center pt-4 border-t border-sage-200">
+          {/* Action buttons - Stack on mobile for better touch targets */}
+          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center pt-4 border-t border-sage-200">
             <button
               onClick={cancelSelection}
-              className="px-6 py-2 border border-sage-300 text-sage-700 rounded-xl hover:bg-sage-50 transition-colors duration-200"
+              className="w-full sm:w-auto px-6 py-3 sm:py-2 border border-sage-300 text-sage-700 rounded-xl hover:bg-sage-50 transition-colors duration-200 text-sm sm:text-base touch-manipulation"
             >
               Cancel
             </button>
             <button
               onClick={triggerFileInput}
               disabled={remainingSlots === 0}
-              className="px-6 py-2 border border-blush-300 text-blush-700 rounded-xl hover:bg-blush-50 transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
+              className="w-full sm:w-auto px-6 py-3 sm:py-2 border border-blush-300 text-blush-700 rounded-xl hover:bg-blush-50 transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed text-sm sm:text-base touch-manipulation"
             >
               Add More Photos
             </button>
             <button
               onClick={confirmUpload}
               disabled={validSelectedFiles.length === 0}
-              className="px-6 py-2 bg-[#555c78] text-white rounded-xl hover:bg-[#4a5068] transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2"
+              className="w-full sm:w-auto px-6 py-3 sm:py-2 bg-[#555c78] text-white rounded-xl hover:bg-[#4a5068] transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 text-sm sm:text-base touch-manipulation"
             >
               <UploadIcon className="w-4 h-4" />
               Upload {validSelectedFiles.length} Photo{validSelectedFiles.length !== 1 ? 's' : ''}
@@ -411,50 +412,50 @@ const PhotoUpload: React.FC<PhotoUploadProps> = ({ onUploadSuccess }) => {
 
       {/* Uploading Files */}
       {uploadingFiles.length > 0 && (
-        <div className={`${showPreview ? 'mt-8 pt-8 border-t border-sage-200' : 'mt-6'} space-y-3`}>
-          <div className="flex items-center justify-between">
-            <h4 className="font-semibold text-sage-700">Uploading Photos</h4>
-            <span className="text-sm text-sage-500">
+        <div className={`${showPreview ? 'mt-6 sm:mt-8 pt-6 sm:pt-8 border-t border-sage-200' : 'mt-4 sm:mt-6'} space-y-3`}>
+          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
+            <h4 className="font-semibold text-sage-700 text-sm sm:text-base">Uploading Photos</h4>
+            <span className="text-xs sm:text-sm text-sage-500">
               {uploadingFiles.filter(f => f.status === 'success').length} of {uploadingFiles.length} completed
             </span>
           </div>
-          <div className="max-h-64 overflow-y-auto space-y-3">
+          <div className="max-h-48 sm:max-h-64 overflow-y-auto space-y-3">
             {uploadingFiles.map((file) => (
-              <div key={file.id} className="flex items-center gap-4 p-3 bg-sage-50 rounded-xl">
+              <div key={file.id} className="flex items-center gap-3 sm:gap-4 p-3 bg-sage-50 rounded-xl">
                 <img
                   src={file.preview}
                   alt="Preview"
-                  className="w-12 h-12 object-cover rounded-lg"
+                  className="w-10 h-10 sm:w-12 sm:h-12 object-cover rounded-lg flex-shrink-0"
                 />
                 
                 <div className="flex-1 min-w-0">
-                  <p className="text-sm font-medium text-sage-700 truncate">
+                  <p className="text-xs sm:text-sm font-medium text-sage-700 truncate">
                     {file.file.name}
                   </p>
                   <div className="flex items-center gap-2 mt-1">
                     {file.status === 'uploading' && (
                       <>
-                        <div className="flex-1 bg-sage-200 rounded-full h-2">
+                        <div className="flex-1 bg-sage-200 rounded-full h-1.5 sm:h-2">
                           <div
-                            className="bg-blush-500 h-2 rounded-full transition-all duration-300"
+                            className="bg-blush-500 h-1.5 sm:h-2 rounded-full transition-all duration-300"
                             style={{ width: `${file.progress}%` }}
                           />
                         </div>
-                        <span className="text-xs text-sage-500">{file.progress}%</span>
+                        <span className="text-xs text-sage-500 flex-shrink-0">{file.progress}%</span>
                       </>
                     )}
                     
                     {file.status === 'success' && (
                       <div className="flex items-center gap-1 text-green-600">
-                        <CheckCircle className="w-4 h-4" />
+                        <CheckCircle className="w-3 h-3 sm:w-4 sm:h-4" />
                         <span className="text-xs">Uploaded successfully</span>
                       </div>
                     )}
                     
                     {file.status === 'error' && (
                       <div className="flex items-center gap-1 text-red-600">
-                        <AlertCircle className="w-4 h-4" />
-                        <span className="text-xs">{file.error}</span>
+                        <AlertCircle className="w-3 h-3 sm:w-4 sm:h-4" />
+                        <span className="text-xs truncate">{file.error}</span>
                       </div>
                     )}
                   </div>
@@ -462,7 +463,7 @@ const PhotoUpload: React.FC<PhotoUploadProps> = ({ onUploadSuccess }) => {
                 
                 <button
                   onClick={() => removeUploadingFile(file.id)}
-                  className="p-1 text-sage-400 hover:text-sage-600 transition-colors"
+                  className="p-1 text-sage-400 hover:text-sage-600 transition-colors touch-manipulation flex-shrink-0"
                 >
                   <X className="w-4 h-4" />
                 </button>
@@ -472,8 +473,8 @@ const PhotoUpload: React.FC<PhotoUploadProps> = ({ onUploadSuccess }) => {
         </div>
       )}
 
-      <div className="mt-6 text-center">
-        <p className="text-xs text-sage-500">
+      <div className="mt-4 sm:mt-6 text-center">
+        <p className="text-xs text-sage-500 px-2 leading-relaxed">
           Photos will be reviewed before appearing in the gallery. Thank you for sharing your memories!
         </p>
       </div>
