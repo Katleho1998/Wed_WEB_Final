@@ -75,7 +75,7 @@ Deno.serve(async (req: Request) => {
     let emailContent: string;
 
     // Use a beautiful floral image that matches your wedding theme
-    const flowerImageUrl = "https://images.pexels.com/photos/1070850/pexels-photo-1070850.jpeg?auto=compress&cs=tinysrgb&w=300&h=300&fit=crop";
+    const flowerImageUrl = "https://imgur.com/a/8BhkCgQ";
 
     if (body.attending) {
       emailSubject = "RSVP Confirmed - We Can't Wait to Celebrate with You! 💕";
