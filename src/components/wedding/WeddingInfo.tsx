@@ -183,7 +183,7 @@ const WeddingInfo: React.FC = () => {
                   {/* Interactive Gift Card Display */}
                   <div className="flex justify-center my-8">
                     <CosmicNebulaMastercard
-                      cardholderName="Suggested Store: /nWoolworths, @Home, Volpes, Coricraft "
+                      cardholderName="Suggested Store: Woolworths, @Home, Volpes, Coricraft "
                       width="420px"
                       height="280px"
                       theme={{
