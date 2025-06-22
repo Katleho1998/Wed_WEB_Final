@@ -1,6 +1,7 @@
 import React from 'react';
 import { MapPin, Clock, Calendar, Gift, Wine } from 'lucide-react';
 import paletteImg from '../../assets/pallete.jpg';
+import CosmicNebulaMastercard from '../ui/cursor-wander-card';
 
 const WeddingInfo: React.FC = () => {
   const getDirectionsUrl = (address: string) => {
@@ -158,7 +159,7 @@ const WeddingInfo: React.FC = () => {
           </div>
         </div>
 
-        {/* Gifts Section - Centered */}
+        {/* Gifts Section - Enhanced with Cosmic Gift Card */}
         <div className="mb-16">
           <div className="text-center mb-10">
             <div className="inline-flex items-center gap-3 bg-white/80 rounded-full px-6 py-3">
@@ -168,19 +169,58 @@ const WeddingInfo: React.FC = () => {
           </div>
           
           <div className="flex justify-center">
-            <div className="group relative max-w-lg w-full">
+            <div className="group relative max-w-2xl w-full">
               <div className="absolute inset-0 bg-gradient-to-br from-blush-200/20 to-sage-200/20 rounded-3xl blur-xl transform group-hover:scale-105 transition-transform duration-300"></div>
               <div className="relative bg-white/90 backdrop-blur-sm rounded-3xl p-8 border border-blush-100 hover:border-blush-200 transition-all duration-300 h-full flex flex-col">
                 
                 {/* Gift Details - Centered */}
-                <div className="text-center space-y-4 flex-grow">
-                  <p className="text-sage-700 text-lg mb-2">
+                <div className="text-center space-y-6 flex-grow">
+                  <p className="text-sage-700 text-lg mb-4">
                     <span className="font-semibold">Preferred gifts:</span> 
                     <span className="font-bold text-blush-600 block text-xl mt-1">Gift Cards</span>
                   </p>
-                  <p className="text-sage-600">
-                    <span className="font-medium">Suggested stores:</span><br />
-                    Woolworths, @Home, Volpes, Coricraft
+                  
+                  {/* Interactive Gift Card Display */}
+                  <div className="flex justify-center my-8">
+                    <CosmicNebulaMastercard
+                      cardholderName="THABI & TREVOR"
+                      width="320px"
+                      height="200px"
+                      theme={{
+                        primaryColor: "#555c78",
+                        secondaryColor: "#4a5068", 
+                        glowColor: "rgba(85, 92, 120, 0.6)"
+                      }}
+                      logoText={{
+                        topText: "GIFT",
+                        bottomText: "CARD"
+                      }}
+                      className="transform hover:scale-105 transition-transform duration-300"
+                    />
+                  </div>
+                  
+                  <div className="bg-gradient-to-r from-blush-50 to-sage-50 rounded-xl p-6 border border-blush-100">
+                    <p className="text-sage-600 mb-4">
+                      <span className="font-medium">Suggested stores:</span>
+                    </p>
+                    <div className="grid grid-cols-2 gap-3 text-sm">
+                      <div className="bg-white rounded-lg p-3 border border-sage-200 text-center">
+                        <span className="font-semibold text-sage-700">Woolworths</span>
+                      </div>
+                      <div className="bg-white rounded-lg p-3 border border-sage-200 text-center">
+                        <span className="font-semibold text-sage-700">@Home</span>
+                      </div>
+                      <div className="bg-white rounded-lg p-3 border border-sage-200 text-center">
+                        <span className="font-semibold text-sage-700">Volpes</span>
+                      </div>
+                      <div className="bg-white rounded-lg p-3 border border-sage-200 text-center">
+                        <span className="font-semibold text-sage-700">Coricraft</span>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <p className="text-sage-500 text-sm italic">
+                    Hover over the gift card above to see the interactive effect!
                   </p>
                 </div>
               </div>
