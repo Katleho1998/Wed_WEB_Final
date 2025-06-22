@@ -5,6 +5,7 @@ export const NAV_ITEMS: NavItem[] = [
   { label: 'Our Story', href: '#our-story' },
   { label: 'Wedding Info', href: '#wedding-info' },
   { label: 'Gallery', href: '#gallery' },
+  { label: 'Share Photos', href: '#photo-upload' },
   { label: 'RSVP', href: '#rsvp' },
 ];
 
