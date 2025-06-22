@@ -96,7 +96,7 @@ Deno.serve(async (req: Request) => {
             <!-- Header with Flower -->
             <div style="background: linear-gradient(135deg, #555c78 0%, #4a5068 100%); padding: 40px 20px; text-align: center; position: relative;">
               <!-- Wedding Flower Image -->
-              <div style="margin-bottom: 20px;">
+              <div style="margin-bottom: 16px;">
                 <img src="${flowerImageUrl}" 
                      alt="Wedding Flowers" 
                      style=" height: 140px; filter: brightness(1.1) contrast(1.05);"
