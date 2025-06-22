@@ -1,5 +1,6 @@
 import React from 'react';
 import PhotoUpload from './PhotoUpload';
+import FlowersImg from '../../assets/Flowers-for-website.png';
 
 const PhotoUploadSection: React.FC = () => {
   return (
@@ -11,7 +12,7 @@ const PhotoUploadSection: React.FC = () => {
         <div className="text-center mb-12">
           {/* Flowers decoration above heading */}
           <img
-            src="/Wedding Invitation.png"
+            src={FlowersImg}
             alt="Floral decoration"
             className="mx-auto mb-6 max-w-[120px] md:max-w-[160px] lg:max-w-[200px] drop-shadow-lg"
             style={{ objectFit: 'contain' }}
