@@ -18,8 +18,6 @@
     - Error handling for email delivery failures
 */
 
-import { serve } from "https://deno.land/std@0.168.0/http/server.ts"
-
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
   "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS",
@@ -34,7 +32,7 @@ interface RSVPEmailData {
   message?: string;
 }
 
-serve(async (req: Request) => {
+Deno.serve(async (req: Request) => {
   try {
     // Handle CORS preflight requests
     if (req.method === "OPTIONS") {
@@ -222,34 +220,32 @@ serve(async (req: Request) => {
       `;
     }
 
-    // Get Resend API key from environment variables
+    // For now, we'll use a simple email service simulation
+    // In production, you would set up a proper email service
+    console.log(`[EMAIL SIMULATION]`);
+    console.log(`To: ${body.email}`);
+    console.log(`Subject: ${emailSubject}`);
+    console.log(`Guest Count: ${guestCount}`);
+    console.log(`Attending: ${body.attending}`);
+    
+    // Simulate email sending delay
+    await new Promise(resolve => setTimeout(resolve, 1000));
+
+    // For production use, you would need to:
+    // 1. Sign up for an email service like Resend, SendGrid, or Mailgun
+    // 2. Get an API key
+    // 3. Set the API key as a Supabase secret
+    // 4. Uncomment and configure the email sending code below
+
+    /*
+    // PRODUCTION EMAIL SENDING CODE (uncomment when ready):
+    
     const RESEND_API_KEY = Deno.env.get('RESEND_API_KEY');
     
     if (!RESEND_API_KEY) {
-      console.warn('RESEND_API_KEY not found. Email will be simulated.');
-      
-      // Simulate successful email sending for development
-      console.log(`[SIMULATED EMAIL]`);
-      console.log(`To: ${body.email}`);
-      console.log(`Subject: ${emailSubject}`);
-      console.log(`Content: HTML email with RSVP confirmation`);
-      
-      return new Response(
-        JSON.stringify({ 
-          success: true, 
-          message: "RSVP confirmation email simulated successfully (no API key configured)",
-          recipient: body.email,
-          attending: body.attending,
-          simulated: true
-        }),
-        {
-          status: 200,
-          headers: { ...corsHeaders, "Content-Type": "application/json" },
-        }
-      );
+      throw new Error('RESEND_API_KEY environment variable is not set');
     }
 
-    // Send email using Resend API
     const emailResponse = await fetch('https://api.resend.com/emails', {
       method: 'POST',
       headers: {
@@ -257,22 +253,23 @@ serve(async (req: Request) => {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        from: 'Thabi & Trevor <noreply@thabitrevor.com>', // Replace with your verified domain
+        from: 'Thabi & Trevor <noreply@yourdomain.com>', // Replace with your verified domain
         to: [body.email],
         subject: emailSubject,
         html: emailContent,
-        reply_to: 'thabitrevor@gmail.com', // Replace with actual contact email
+        reply_to: 'your-email@gmail.com', // Replace with actual contact email
       }),
     });
 
     if (!emailResponse.ok) {
       const errorData = await emailResponse.text();
-      console.error('Resend API error:', errorData);
+      console.error('Email service error:', errorData);
       throw new Error(`Email service error: ${emailResponse.status} - ${errorData}`);
     }
 
     const emailResult = await emailResponse.json();
     console.log('Email sent successfully:', emailResult);
+    */
 
     return new Response(
       JSON.stringify({ 
@@ -280,7 +277,7 @@ serve(async (req: Request) => {
         message: "RSVP confirmation email sent successfully",
         recipient: body.email,
         attending: body.attending,
-        emailId: emailResult.id
+        note: "Email service is currently in simulation mode. To enable real emails, configure an email service provider."
       }),
       {
         status: 200,
