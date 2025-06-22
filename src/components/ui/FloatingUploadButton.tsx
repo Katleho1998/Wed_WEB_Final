@@ -103,7 +103,7 @@ const FloatingUploadButton: React.FC = () => {
             </defs>
             <text>
               <textPath href="#circle-path" startOffset="0%">
-                UPLOAD YOUR IMAGES • SHARE MEMORIES • 
+                UPLOAD YOUR IMAGES •  UPLOAD  • 
               </textPath>
             </text>
           </svg>
