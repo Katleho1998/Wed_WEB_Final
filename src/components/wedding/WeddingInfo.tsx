@@ -190,7 +190,7 @@ const WeddingInfo: React.FC = () => {
                       height="220px"
                       theme={{
                         primaryColor: "#555c78",
-                        secondaryColor: "#4a5068", 
+                        secondaryColor: "#555c78", 
                         glowColor: "rgba(85, 92, 120, 0.6)"
                       }}
                       logoText={{
