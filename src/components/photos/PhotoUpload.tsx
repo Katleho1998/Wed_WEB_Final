@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useRef } from 'react';
 import { Upload, X, Camera, CheckCircle, AlertCircle, Eye, Upload as UploadIcon } from 'lucide-react';
 import { supabase } from '../../utils/supabaseClient';
 import { useToastContext } from '../../context/ToastContext';
@@ -31,6 +31,7 @@ const PhotoUpload: React.FC<PhotoUploadProps> = ({ onUploadSuccess }) => {
   const [uploadingFiles, setUploadingFiles] = useState<UploadingFile[]>([]);
   const [isDragOver, setIsDragOver] = useState(false);
   const [showPreview, setShowPreview] = useState(false);
+  const fileInputRef = useRef<HTMLInputElement>(null);
 
   const validateFile = (file: File): string | null => {
     const maxSize = 10 * 1024 * 1024; // 10MB
@@ -234,6 +235,10 @@ const PhotoUpload: React.FC<PhotoUploadProps> = ({ onUploadSuccess }) => {
     setShowPreview(false);
   };
 
+  const triggerFileInput = () => {
+    fileInputRef.current?.click();
+  };
+
   const currentUploadingCount = uploadingFiles.filter(f => f.status === 'uploading').length;
   const remainingSlots = MAX_FILES_PER_UPLOAD - currentUploadingCount - selectedFiles.length;
   const validSelectedFiles = selectedFiles.filter(f => !f.error);
@@ -257,6 +262,17 @@ const PhotoUpload: React.FC<PhotoUploadProps> = ({ onUploadSuccess }) => {
           </p>
         )}
       </div>
+
+      {/* Hidden file input for direct access */}
+      <input
+        ref={fileInputRef}
+        type="file"
+        multiple
+        accept="image/jpeg,image/jpg,image/png,image/webp,image/heic"
+        onChange={handleFileInput}
+        disabled={remainingSlots === 0}
+        className="hidden"
+      />
 
       {/* Upload Area - Only show if not in preview mode */}
       {!showPreview && (
@@ -375,8 +391,9 @@ const PhotoUpload: React.FC<PhotoUploadProps> = ({ onUploadSuccess }) => {
               Cancel
             </button>
             <button
-              onClick={() => setShowPreview(false)}
-              className="px-6 py-2 border border-blush-300 text-blush-700 rounded-xl hover:bg-blush-50 transition-colors duration-200"
+              onClick={triggerFileInput}
+              disabled={remainingSlots === 0}
+              className="px-6 py-2 border border-blush-300 text-blush-700 rounded-xl hover:bg-blush-50 transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
             >
               Add More Photos
             </button>
