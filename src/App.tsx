@@ -7,6 +7,7 @@ import Footer from './components/layout/Footer';
 import Gallery from './components/gallery/Gallery';
 import CountdownTimer from './components/home/CountdownTimer';
 import PhotoUploadSection from './components/photos/PhotoUploadSection';
+import FloatingUploadButton from './components/ui/FloatingUploadButton';
 import { ToastProvider } from './context/ToastContext';
 
 function App() {
@@ -27,6 +28,9 @@ function App() {
           <PhotoUploadSection />
         </main>
         <Footer />
+        
+        {/* Floating Upload Button */}
+        <FloatingUploadButton />
       </div>
     </ToastProvider>
   );
