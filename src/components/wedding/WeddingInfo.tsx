@@ -186,8 +186,8 @@ const WeddingInfo: React.FC = () => {
                   <div className="flex justify-center my-8">
                     <CosmicNebulaMastercard
                       cardholderName="Woolworths, @Home, Volpes, Coricraft "
-                      width="360px"
-                      height="220px"
+                      width="420px"
+                      height="280px"
                       theme={{
                         primaryColor: "#555c78",
                         secondaryColor: "#555c78", 
