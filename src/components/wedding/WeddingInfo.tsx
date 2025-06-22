@@ -1,7 +1,6 @@
 import React from 'react';
 import { MapPin, Clock, Calendar, Gift, Wine } from 'lucide-react';
 import paletteImg from '../../assets/pallete.jpg';
-import CosmicNebulaMastercard from '../ui/cursor-wander-card';
 
 const WeddingInfo: React.FC = () => {
   const getDirectionsUrl = (address: string) => {
@@ -159,7 +158,7 @@ const WeddingInfo: React.FC = () => {
           </div>
         </div>
 
-        {/* Gifts Section - Enhanced with Cosmic Gift Card and Detailed Information */}
+        {/* Gifts Section - Centered */}
         <div className="mb-16">
           <div className="text-center mb-10">
             <div className="inline-flex items-center gap-3 bg-white/80 rounded-full px-6 py-3">
@@ -169,39 +168,21 @@ const WeddingInfo: React.FC = () => {
           </div>
           
           <div className="flex justify-center">
-            <div className="group relative max-w-4xl w-full"> 
-             
+            <div className="group relative max-w-lg w-full">
+              <div className="absolute inset-0 bg-gradient-to-br from-blush-200/20 to-sage-200/20 rounded-3xl blur-xl transform group-hover:scale-105 transition-transform duration-300"></div>
+              <div className="relative bg-white/90 backdrop-blur-sm rounded-3xl p-8 border border-blush-100 hover:border-blush-200 transition-all duration-300 h-full flex flex-col">
                 
                 {/* Gift Details - Centered */}
-                <div className="text-center space-y-8 flex-grow">
-                  <div>
-                    <p className="text-sage-700 text-xl mb-2">
-                      <span className="font-semibold">Preferred gifts:</span> 
-                    </p>
-                  </div>
-                  
-                  {/* Interactive Gift Card Display */}
-                  <div className="flex justify-center my-8">
-                    <CosmicNebulaMastercard
-                      cardholderName="Suggested Store: Woolworths, @Home, Volpes, Coricraft "
-                      width="420px"
-                      height="280px"
-                      theme={{
-                        primaryColor: "#555c78",
-                        secondaryColor: "#555c78", 
-                        glowColor: "rgba(85, 92, 120, 0.6)"
-                      }}
-                      logoText={{
-                        topText: "Gift Cards",
-                        bottomText: " "
-                      }}
-                      className="transform hover:scale-105 transition-transform duration-300"
-                    />
-                  </div>
-                  
-                
-                 
-              
+                <div className="text-center space-y-4 flex-grow">
+                  <p className="text-sage-700 text-lg mb-2">
+                    <span className="font-semibold">Preferred gifts:</span> 
+                    <span className="font-bold text-blush-600 block text-xl mt-1">Gift Cards</span>
+                  </p>
+                  <p className="text-sage-600">
+                    <span className="font-medium">Suggested stores:</span><br />
+                    Woolworths, @Home, Volpes, Coricraft
+                  </p>
+                </div>
               </div>
             </div>
           </div>
@@ -210,7 +191,7 @@ const WeddingInfo: React.FC = () => {
         {/* Theme Section - Centered */}
         <div className="text-center">
           <div className="mb-8">
-            <div className="inline-flex items-center gap-3 bg-white/80 rounded-full px-6 py-3 mb-6">
+            <div className="inline-flex items-center gap-3 bg-white/80 rounded-full px-6 py-3 border border-mocha-100 mb-6">
               <h3 className="font-serif text-2xl text-mocha-500 font-semibold">Weekend Theme</h3>
             </div>
             <h4 className="font-serif text-3xl text-sage-600 mb-6">Shades of Blue and Brown</h4>
