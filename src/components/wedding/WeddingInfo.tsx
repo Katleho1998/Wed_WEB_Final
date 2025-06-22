@@ -174,12 +174,11 @@ const WeddingInfo: React.FC = () => {
               <div className="relative bg-white/90 backdrop-blur-sm rounded-3xl p-8 border border-blush-100 hover:border-blush-200 transition-all duration-300 h-full flex flex-col">
                 
                 {/* Gift Details - Centered */}
-
+                <div className="text-center space-y-8 flex-grow">
                   <div>
                     <p className="text-sage-700 text-xl mb-2">
                       <span className="font-semibold">Preferred gifts:</span> 
                     </p>
-                    <h4 className="font-bold text-blush-600 text-3xl mb-6 font-serif">Gift Cards</h4>
                   </div>
                   
                   {/* Interactive Gift Card Display */}
@@ -200,7 +199,12 @@ const WeddingInfo: React.FC = () => {
                       className="transform hover:scale-105 transition-transform duration-300"
                     />
                   </div>
-              
+                  
+                
+                  <p className="text-sage-500 text-sm italic">
+                    Hover over the gift card above to see the interactive effect!
+                  </p>
+                </div>
               </div>
             </div>
           </div>
