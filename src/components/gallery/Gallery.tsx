@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import ImageModal from './ImageModal';
 import CircularGallery from './CircularGallery';
-import UploadedPhotosGallery from '../photos/UploadedPhotosGallery';
 
 // Import all couple images
 import img1 from '../../assets/Couple/image 1.jpg';
@@ -25,7 +24,7 @@ const COUPLE_IMAGES = [
 
 const Gallery: React.FC = () => {
   const [selectedImage, setSelectedImage] = useState<number | null>(null);
-  const [viewMode, setViewMode] = useState<'circular' | 'grid' | 'uploaded'>('circular');
+  const [viewMode, setViewMode] = useState<'circular' | 'grid'>('circular');
   const [isMobile, setIsMobile] = useState(false);
 
   // Check if device is mobile
@@ -79,7 +78,7 @@ const Gallery: React.FC = () => {
           <div className="bg-white/80 rounded-full p-1 shadow-lg border border-blush-100">
             <button
               onClick={() => setViewMode('circular')}
-              className={`px-4 py-2 rounded-full transition-all duration-300 font-medium text-sm ${
+              className={`px-6 py-2 rounded-full transition-all duration-300 font-medium ${
                 viewMode === 'circular'
                   ? 'bg-[#555c78] text-white shadow-md'
                   : 'text-[#555c78] hover:bg-blush-50'
@@ -89,23 +88,13 @@ const Gallery: React.FC = () => {
             </button>
             <button
               onClick={() => setViewMode('grid')}
-              className={`px-4 py-2 rounded-full transition-all duration-300 font-medium text-sm ${
+              className={`px-6 py-2 rounded-full transition-all duration-300 font-medium ${
                 viewMode === 'grid'
                   ? 'bg-[#555c78] text-white shadow-md'
                   : 'text-[#555c78] hover:bg-blush-50'
               }`}
             >
               Grid View
-            </button>
-            <button
-              onClick={() => setViewMode('uploaded')}
-              className={`px-4 py-2 rounded-full transition-all duration-300 font-medium text-sm ${
-                viewMode === 'uploaded'
-                  ? 'bg-[#555c78] text-white shadow-md'
-                  : 'text-[#555c78] hover:bg-blush-50'
-              }`}
-            >
-              Guest Photos
             </button>
           </div>
         </div>
@@ -188,17 +177,6 @@ const Gallery: React.FC = () => {
                 <div className="absolute inset-0 rounded-2xl border-2 border-blush-100 pointer-events-none"></div>
               </div>
             ))}
-          </div>
-        )}
-
-        {/* Uploaded Photos View */}
-        {viewMode === 'uploaded' && (
-          <div className="mb-16">
-            <div className="text-center mb-8">
-              <h3 className="font-serif text-2xl text-sage-700 mb-2">Guest Photos</h3>
-              <p className="text-sage-600">Beautiful moments captured by our loved ones</p>
-            </div>
-            <UploadedPhotosGallery />
           </div>
         )}
 
