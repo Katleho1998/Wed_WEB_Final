@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import ImageModal from './ImageModal';
 import CircularGallery from './CircularGallery';
+import { trackGalleryView } from '../../utils/analytics';
 
 // Import all couple images
 import img1 from '../../assets/Couple/image 1.jpg';
@@ -54,6 +55,12 @@ const Gallery: React.FC = () => {
     setSelectedImage(COUPLE_IMAGES[newIndex].id);
   };
 
+  // Handle view mode change with analytics tracking
+  const handleViewModeChange = (mode: 'circular' | 'grid') => {
+    setViewMode(mode);
+    trackGalleryView(mode);
+  };
+
   // Responsive bend value - less bend on mobile
   const getBendValue = () => {
     if (isMobile) {
@@ -77,7 +84,7 @@ const Gallery: React.FC = () => {
         <div className="flex justify-center mb-12">
           <div className="bg-white/80 rounded-full p-1 shadow-lg border border-blush-100">
             <button
-              onClick={() => setViewMode('circular')}
+              onClick={() => handleViewModeChange('circular')}
               className={`px-6 py-2 rounded-full transition-all duration-300 font-medium ${
                 viewMode === 'circular'
                   ? 'bg-[#555c78] text-white shadow-md'
@@ -87,7 +94,7 @@ const Gallery: React.FC = () => {
               3D View
             </button>
             <button
-              onClick={() => setViewMode('grid')}
+              onClick={() => handleViewModeChange('grid')}
               className={`px-6 py-2 rounded-full transition-all duration-300 font-medium ${
                 viewMode === 'grid'
                   ? 'bg-[#555c78] text-white shadow-md'

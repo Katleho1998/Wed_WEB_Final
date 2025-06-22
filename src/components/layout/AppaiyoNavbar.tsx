@@ -1,16 +1,15 @@
 import React, { useState, useRef } from 'react';
 import { Menu, X } from 'lucide-react';
 import { NAV_ITEMS } from '../../utils/constants';
-
-
-;
+import { trackNavigation } from '../../utils/analytics';
 
 const AppaiyoNavbar: React.FC = () => {
   const [open, setOpen] = useState(false);
   const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
-  function handleNavClick(href: string): void {
+  function handleNavClick(href: string, label: string): void {
     setOpen(false);
+    trackNavigation(label.toLowerCase().replace(' ', '_'));
     if (href && href !== '#') {
       window.location.href = href;
     }
@@ -59,7 +58,7 @@ const AppaiyoNavbar: React.FC = () => {
               {NAV_ITEMS.map((item) => (
                 <li key={item.href}>
                   <button
-                    onClick={() => handleNavClick(item.href)}
+                    onClick={() => handleNavClick(item.href, item.label)}
                     className="w-full text-left px-6 py-3 text-sage-700 transition-colors duration-200 rounded-xl nav-link-hover"
                   >
                     {item.label}

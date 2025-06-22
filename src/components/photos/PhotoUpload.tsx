@@ -2,6 +2,7 @@ import React, { useState, useCallback, useRef } from 'react';
 import { Upload, X, Camera, CheckCircle, AlertCircle, Eye, Upload as UploadIcon } from 'lucide-react';
 import { supabase } from '../../utils/supabaseClient';
 import { useToastContext } from '../../context/ToastContext';
+import { trackPhotoUpload } from '../../utils/analytics';
 
 interface PhotoUploadProps {
   onUploadSuccess?: () => void;
@@ -200,6 +201,9 @@ const PhotoUpload: React.FC<PhotoUploadProps> = ({ onUploadSuccess }) => {
       showError('No valid files to upload');
       return;
     }
+
+    // Track photo upload in analytics
+    trackPhotoUpload(validFiles.length);
 
     // Move selected files to uploading
     const newUploadingFiles: UploadingFile[] = validFiles.map(file => ({

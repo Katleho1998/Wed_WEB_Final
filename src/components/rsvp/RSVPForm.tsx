@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import FlowersImg from '../../assets/Flowers-for-website.png';
 import { supabase } from '../../utils/supabaseClient';
 import { useToastContext } from '../../context/ToastContext';
+import { trackRSVP } from '../../utils/analytics';
 
 interface Guest {
   name: string;
@@ -82,6 +83,7 @@ const RSVPForm: React.FC = () => {
     }
 
     // Prepare data for Supabase
+    const guestCount = bringingPartner === 'yes' ? 2 : 1;
     const rsvpPayload = {
       name: formData.mainGuest.name,
       email: formData.mainGuest.email,
@@ -93,9 +95,7 @@ const RSVPForm: React.FC = () => {
 
     // Debug: log payload and supabase client
     console.log('RSVP Payload:', rsvpPayload);
-    // console.log('Supabase client:', supabase);
 
-    // Double-check your table name here: is it 'rsvps' or 'rsvp'?
     // Save to Supabase
     const { error: supabaseError } = await supabase.from('rsvps').insert([rsvpPayload]);
     if (supabaseError) {
@@ -104,6 +104,9 @@ const RSVPForm: React.FC = () => {
       setIsSubmitting(false);
       return;
     }
+
+    // Track RSVP submission in analytics
+    trackRSVP(formData.mainGuest.attending, guestCount);
 
     // Try to call email function, but don't fail the RSVP if it doesn't work
     try {
