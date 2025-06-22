@@ -153,11 +153,7 @@ Deno.serve(async (req: Request) => {
                   <p style="margin: 0; font-size: 16px; font-weight: bold; color: #ffffff; font-family: 'Playfair Display', serif; text-shadow: 0 1px 2px rgba(0,0,0,0.2); text-align: center;">Weekend Theme: Shades of Blue and Brown</p>
                 </div>
               </div>
-              
-              <p style="color: #666; font-size: 17px; line-height: 1.7; margin-bottom: 25px; text-align: center;">
-                We'll be sending out more details about parking, directions, and other important information as we get closer to the date. Keep an eye on your inbox!
-              </p>
-              
+             
               <p style="color: #666; font-size: 17px; line-height: 1.7; margin-bottom: 35px; text-align: center;">
                 If you have any questions or need to make changes to your RSVP, please don't hesitate to reach out to us directly.
               </p>
