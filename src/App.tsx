@@ -22,9 +22,10 @@ function App() {
           <OurStory />
           <WeddingInfo />
           <Gallery />
-          <PhotoUploadSection />
+          
           <RSVPForm />
           <MapAndCalendar />
+          <PhotoUploadSection />
         </main>
         <Footer />
       </div>
