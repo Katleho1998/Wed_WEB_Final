@@ -170,7 +170,7 @@ const WeddingInfo: React.FC = () => {
           
           <div className="flex justify-center">
             <div className="group relative max-w-4xl w-full"> 
-              <div className="relative bg-white/90 backdrop-blur-sm rounded-3xl p-8 border border-blush-100 hover:border-blush-200 transition-all duration-300 h-full flex flex-col">
+             
                 
                 {/* Gift Details - Centered */}
                 <div className="text-center space-y-8 flex-grow">
@@ -201,7 +201,7 @@ const WeddingInfo: React.FC = () => {
                   
                 
                  
-                </div>
+              
               </div>
             </div>
           </div>
