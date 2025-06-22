@@ -12,29 +12,10 @@ const PhotoUploadSection: React.FC = () => {
           <h2 className="font-serif text-4xl md:text-5xl text-blush-700 mb-6 tracking-tight">
             Share Your Memories
           </h2>
-          <p className="text-lg text-sage-600 max-w-2xl mx-auto mb-8">
+          <p className="text-lg text-sage-600 max-w-2xl mx-auto">
             Help us capture every magical moment! Upload your photos from our wedding celebration 
             and let's create a beautiful collection of memories together.
           </p>
-          
-          {/* Key Information */}
-          <div className="bg-gradient-to-r from-blush-50 to-sage-50 border border-blush-200 rounded-2xl p-6 max-w-3xl mx-auto">
-            <h3 className="font-serif text-xl text-sage-800 mb-4">📸 Photo Sharing Made Easy</h3>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm">
-              <div className="text-center">
-                <div className="font-semibold text-blush-600 mb-1">Upload Limit</div>
-                <div className="text-sage-600">30 photos at a time</div>
-              </div>
-              <div className="text-center">
-                <div className="font-semibold text-blush-600 mb-1">File Size</div>
-                <div className="text-sage-600">Up to 10MB each</div>
-              </div>
-              <div className="text-center">
-                <div className="font-semibold text-blush-600 mb-1">Review Process</div>
-                <div className="text-sage-600">Photos reviewed before publishing</div>
-              </div>
-            </div>
-          </div>
         </div>
         
         <PhotoUpload onUploadSuccess={() => {
@@ -43,20 +24,15 @@ const PhotoUploadSection: React.FC = () => {
         }} />
         
         <div className="mt-12 text-center">
-          <div className="bg-amber-50 border border-amber-200 rounded-xl p-6 max-w-2xl mx-auto">
-            <h3 className="font-semibold text-amber-800 mb-3">📋 Photo Guidelines</h3>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm text-amber-700">
-              <ul className="space-y-2 text-left">
-                <li>• Upload up to 30 photos per session</li>
-                <li>• Photos reviewed before going live</li>
-                <li>• Only wedding-related content please</li>
-              </ul>
-              <ul className="space-y-2 text-left">
-                <li>• Maximum 10MB per photo</li>
-                <li>• JPEG, PNG, WebP, HEIC formats</li>
-                <li>• Multiple uploads supported</li>
-              </ul>
-            </div>
+          <div className="bg-blue-50 border border-blue-200 rounded-xl p-6 max-w-2xl mx-auto">
+            <h3 className="font-semibold text-blue-800 mb-2">Photo Guidelines</h3>
+            <ul className="text-sm text-blue-700 space-y-1 text-left">
+              <li>• Photos will be reviewed before appearing in the public gallery</li>
+              <li>• Please only upload appropriate wedding-related photos</li>
+              <li>• Maximum file size: 10MB per photo</li>
+              <li>• Supported formats: JPEG, PNG, WebP, HEIC</li>
+              <li>• You can upload multiple photos at once</li>
+            </ul>
           </div>
         </div>
       </div>
