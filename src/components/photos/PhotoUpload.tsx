@@ -18,8 +18,6 @@ interface UploadingFile {
 
 const PhotoUpload: React.FC<PhotoUploadProps> = ({ onUploadSuccess }) => {
   const { showError } = useToastContext();
-  const [uploaderName, setUploaderName] = useState('');
-  const [uploaderEmail, setUploaderEmail] = useState('');
   const [uploadingFiles, setUploadingFiles] = useState<UploadingFile[]>([]);
   const [isDragOver, setIsDragOver] = useState(false);
 
@@ -64,7 +62,7 @@ const PhotoUpload: React.FC<PhotoUploadProps> = ({ onUploadSuccess }) => {
         prev.map(f => f.id === uploadId ? { ...f, progress: 75 } : f)
       );
 
-      // Save metadata to database
+      // Save metadata to database with anonymous user info
       const { error: dbError } = await supabase
         .from('wedding_photos')
         .insert({
@@ -72,8 +70,8 @@ const PhotoUpload: React.FC<PhotoUploadProps> = ({ onUploadSuccess }) => {
           file_path: filePath,
           file_size: file.size,
           mime_type: file.type,
-          uploaded_by_name: uploaderName,
-          uploaded_by_email: uploaderEmail,
+          uploaded_by_name: 'Anonymous Guest',
+          uploaded_by_email: 'anonymous@wedding.guest',
         });
 
       if (dbError) {
@@ -103,11 +101,6 @@ const PhotoUpload: React.FC<PhotoUploadProps> = ({ onUploadSuccess }) => {
   };
 
   const handleFiles = useCallback((files: FileList) => {
-    if (!uploaderName.trim() || !uploaderEmail.trim()) {
-      showError('Please enter your name and email before uploading photos.');
-      return;
-    }
-
     const validFiles: File[] = [];
     
     for (let i = 0; i < files.length; i++) {
@@ -139,7 +132,7 @@ const PhotoUpload: React.FC<PhotoUploadProps> = ({ onUploadSuccess }) => {
     newUploadingFiles.forEach(({ id, file }) => {
       uploadFile(file, id);
     });
-  }, [uploaderName, uploaderEmail, showError, onUploadSuccess]);
+  }, [showError, onUploadSuccess]);
 
   const handleDrop = useCallback((e: React.DragEvent) => {
     e.preventDefault();
@@ -180,38 +173,6 @@ const PhotoUpload: React.FC<PhotoUploadProps> = ({ onUploadSuccess }) => {
         <p className="text-sage-600">Upload your favorite moments from our special day</p>
       </div>
 
-      {/* Uploader Info */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
-        <div>
-          <label className="block text-sage-700 mb-2 font-semibold" htmlFor="uploader-name">
-            Your Name*
-          </label>
-          <input
-            type="text"
-            id="uploader-name"
-            value={uploaderName}
-            onChange={(e) => setUploaderName(e.target.value)}
-            className="w-full px-4 py-3 border border-sage-200 rounded-xl bg-white/60 focus:outline-none focus:ring-2 focus:ring-blush-400 shadow"
-            placeholder="Enter your name"
-            required
-          />
-        </div>
-        <div>
-          <label className="block text-sage-700 mb-2 font-semibold" htmlFor="uploader-email">
-            Your Email*
-          </label>
-          <input
-            type="email"
-            id="uploader-email"
-            value={uploaderEmail}
-            onChange={(e) => setUploaderEmail(e.target.value)}
-            className="w-full px-4 py-3 border border-sage-200 rounded-xl bg-white/60 focus:outline-none focus:ring-2 focus:ring-blush-400 shadow"
-            placeholder="Enter your email"
-            required
-          />
-        </div>
-      </div>
-
       {/* Upload Area */}
       <div
         className={`
@@ -234,7 +195,6 @@ const PhotoUpload: React.FC<PhotoUploadProps> = ({ onUploadSuccess }) => {
           accept="image/jpeg,image/jpg,image/png,image/webp,image/heic"
           onChange={handleFileInput}
           className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
-          disabled={!uploaderName.trim() || !uploaderEmail.trim()}
         />
         
         <Upload className="w-12 h-12 text-sage-400 mx-auto mb-4" />
@@ -244,12 +204,6 @@ const PhotoUpload: React.FC<PhotoUploadProps> = ({ onUploadSuccess }) => {
         <p className="text-sage-500 text-sm">
           Supports JPEG, PNG, WebP, and HEIC files up to 10MB each
         </p>
-        
-        {(!uploaderName.trim() || !uploaderEmail.trim()) && (
-          <p className="text-amber-600 text-sm mt-2 font-medium">
-            Please enter your name and email first
-          </p>
-        )}
       </div>
 
       {/* Uploading Files */}
