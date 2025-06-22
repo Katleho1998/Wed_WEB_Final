@@ -159,7 +159,7 @@ const WeddingInfo: React.FC = () => {
           </div>
         </div>
 
-        {/* Gifts Section - Enhanced with Cosmic Gift Card */}
+        {/* Gifts Section - Enhanced with Cosmic Gift Card and Detailed Information */}
         <div className="mb-16">
           <div className="text-center mb-10">
             <div className="inline-flex items-center gap-3 bg-white/80 rounded-full px-6 py-3">
@@ -169,23 +169,25 @@ const WeddingInfo: React.FC = () => {
           </div>
           
           <div className="flex justify-center">
-            <div className="group relative max-w-2xl w-full">
+            <div className="group relative max-w-4xl w-full">
               <div className="absolute inset-0 bg-gradient-to-br from-blush-200/20 to-sage-200/20 rounded-3xl blur-xl transform group-hover:scale-105 transition-transform duration-300"></div>
               <div className="relative bg-white/90 backdrop-blur-sm rounded-3xl p-8 border border-blush-100 hover:border-blush-200 transition-all duration-300 h-full flex flex-col">
                 
                 {/* Gift Details - Centered */}
-                <div className="text-center space-y-6 flex-grow">
-                  <p className="text-sage-700 text-lg mb-4">
-                    <span className="font-semibold">Preferred gifts:</span> 
-                    <span className="font-bold text-blush-600 block text-xl mt-1">Gift Cards</span>
-                  </p>
+                <div className="text-center space-y-8 flex-grow">
+                  <div>
+                    <p className="text-sage-700 text-xl mb-2">
+                      <span className="font-semibold">Preferred gifts:</span> 
+                    </p>
+                    <h4 className="font-bold text-blush-600 text-3xl mb-6 font-serif">Gift Cards</h4>
+                  </div>
                   
                   {/* Interactive Gift Card Display */}
                   <div className="flex justify-center my-8">
                     <CosmicNebulaMastercard
                       cardholderName="THABI & TREVOR"
-                      width="320px"
-                      height="200px"
+                      width="360px"
+                      height="220px"
                       theme={{
                         primaryColor: "#555c78",
                         secondaryColor: "#4a5068", 
@@ -199,22 +201,71 @@ const WeddingInfo: React.FC = () => {
                     />
                   </div>
                   
-                  <div className="bg-gradient-to-r from-blush-50 to-sage-50 rounded-xl p-6 border border-blush-100">
-                    <p className="text-sage-600 mb-4">
-                      <span className="font-medium">Suggested stores:</span>
-                    </p>
-                    <div className="grid grid-cols-2 gap-3 text-sm">
-                      <div className="bg-white rounded-lg p-3 border border-sage-200 text-center">
-                        <span className="font-semibold text-sage-700">Woolworths</span>
+                  {/* Detailed Information Section */}
+                  <div className="bg-gradient-to-r from-blush-50 to-sage-50 rounded-2xl p-8 border border-blush-100">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                      
+                      {/* Left Column - Suggested Stores */}
+                      <div>
+                        <h5 className="font-semibold text-sage-700 text-lg mb-4 flex items-center gap-2">
+                          <Gift className="w-5 h-5 text-blush-500" />
+                          Suggested Stores
+                        </h5>
+                        <div className="grid grid-cols-1 gap-3">
+                          <div className="bg-white rounded-lg p-4 border border-sage-200 text-center shadow-sm hover:shadow-md transition-shadow duration-200">
+                            <span className="font-semibold text-sage-700 text-lg">Woolworths</span>
+                            <p className="text-sage-500 text-sm mt-1">Home & lifestyle products</p>
+                          </div>
+                          <div className="bg-white rounded-lg p-4 border border-sage-200 text-center shadow-sm hover:shadow-md transition-shadow duration-200">
+                            <span className="font-semibold text-sage-700 text-lg">@Home</span>
+                            <p className="text-sage-500 text-sm mt-1">Furniture & home decor</p>
+                          </div>
+                          <div className="bg-white rounded-lg p-4 border border-sage-200 text-center shadow-sm hover:shadow-md transition-shadow duration-200">
+                            <span className="font-semibold text-sage-700 text-lg">Volpes</span>
+                            <p className="text-sage-500 text-sm mt-1">Quality furniture & appliances</p>
+                          </div>
+                          <div className="bg-white rounded-lg p-4 border border-sage-200 text-center shadow-sm hover:shadow-md transition-shadow duration-200">
+                            <span className="font-semibold text-sage-700 text-lg">Coricraft</span>
+                            <p className="text-sage-500 text-sm mt-1">Premium furniture & home accessories</p>
+                          </div>
+                        </div>
                       </div>
-                      <div className="bg-white rounded-lg p-3 border border-sage-200 text-center">
-                        <span className="font-semibold text-sage-700">@Home</span>
-                      </div>
-                      <div className="bg-white rounded-lg p-3 border border-sage-200 text-center">
-                        <span className="font-semibold text-sage-700">Volpes</span>
-                      </div>
-                      <div className="bg-white rounded-lg p-3 border border-sage-200 text-center">
-                        <span className="font-semibold text-sage-700">Coricraft</span>
+                      
+                      {/* Right Column - Gift Information */}
+                      <div className="space-y-6">
+                        <div>
+                          <h5 className="font-semibold text-sage-700 text-lg mb-3">Why Gift Cards?</h5>
+                          <ul className="text-sage-600 space-y-2 text-sm">
+                            <li className="flex items-start gap-2">
+                              <span className="text-blush-500 mt-1">•</span>
+                              <span>Allows us to choose exactly what we need for our new home</span>
+                            </li>
+                            <li className="flex items-start gap-2">
+                              <span className="text-blush-500 mt-1">•</span>
+                              <span>No worry about duplicates or returns</span>
+                            </li>
+                            <li className="flex items-start gap-2">
+                              <span className="text-blush-500 mt-1">•</span>
+                              <span>Perfect for building our life together</span>
+                            </li>
+                          </ul>
+                        </div>
+                        
+                        <div className="bg-white rounded-lg p-4 border border-blush-200">
+                          <h6 className="font-semibold text-blush-700 mb-2">Gift Card Options:</h6>
+                          <div className="text-sage-600 text-sm space-y-1">
+                            <p>• <strong>Physical cards:</strong> Available at store locations</p>
+                            <p>• <strong>Digital cards:</strong> Perfect for online shopping</p>
+                            <p>• <strong>Any amount:</strong> Every contribution is appreciated</p>
+                          </div>
+                        </div>
+                        
+                        <div className="bg-gradient-to-r from-blush-100 to-sage-100 rounded-lg p-4 border border-blush-200">
+                          <p className="text-sage-700 text-sm text-center font-medium">
+                            💝 Your presence is the greatest gift, but if you wish to give something, 
+                            these gift cards would help us start our married life together! 💝
+                          </p>
+                        </div>
                       </div>
                     </div>
                   </div>
