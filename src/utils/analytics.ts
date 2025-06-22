@@ -16,7 +16,7 @@ export const isAnalyticsLoaded = (): boolean => {
 export const trackPageView = (pagePath: string, pageTitle?: string) => {
   if (!isAnalyticsLoaded()) return;
   
-  window.gtag('config', 'GA_MEASUREMENT_ID', {
+  window.gtag('config', 'G-CFDW7XTEXN', {
     page_path: pagePath,
     page_title: pageTitle || document.title,
   });
