@@ -44,7 +44,7 @@ const HeroSection: React.FC = () => {
   return (
     <section
       id="home"
-      className="relative inset-0 w-full h-screen flex items-center justify-center bg-cream-50 overflow-hidden z-[100] px-2 sm:px-0"
+      className="relative inset-0 w-full h-screen flex items-center justify-center bg-cream-50 overflow-hidden z-[100] px-4 sm:px-6 md:px-8"
     >
       {/* Particles background */}
       <Particles
@@ -68,22 +68,23 @@ const HeroSection: React.FC = () => {
         {/* ...existing flower animation code... */}
       </div>
 
-      {/* Main content, centered - Reduced mobile padding */}
-      <div className="relative z-20 flex flex-col items-center justify-center w-full h-full px-2 sm:px-4 max-w-2xl mx-auto py-4 sm:py-12 text-center">
+      {/* Main content, centered - Enhanced mobile sizing */}
+      <div className="relative z-20 flex flex-col items-center justify-center w-full h-full max-w-4xl mx-auto py-8 sm:py-12 text-center">
         <img
           src={FlowersImg}
           alt="Floral decoration"
-          className="mx-auto mb-2 sm:mb-6 max-w-[140px] sm:max-w-[180px] md:max-w-[240px] lg:max-w-[300px] drop-shadow-lg"
+          className="mx-auto mb-4 sm:mb-6 md:mb-8 max-w-[180px] sm:max-w-[220px] md:max-w-[280px] lg:max-w-[340px] xl:max-w-[400px] drop-shadow-lg"
           style={{ objectFit: 'contain' }}
         />
 
-        <span className="block mb-1 sm:mb-2 text-[8px] sm:text-sm md:text-base lg:text-lg font-semibold text-mocha-500 tracking-wide text-center uppercase">
+        <span className="block mb-3 sm:mb-4 text-xs sm:text-sm md:text-base lg:text-lg font-semibold text-mocha-500 tracking-wide text-center uppercase px-2">
           PLEASE JOIN US FOR THE TRADITIONAL WEDDING OF
         </span>
-        {/* Animated SplitText for names - Increased mobile size from text-2xl to text-4xl */}
+        
+        {/* Animated SplitText for names - Significantly larger on mobile */}
         <SplitText
           text="Thabi & Trevor"
-          className="font-serif text-bold text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-dusty-800 mb-1 sm:mb-2 animate-fadeIn leading-tight flex items-center justify-center gap-2"
+          className="font-serif text-bold text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl text-dusty-800 mb-3 sm:mb-4 md:mb-6 animate-fadeIn leading-tight flex items-center justify-center gap-2 px-2"
           delay={100}
           duration={0.6}
           ease="power3.out"
@@ -95,27 +96,27 @@ const HeroSection: React.FC = () => {
           textAlign="center"
         />
 
-        <div className="mb-6 sm:mb-8 mt-2 w-full flex flex-col items-center">
-          <p className="text-base sm:text-lg md:text-xl text-dusty-600 animatexfadeIn animation-delay-300 text-center">
+        <div className="mb-8 sm:mb-10 md:mb-12 mt-4 sm:mt-6 w-full flex flex-col items-center">
+          <p className="text-xl sm:text-2xl md:text-3xl lg:text-4xl text-dusty-600 animate-fadeIn animation-delay-300 text-center font-medium mb-2 sm:mb-3 px-2">
             September 27th - 28th, 2025
           </p>
-          <p className="text-sm sm:text-base md:text-lg text-mocha-500 animate-fadeIn animation-delay-600 text-center">
+          <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-mocha-500 animate-fadeIn animation-delay-600 text-center px-2">
             Meadowlands • Soweto
           </p>
         </div>
 
         <a
           href="#rsvp"
-          className="inline-flex items-center gap-2 sm:gap-3 bg-gradient-to-r from-blush-400 via-blush-500 to-blush-600 rounded-full px-6 sm:px-12 py-3 sm:py-4 transition-colors duration-200 text-base sm:text-xl animate-fadeIn animation-delay-900 uppercase tracking-wider border relative
-            hover:bg-[#555c78] hover:from-[#555c78] hover:to-[#555c78]"
+          className="inline-flex items-center gap-3 sm:gap-4 bg-gradient-to-r from-blush-400 via-blush-500 to-blush-600 rounded-full px-8 sm:px-12 md:px-16 py-4 sm:py-5 md:py-6 transition-colors duration-200 text-lg sm:text-xl md:text-2xl lg:text-3xl animate-fadeIn animation-delay-900 uppercase tracking-wider border relative
+            hover:bg-[#555c78] hover:from-[#555c78] hover:to-[#555c78] font-semibold"
           style={{
             color: '#555c78',
             borderColor: '#555c78',
-            borderWidth: '1px',
+            borderWidth: '2px',
             textShadow: 'none',
             letterSpacing: '0.08em',
-            boxShadow: 'none',
-            transition: 'background 0.2s, color 0.2s'
+            boxShadow: '0 4px 20px rgba(85, 92, 120, 0.2)',
+            transition: 'all 0.3s ease'
           }}
         >
           <span className='hover:text-white'>RSVP Now</span>
