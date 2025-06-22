@@ -194,8 +194,8 @@ const WeddingInfo: React.FC = () => {
                         glowColor: "rgba(85, 92, 120, 0.6)"
                       }}
                       logoText={{
-                        topText: "Suggested Stores",
-                        bottomText: "CARD"
+                        topText: "Gift Card",
+                        bottomText: "Suggested Stores"
                       }}
                       className="transform hover:scale-105 transition-transform duration-300"
                     />
