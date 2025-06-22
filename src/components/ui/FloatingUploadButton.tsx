@@ -50,13 +50,13 @@ const FloatingUploadButton: React.FC = () => {
       <div className="floating-upload-btn">
         <button
           onClick={scrollToUpload}
-          className="group relative bg-gradient-to-br from-blush-400 to-blush-500 w-14 h-14 sm:w-16 sm:h-16 rounded-full shadow-2xl hover:shadow-3xl transition-all duration-300 flex items-center justify-center hover:scale-110 active:scale-95 animate-pulse"
+          className="group relative w-14 h-14 sm:w-16 sm:h-16 rounded-full shadow-2xl hover:shadow-3xl transition-all duration-300 flex items-center justify-center hover:scale-110 active:scale-95"
           style={{
             position: 'relative',
             zIndex: 999999,
             pointerEvents: 'auto',
-            background: 'linear-gradient(135deg, #f4a5a5 0%, #e6a4b4 100%)',
-            boxShadow: '0 10px 25px rgba(244, 165, 165, 0.4), 0 0 0 1px rgba(255, 255, 255, 0.1)',
+            background: '#555c78', // Using the website's blue color
+            boxShadow: '0 10px 25px rgba(85, 92, 120, 0.4), 0 0 0 1px rgba(255, 255, 255, 0.1)',
           }}
           aria-label="Upload photos"
         >
