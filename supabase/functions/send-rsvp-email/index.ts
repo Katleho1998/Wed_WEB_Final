@@ -264,7 +264,7 @@ Deno.serve(async (req: Request) => {
         to: [body.email],
         subject: emailSubject,
         html: emailContent,
-        reply_to: 'thabisomokone@gmail.com', // Replace with your actual contact email
+        reply_to: 'matsaseng17@gmail.com', // Replace with your actual contact email
       }),
     });
 
