@@ -139,26 +139,30 @@ const RSVPForm: React.FC = () => {
 
   if (submitted) {
     return (
-      <div className="text-center py-16">
-        <img
-          src={FlowersImg}
-          alt="Floral decoration"
-          className="mx-auto mb-6 max-w-[120px] md:max-w-[160px] lg:max-w-[200px] drop-shadow-lg"
-          style={{ objectFit: 'contain' }}
-        />
-        <h3 className="font-serif text-3xl text-sage-700 mb-4">Thank You!</h3>
-        <p className="text-sage-600 mb-6">
-          Your RSVP has been submitted successfully.<br />We're looking forward to celebrating with you!
-        </p>
-      </div>
+      <section id="rsvp" className="py-8 sm:py-16 bg-cream-50 min-h-screen flex items-center justify-center">
+        <div className="w-full max-w-lg mx-auto px-4 sm:px-6">
+          <div className="text-center py-12 sm:py-16">
+            <img
+              src={FlowersImg}
+              alt="Floral decoration"
+              className="mx-auto mb-4 sm:mb-6 max-w-[100px] sm:max-w-[120px] md:max-w-[160px] lg:max-w-[200px] drop-shadow-lg"
+              style={{ objectFit: 'contain' }}
+            />
+            <h3 className="font-serif text-2xl sm:text-3xl text-sage-700 mb-3 sm:mb-4">Thank You!</h3>
+            <p className="text-sage-600 mb-4 sm:mb-6 text-sm sm:text-base leading-relaxed">
+              Your RSVP has been submitted successfully.<br />We're looking forward to celebrating with you!
+            </p>
+          </div>
+        </div>
+      </section>
     );
   }
 
   return (
-    <section id="rsvp" className="py-12 sm:py-20 bg-cream-50 min-h-screen flex items-center justify-center">
-      <div className="w-full max-w-lg sm:max-w-2xl mx-auto px-2 sm:px-4">
+    <section id="rsvp" className="py-8 sm:py-16 bg-cream-50 min-h-screen flex items-center justify-center">
+      <div className="w-full max-w-lg sm:max-w-2xl mx-auto px-3 sm:px-4">
         <div
-          className="relative rounded-3xl shadow-2xl border border-blush-100 bg-white/40 backdrop-blur-xl p-6 sm:p-8 md:p-12"
+          className="relative rounded-2xl sm:rounded-3xl shadow-xl sm:shadow-2xl border border-blush-100 bg-white/40 backdrop-blur-xl p-4 sm:p-6 md:p-8 lg:p-12"
           style={{
             background: 'rgba(255,255,255,0.35)',
             boxShadow: '0 8px 32px 0 rgba(31, 38, 135, 0.10)',
@@ -170,22 +174,23 @@ const RSVPForm: React.FC = () => {
           <img
             src={FlowersImg}
             alt="Floral decoration"
-            className="mx-auto mb-6 max-w-[120px] md:max-w-[160px] lg:max-w-[200px] drop-shadow-lg"
+            className="mx-auto mb-4 sm:mb-6 max-w-[100px] sm:max-w-[120px] md:max-w-[160px] lg:max-w-[200px] drop-shadow-lg"
             style={{ objectFit: 'contain' }}
           />
-          <div className="absolute -top-8 left-1/2 -translate-x-1/2 w-20 h-20 bg-blush-100 rounded-full blur-2xl opacity-40 z-0"></div>
-          <div className="absolute -bottom-8 right-8 w-24 h-24 bg-blush-200 rounded-full blur-2xl opacity-30 z-0"></div>
+          <div className="absolute -top-6 sm:-top-8 left-1/2 -translate-x-1/2 w-16 sm:w-20 h-16 sm:h-20 bg-blush-100 rounded-full blur-2xl opacity-40 z-0"></div>
+          <div className="absolute -bottom-6 sm:-bottom-8 right-6 sm:right-8 w-20 sm:w-24 h-20 sm:h-24 bg-blush-200 rounded-full blur-2xl opacity-30 z-0"></div>
           <div className="relative z-10">
-            <h2 className="font-serif text-4xl text-center text-sage-800 mb-6 drop-shadow">RSVP</h2>
-            <p className="text-center text-sage-600 mb-12 max-w-xl mx-auto">
-              Please let us know if you'll be joining us on our special day by <br/><span className='font-bold'>August 1, 2025.</span> <br />
+            <h2 className="font-serif text-3xl sm:text-4xl text-center text-sage-800 mb-4 sm:mb-6 drop-shadow">RSVP</h2>
+            <p className="text-center text-sage-600 mb-8 sm:mb-12 max-w-xl mx-auto text-sm sm:text-base leading-relaxed">
+              Please let us know if you'll be joining us on our special day by <br className="hidden sm:block"/>
+              <span className='font-bold'>August 1, 2025.</span> <br />
               We're excited to celebrate with you!
             </p>
             
             <form onSubmit={handleSubmit}>
-              <div className="space-y-6">
+              <div className="space-y-4 sm:space-y-6">
                 <div>
-                  <label className="block text-sage-700 mb-2 font-semibold" htmlFor="name">
+                  <label className="block text-sage-700 mb-2 font-semibold text-sm sm:text-base" htmlFor="name">
                     Your Full Name*
                   </label>
                   <input
@@ -199,13 +204,13 @@ const RSVPForm: React.FC = () => {
                         mainGuest: { ...formData.mainGuest, name: e.target.value },
                       })
                     }
-                    className="w-full px-4 py-3 border border-sage-200 rounded-xl bg-white/60 focus:outline-none focus:ring-2 focus:ring-blush-400 shadow"
+                    className="w-full px-3 sm:px-4 py-2.5 sm:py-3 border border-sage-200 rounded-lg sm:rounded-xl bg-white/60 focus:outline-none focus:ring-2 focus:ring-blush-400 shadow text-sm sm:text-base"
                     required
                     disabled={isSubmitting}
                   />
                 </div>
                 <div>
-                  <label className="block text-sage-700 mb-2 font-semibold" htmlFor="email">
+                  <label className="block text-sage-700 mb-2 font-semibold text-sm sm:text-base" htmlFor="email">
                     Email Address*
                   </label>
                   <input
@@ -219,17 +224,17 @@ const RSVPForm: React.FC = () => {
                         mainGuest: { ...formData.mainGuest, email: e.target.value },
                       })
                     }
-                    className="w-full px-4 py-3 border border-sage-200 rounded-xl bg-white/60 focus:outline-none focus:ring-2 focus:ring-blush-400 shadow"
+                    className="w-full px-3 sm:px-4 py-2.5 sm:py-3 border border-sage-200 rounded-lg sm:rounded-xl bg-white/60 focus:outline-none focus:ring-2 focus:ring-blush-400 shadow text-sm sm:text-base"
                     required
                     disabled={isSubmitting}
                   />
                 </div>
                 <div>
-                  <label className="block text-sage-700 mb-2 font-semibold" htmlFor="attending">
+                  <label className="block text-sage-700 mb-3 font-semibold text-sm sm:text-base" htmlFor="attending">
                     Will you be attending?
                   </label>
-                  <div className="flex space-x-4">
-                    <label className="inline-flex items-center">
+                  <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
+                    <label className="inline-flex items-center bg-white/50 rounded-lg px-3 py-2 border border-sage-200 hover:bg-white/70 transition-colors cursor-pointer">
                       <input
                         type="radio"
                         name="attending"
@@ -241,12 +246,12 @@ const RSVPForm: React.FC = () => {
                             mainGuest: { ...formData.mainGuest, attending: true },
                           })
                         }
-                        className="form-radio text-blush-500"
+                        className="form-radio text-blush-500 mr-2"
                         disabled={isSubmitting}
                       />
-                      <span className="ml-2 text-sage-600">Yes!</span>
+                      <span className="text-sage-600 text-sm sm:text-base">Yes, I'll be there! 🎉</span>
                     </label>
-                    <label className="inline-flex items-center">
+                    <label className="inline-flex items-center bg-white/50 rounded-lg px-3 py-2 border border-sage-200 hover:bg-white/70 transition-colors cursor-pointer">
                       <input
                         type="radio"
                         name="attending"
@@ -258,15 +263,70 @@ const RSVPForm: React.FC = () => {
                             mainGuest: { ...formData.mainGuest, attending: false },
                           })
                         }
-                        className="form-radio text-blush-500"
+                        className="form-radio text-blush-500 mr-2"
                         disabled={isSubmitting}
                       />
-                      <span className="ml-2 text-sage-600">Sorry </span>
+                      <span className="text-sage-600 text-sm sm:text-base">Sorry, can't make it 😔</span>
                     </label>
                   </div>
                 </div>
+                
+                {/* Only show partner section if attending */}
+                {formData.mainGuest.attending && (
+                  <>
+                    <div>
+                      <label className="block text-sage-700 mb-3 font-semibold text-sm sm:text-base">
+                        Bringing a partner?
+                      </label>
+                      <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
+                        <label className="inline-flex items-center bg-white/50 rounded-lg px-3 py-2 border border-sage-200 hover:bg-white/70 transition-colors cursor-pointer">
+                          <input
+                            type="radio"
+                            name="bringingPartner"
+                            value="yes"
+                            checked={bringingPartner === 'yes'}
+                            onChange={() => setBringingPartner('yes')}
+                            className="form-radio text-blush-500 mr-2"
+                            disabled={isSubmitting}
+                          />
+                          <span className="text-sage-600 text-sm sm:text-base">Yes</span>
+                        </label>
+                        <label className="inline-flex items-center bg-white/50 rounded-lg px-3 py-2 border border-sage-200 hover:bg-white/70 transition-colors cursor-pointer">
+                          <input
+                            type="radio"
+                            name="bringingPartner"
+                            value="no"
+                            checked={bringingPartner === 'no'}
+                            onChange={() => setBringingPartner('no')}
+                            className="form-radio text-blush-500 mr-2"
+                            disabled={isSubmitting}
+                          />
+                          <span className="text-sage-600 text-sm sm:text-base">No</span>
+                        </label>
+                      </div>
+                    </div>
+                    {bringingPartner === 'yes' && (
+                      <div>
+                        <label className="block text-sage-700 mb-2 font-semibold text-sm sm:text-base" htmlFor="partnerName">
+                          Partner's Name*
+                        </label>
+                        <input
+                          type="text"
+                          id="partnerName"
+                          name="partnerName"
+                          value={partnerName}
+                          onChange={e => setPartnerName(e.target.value)}
+                          className="w-full px-3 sm:px-4 py-2.5 sm:py-3 border border-sage-200 rounded-lg sm:rounded-xl bg-white/60 focus:outline-none focus:ring-2 focus:ring-blush-400 shadow text-sm sm:text-base"
+                          required
+                          disabled={isSubmitting}
+                        />
+                      </div>
+                    )}
+                  </>
+                )}
+                
                 <div>
-                  <label className="block text-sage-700 mb-2 font-semibold" htmlFor="message">
+                  <label className="block text-sage-700 mb-2 font-semibold text-sm sm:text-base" htmlFor="message">
                     Any message for the couple? (Optional)
                   </label>
                   <textarea
@@ -279,71 +339,18 @@ const RSVPForm: React.FC = () => {
                         message: e.target.value,
                       })
                     }
-                    className="w-full px-4 py-3 border border-sage-200 rounded-xl bg-white/60 focus:outline-none focus:ring-2 focus:ring-blush-400 shadow"
-                    rows={4}
+                    className="w-full px-3 sm:px-4 py-2.5 sm:py-3 border border-sage-200 rounded-lg sm:rounded-xl bg-white/60 focus:outline-none focus:ring-2 focus:ring-blush-400 shadow text-sm sm:text-base resize-none"
+                    rows={3}
                     placeholder="Share your congratulations, well wishes, or any questions you might have..."
                     disabled={isSubmitting}
                   ></textarea>
                 </div>
-                {/* Only show partner section if attending */}
-                {formData.mainGuest.attending && (
-                  <>
-                    <div>
-                      <label className="block text-sage-700 mb-2 font-semibold">
-                        Bringing a partner?
-                      </label>
-                      <div className="flex space-x-4">
-                        <label className="inline-flex items-center">
-                          <input
-                            type="radio"
-                            name="bringingPartner"
-                            value="yes"
-                            checked={bringingPartner === 'yes'}
-                            onChange={() => setBringingPartner('yes')}
-                            className="form-radio text-blush-500"
-                            disabled={isSubmitting}
-                          />
-                          <span className="ml-2 text-sage-600">Yes</span>
-                        </label>
-                        <label className="inline-flex items-center">
-                          <input
-                            type="radio"
-                            name="bringingPartner"
-                            value="no"
-                            checked={bringingPartner === 'no'}
-                            onChange={() => setBringingPartner('no')}
-                            className="form-radio text-blush-500"
-                            disabled={isSubmitting}
-                          />
-                          <span className="ml-2 text-sage-600">No</span>
-                        </label>
-                      </div>
-                    </div>
-                    {bringingPartner === 'yes' && (
-                      <div>
-                        <label className="block text-sage-700 mb-2 font-semibold" htmlFor="partnerName">
-                          Partner's Name*
-                        </label>
-                        <input
-                          type="text"
-                          id="partnerName"
-                          name="partnerName"
-                          value={partnerName}
-                          onChange={e => setPartnerName(e.target.value)}
-                          className="w-full px-4 py-3 border border-sage-200 rounded-xl bg-white/60 focus:outline-none focus:ring-2 focus:ring-blush-400 shadow"
-                          required
-                          disabled={isSubmitting}
-                        />
-                      </div>
-                    )}
-                  </>
-                )}
               </div>
-              <div className="mt-10 flex justify-center">
+              <div className="mt-8 sm:mt-10 flex justify-center">
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="bg-[#555c78] text-white py-2 px-8 rounded-full hover:bg-[#4a5068] transition-colors duration-300 shadow disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2"
+                  className="w-full sm:w-auto bg-[#555c78] text-white py-3 sm:py-2 px-6 sm:px-8 rounded-full hover:bg-[#4a5068] transition-colors duration-300 shadow disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 text-sm sm:text-base font-medium"
                 >
                   {isSubmitting ? (
                     <>
