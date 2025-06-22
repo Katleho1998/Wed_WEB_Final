@@ -96,81 +96,81 @@ Deno.serve(async (req: Request) => {
             <!-- Header with Flower -->
             <div style="background: linear-gradient(135deg, #555c78 0%, #4a5068 100%); padding: 40px 20px; text-align: center; position: relative;">
               <!-- Wedding Flower Image -->
-              <div style="margin-bottom: 16px;">
+              <div style="margin-bottom: 16px; text-align: center;">
                 <img src="${flowerImageUrl}" 
                      alt="Wedding Flowers" 
-                     style=" height: 140px; filter: brightness(1.1) contrast(1.05);"
+                     style="height: 140px; filter: brightness(1.1) contrast(1.05);"
                      onerror="this.style.display='none';">
               </div>
               
-              <h1 style="color: #ffffff; font-family: 'Playfair Display', serif; font-size: 32px; margin: 0; font-weight: 700; text-shadow: 0 2px 8px rgba(0,0,0,0.2); letter-spacing: -0.5px;">
+              <h1 style="color: #ffffff; font-family: 'Playfair Display', serif; font-size: 32px; margin: 0; font-weight: 700; text-shadow: 0 2px 8px rgba(0,0,0,0.2); letter-spacing: -0.5px; text-align: center;">
                 Thank You for Your RSVP!
               </h1>
               <div style="width: 80px; height: 3px; background: linear-gradient(90deg, rgba(255,255,255,0.8) 0%, rgba(255,255,255,0.4) 100%); margin: 20px auto; border-radius: 2px;"></div>
             </div>
             
             <!-- Main content -->
-            <div style="padding: 45px 35px; background-color: #ffffff;">
-              <p style="color: #555c78; font-size: 20px; line-height: 1.6; margin-bottom: 25px; font-weight: 600; font-family: 'Playfair Display', serif;">
+            <div style="padding: 45px 35px; background-color: #ffffff; text-align: center;">
+              <p style="color: #555c78; font-size: 20px; line-height: 1.6; margin-bottom: 25px; font-weight: 600; font-family: 'Playfair Display', serif; text-align: center;">
                 Dear ${guestNames},
               </p>
               
-              <p style="color: #666; font-size: 17px; line-height: 1.7; margin-bottom: 30px; font-weight: 400;">
+              <p style="color: #666; font-size: 17px; line-height: 1.7; margin-bottom: 30px; font-weight: 400; text-align: center;">
                 We're absolutely thrilled that you'll be joining us on our special day! Your presence will make our celebration even more meaningful and joyful.
               </p>
               
               <!-- RSVP Details Box -->
-              <div style="background: linear-gradient(135deg, #f8f9fa 0%, #f1f3f4 100%); padding: 30px; border-radius: 16px; margin: 30px 0; border-left: 5px solid #555c78; border: 1px solid #e9ecef; box-shadow: 0 4px 15px rgba(85, 92, 120, 0.08);">
-                <h3 style="color: #555c78; margin-top: 0; margin-bottom: 20px; font-size: 20px; font-family: 'Playfair Display', serif; font-weight: 700;">RSVP Confirmation Details:</h3>
-                <div style="space-y: 12px;">
-                  <p style="color: #333; margin: 12px 0; font-size: 16px; font-weight: 500;"><strong style="color: #555c78;">Guest(s):</strong> ${guestNames}</p>
-                  <p style="color: #333; margin: 12px 0; font-size: 16px; font-weight: 500;"><strong style="color: #555c78;">Party Size:</strong> ${guestCount} ${guestCount === 1 ? 'person' : 'people'}</p>
-                  <p style="color: #333; margin: 12px 0; font-size: 16px; font-weight: 500;"><strong style="color: #555c78;">Status:</strong> <span style="color: #28a745; font-weight: bold; background-color: #d4edda; padding: 4px 12px; border-radius: 20px; font-size: 14px;">Attending ✓</span></p>
-                  ${body.message ? `<p style="color: #333; margin: 12px 0; font-size: 16px; font-weight: 500;"><strong style="color: #555c78;">Your Message:</strong> <em style="color: #666; background-color: #f8f9fa; padding: 8px 12px; border-radius: 8px; display: inline-block; margin-top: 4px;">"${body.message}"</em></p>` : ''}
+              <div style="background: linear-gradient(135deg, #f8f9fa 0%, #f1f3f4 100%); padding: 30px; border-radius: 16px; margin: 30px 0; border-left: 5px solid #555c78; border: 1px solid #e9ecef; box-shadow: 0 4px 15px rgba(85, 92, 120, 0.08); text-align: center;">
+                <h3 style="color: #555c78; margin-top: 0; margin-bottom: 20px; font-size: 20px; font-family: 'Playfair Display', serif; font-weight: 700; text-align: center;">RSVP Confirmation Details:</h3>
+                <div style="space-y: 12px; text-align: center;">
+                  <p style="color: #333; margin: 12px 0; font-size: 16px; font-weight: 500; text-align: center;"><strong style="color: #555c78;">Guest(s):</strong> ${guestNames}</p>
+                  <p style="color: #333; margin: 12px 0; font-size: 16px; font-weight: 500; text-align: center;"><strong style="color: #555c78;">Party Size:</strong> ${guestCount} ${guestCount === 1 ? 'person' : 'people'}</p>
+                  <p style="color: #333; margin: 12px 0; font-size: 16px; font-weight: 500; text-align: center;"><strong style="color: #555c78;">Status:</strong> <span style="color: #28a745; font-weight: bold; background-color: #d4edda; padding: 4px 12px; border-radius: 20px; font-size: 14px;">Attending ✓</span></p>
+                  ${body.message ? `<p style="color: #333; margin: 12px 0; font-size: 16px; font-weight: 500; text-align: center;"><strong style="color: #555c78;">Your Message:</strong><br><em style="color: #666; background-color: #f8f9fa; padding: 8px 12px; border-radius: 8px; display: inline-block; margin-top: 4px;">"${body.message}"</em></p>` : ''}
                 </div>
               </div>
               
               <!-- Wedding Details -->
-              <div style="background: linear-gradient(135deg, #555c78 0%, #4a5068 100%); color: white; padding: 30px; border-radius: 16px; margin: 30px 0; box-shadow: 0 8px 25px rgba(85, 92, 120, 0.25);">
-                <h3 style="color: #ffffff; margin-top: 0; margin-bottom: 20px; font-size: 22px; font-family: 'Playfair Display', serif; font-weight: 700; text-shadow: 0 1px 3px rgba(0,0,0,0.2);">Wedding Details Reminder:</h3>
+              <div style="background: linear-gradient(135deg, #555c78 0%, #4a5068 100%); color: white; padding: 30px; border-radius: 16px; margin: 30px 0; box-shadow: 0 8px 25px rgba(85, 92, 120, 0.25); text-align: center;">
+                <h3 style="color: #ffffff; margin-top: 0; margin-bottom: 20px; font-size: 22px; font-family: 'Playfair Display', serif; font-weight: 700; text-shadow: 0 1px 3px rgba(0,0,0,0.2); text-align: center;">Wedding Details Reminder:</h3>
                 
-                <div style="margin-bottom: 20px; background-color: rgba(255,255,255,0.1); padding: 20px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.2);">
-                  <p style="color: #ffffff; margin: 0 0 12px 0; font-size: 18px; font-weight: bold; font-family: 'Playfair Display', serif;">Saturday, September 27th, 2025</p>
-                  <div style="margin-left: 15px;">
-                    <p style="color: rgba(255,255,255,0.95); margin: 8px 0; font-size: 15px; line-height: 1.5;">• <strong>Matrimony:</strong> 10:00 AM at Allen Temple<br>&nbsp;&nbsp;188 Ingedezi Street, Zone 7, Meadowlands</p>
-                    <p style="color: rgba(255,255,255,0.95); margin: 8px 0; font-size: 15px; line-height: 1.5;">• <strong>Reception:</strong> 12:30 PM<br>&nbsp;&nbsp;12278, Zone 9, Meadowlands</p>
+                <div style="margin-bottom: 20px; background-color: rgba(255,255,255,0.1); padding: 20px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.2); text-align: center;">
+                  <p style="color: #ffffff; margin: 0 0 12px 0; font-size: 18px; font-weight: bold; font-family: 'Playfair Display', serif; text-align: center;">Saturday, September 27th, 2025</p>
+                  <div style="text-align: center;">
+                    <p style="color: rgba(255,255,255,0.95); margin: 8px 0; font-size: 15px; line-height: 1.5; text-align: center;">• <strong>Matrimony:</strong> 10:00 AM at Allen Temple<br>188 Ingedezi Street, Zone 7, Meadowlands</p>
+                    <p style="color: rgba(255,255,255,0.95); margin: 8px 0; font-size: 15px; line-height: 1.5; text-align: center;">• <strong>Reception:</strong> 12:30 PM<br>12278, Zone 9, Meadowlands</p>
                   </div>
                 </div>
                 
-                <div style="margin-bottom: 20px; background-color: rgba(255,255,255,0.1); padding: 20px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.2);">
-                  <p style="color: #ffffff; margin: 0 0 12px 0; font-size: 18px; font-weight: bold; font-family: 'Playfair Display', serif;">Sunday, September 28th, 2025</p>
-                  <div style="margin-left: 15px;">
-                    <p style="color: rgba(255,255,255,0.95); margin: 8px 0; font-size: 15px; line-height: 1.5;">• <strong>Celebration continues:</strong> 12:30 PM at Molapo Park</p>
+                <div style="margin-bottom: 20px; background-color: rgba(255,255,255,0.1); padding: 20px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.2); text-align: center;">
+                  <p style="color: #ffffff; margin: 0 0 12px 0; font-size: 18px; font-weight: bold; font-family: 'Playfair Display', serif; text-align: center;">Sunday, September 28th, 2025</p>
+                  <div style="text-align: center;">
+                    <p style="color: rgba(255,255,255,0.95); margin: 8px 0; font-size: 15px; line-height: 1.5; text-align: center;">• <strong>Celebration continues:</strong> 12:30 PM at Molapo Park</p>
                   </div>
                 </div>
                 
                 <div style="background: linear-gradient(135deg, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0.05) 100%); padding: 18px; border-radius: 12px; margin-top: 20px; text-align: center; border: 2px solid rgba(255,255,255,0.3); box-shadow: inset 0 1px 3px rgba(255,255,255,0.2);">
-                  <p style="margin: 0; font-size: 16px; font-weight: bold; color: #ffffff; font-family: 'Playfair Display', serif; text-shadow: 0 1px 2px rgba(0,0,0,0.2);">Weekend Theme: Shades of Blue and Brown</p>
+                  <p style="margin: 0; font-size: 16px; font-weight: bold; color: #ffffff; font-family: 'Playfair Display', serif; text-shadow: 0 1px 2px rgba(0,0,0,0.2); text-align: center;">Weekend Theme: Shades of Blue and Brown</p>
                 </div>
               </div>
               
-              <p style="color: #666; font-size: 17px; line-height: 1.7; margin-bottom: 25px;">
+              <p style="color: #666; font-size: 17px; line-height: 1.7; margin-bottom: 25px; text-align: center;">
                 We'll be sending out more details about parking, directions, and other important information as we get closer to the date. Keep an eye on your inbox!
               </p>
               
-              <p style="color: #666; font-size: 17px; line-height: 1.7; margin-bottom: 35px;">
+              <p style="color: #666; font-size: 17px; line-height: 1.7; margin-bottom: 35px; text-align: center;">
                 If you have any questions or need to make changes to your RSVP, please don't hesitate to reach out to us directly.
               </p>
               
               <!-- Footer -->
               <div style="text-align: center; margin-top: 45px; padding-top: 30px; border-top: 2px solid #f0f0f0;">
-                <p style="color: #999; font-size: 24px; font-style: italic; margin-bottom: 15px; font-family: 'Great Vibes', cursive; color: #555c78;">
+                <p style="color: #999; font-size: 24px; font-style: italic; margin-bottom: 15px; font-family: 'Great Vibes', cursive; color: #555c78; text-align: center;">
                   With love and excitement,
                 </p>
-                <p style="color: #555c78; font-size: 28px; font-weight: bold; margin: 0; font-family: 'Playfair Display', serif; text-shadow: 0 1px 3px rgba(85, 92, 120, 0.1);">
+                <p style="color: #555c78; font-size: 28px; font-weight: bold; margin: 0; font-family: 'Playfair Display', serif; text-shadow: 0 1px 3px rgba(85, 92, 120, 0.1); text-align: center;">
                   Thabi & Trevor
                 </p>
-                <p style="color: #aaa; font-size: 13px; margin-top: 25px; line-height: 1.4;">
+                <p style="color: #aaa; font-size: 13px; margin-top: 25px; line-height: 1.4; text-align: center;">
                   This email was sent because you RSVP'd for our wedding.<br>We can't wait to celebrate with you!
                 </p>
               </div>
@@ -198,56 +198,56 @@ Deno.serve(async (req: Request) => {
             <!-- Header with Flower -->
             <div style="background: linear-gradient(135deg, #555c78 0%, #4a5068 100%); padding: 40px 20px; text-align: center; position: relative;">
               <!-- Wedding Flower Image -->
-              <div style="margin-bottom: 20px;">
+              <div style="margin-bottom: 20px; text-align: center;">
                 <img src="${flowerImageUrl}" 
                      alt="Wedding Flowers" 
-                     style="width: 140px; height: 140px; border-radius: 50%; object-fit: cover; border: 5px solid rgba(255,255,255,0.4); box-shadow: 0 8px 25px rgba(0,0,0,0.3); filter: brightness(1.1) contrast(1.05);"
+                     style="height: 140px; filter: brightness(1.1) contrast(1.05);"
                      onerror="this.style.display='none';">
               </div>
               
-              <h1 style="color: #ffffff; font-family: 'Playfair Display', serif; font-size: 32px; margin: 0; font-weight: 700; text-shadow: 0 2px 8px rgba(0,0,0,0.2); letter-spacing: -0.5px;">
+              <h1 style="color: #ffffff; font-family: 'Playfair Display', serif; font-size: 32px; margin: 0; font-weight: 700; text-shadow: 0 2px 8px rgba(0,0,0,0.2); letter-spacing: -0.5px; text-align: center;">
                 Thank You for Your Response
               </h1>
               <div style="width: 80px; height: 3px; background: linear-gradient(90deg, rgba(255,255,255,0.8) 0%, rgba(255,255,255,0.4) 100%); margin: 20px auto; border-radius: 2px;"></div>
             </div>
             
             <!-- Main content -->
-            <div style="padding: 45px 35px; background-color: #ffffff;">
-              <p style="color: #555c78; font-size: 20px; line-height: 1.6; margin-bottom: 25px; font-weight: 600; font-family: 'Playfair Display', serif;">
+            <div style="padding: 45px 35px; background-color: #ffffff; text-align: center;">
+              <p style="color: #555c78; font-size: 20px; line-height: 1.6; margin-bottom: 25px; font-weight: 600; font-family: 'Playfair Display', serif; text-align: center;">
                 Dear ${body.name},
               </p>
               
-              <p style="color: #666; font-size: 17px; line-height: 1.7; margin-bottom: 30px;">
+              <p style="color: #666; font-size: 17px; line-height: 1.7; margin-bottom: 30px; text-align: center;">
                 Thank you for taking the time to respond to our wedding invitation. We completely understand that you won't be able to join us on our special day.
               </p>
               
               <!-- RSVP Details Box -->
-              <div style="background: linear-gradient(135deg, #f8f9fa 0%, #f1f3f4 100%); padding: 30px; border-radius: 16px; margin: 30px 0; border-left: 5px solid #555c78; border: 1px solid #e9ecef; box-shadow: 0 4px 15px rgba(85, 92, 120, 0.08);">
-                <h3 style="color: #555c78; margin-top: 0; margin-bottom: 20px; font-size: 20px; font-family: 'Playfair Display', serif; font-weight: 700;">RSVP Response Details:</h3>
-                <div style="space-y: 12px;">
-                  <p style="color: #333; margin: 12px 0; font-size: 16px; font-weight: 500;"><strong style="color: #555c78;">Guest:</strong> ${body.name}</p>
-                  <p style="color: #333; margin: 12px 0; font-size: 16px; font-weight: 500;"><strong style="color: #555c78;">Status:</strong> <span style="color: #6c757d; font-weight: bold; background-color: #f8f9fa; padding: 4px 12px; border-radius: 20px; font-size: 14px; border: 1px solid #dee2e6;">Unable to attend</span></p>
-                  ${body.message ? `<p style="color: #333; margin: 12px 0; font-size: 16px; font-weight: 500;"><strong style="color: #555c78;">Your Message:</strong> <em style="color: #666; background-color: #f8f9fa; padding: 8px 12px; border-radius: 8px; display: inline-block; margin-top: 4px;">"${body.message}"</em></p>` : ''}
+              <div style="background: linear-gradient(135deg, #f8f9fa 0%, #f1f3f4 100%); padding: 30px; border-radius: 16px; margin: 30px 0; border-left: 5px solid #555c78; border: 1px solid #e9ecef; box-shadow: 0 4px 15px rgba(85, 92, 120, 0.08); text-align: center;">
+                <h3 style="color: #555c78; margin-top: 0; margin-bottom: 20px; font-size: 20px; font-family: 'Playfair Display', serif; font-weight: 700; text-align: center;">RSVP Response Details:</h3>
+                <div style="space-y: 12px; text-align: center;">
+                  <p style="color: #333; margin: 12px 0; font-size: 16px; font-weight: 500; text-align: center;"><strong style="color: #555c78;">Guest:</strong> ${body.name}</p>
+                  <p style="color: #333; margin: 12px 0; font-size: 16px; font-weight: 500; text-align: center;"><strong style="color: #555c78;">Status:</strong> <span style="color: #6c757d; font-weight: bold; background-color: #f8f9fa; padding: 4px 12px; border-radius: 20px; font-size: 14px; border: 1px solid #dee2e6;">Unable to attend</span></p>
+                  ${body.message ? `<p style="color: #333; margin: 12px 0; font-size: 16px; font-weight: 500; text-align: center;"><strong style="color: #555c78;">Your Message:</strong><br><em style="color: #666; background-color: #f8f9fa; padding: 8px 12px; border-radius: 8px; display: inline-block; margin-top: 4px;">"${body.message}"</em></p>` : ''}
                 </div>
               </div>
               
-              <p style="color: #666; font-size: 17px; line-height: 1.7; margin-bottom: 25px;">
+              <p style="color: #666; font-size: 17px; line-height: 1.7; margin-bottom: 25px; text-align: center;">
                 While we'll miss having you there to celebrate with us, we truly appreciate your thoughtful response. Your friendship means the world to us.
               </p>
               
-              <p style="color: #666; font-size: 17px; line-height: 1.7; margin-bottom: 35px;">
+              <p style="color: #666; font-size: 17px; line-height: 1.7; margin-bottom: 35px; text-align: center;">
                 We hope to catch up with you soon after our big day and share some photos and stories from the celebration!
               </p>
               
               <!-- Footer -->
               <div style="text-align: center; margin-top: 45px; padding-top: 30px; border-top: 2px solid #f0f0f0;">
-                <p style="color: #999; font-size: 24px; font-style: italic; margin-bottom: 15px; font-family: 'Great Vibes', cursive; color: #555c78;">
+                <p style="color: #999; font-size: 24px; font-style: italic; margin-bottom: 15px; font-family: 'Great Vibes', cursive; color: #555c78; text-align: center;">
                   With love and understanding,
                 </p>
-                <p style="color: #555c78; font-size: 28px; font-weight: bold; margin: 0; font-family: 'Playfair Display', serif; text-shadow: 0 1px 3px rgba(85, 92, 120, 0.1);">
+                <p style="color: #555c78; font-size: 28px; font-weight: bold; margin: 0; font-family: 'Playfair Display', serif; text-shadow: 0 1px 3px rgba(85, 92, 120, 0.1); text-align: center;">
                   Thabi & Trevor
                 </p>
-                <p style="color: #aaa; font-size: 13px; margin-top: 25px; line-height: 1.4;">
+                <p style="color: #aaa; font-size: 13px; margin-top: 25px; line-height: 1.4; text-align: center;">
                   This email was sent because you responded to our wedding invitation.<br>Thank you for letting us know!
                 </p>
               </div>
