@@ -10,11 +10,11 @@ const PhotoUploadSection: React.FC = () => {
     >
       <div className="container mx-auto px-4 max-w-4xl">
         <div className="text-center mb-12">
-          {/* Flowers decoration above heading */}
+          {/* Flowers decoration above heading - Made bigger */}
           <img
             src={FlowersImg}
             alt="Floral decoration"
-            className="mx-auto mb-6 max-w-[120px] md:max-w-[160px] lg:max-w-[200px] drop-shadow-lg"
+            className="mx-auto mb-6 max-w-[180px] md:max-w-[240px] lg:max-w-[300px] xl:max-w-[360px] drop-shadow-lg"
             style={{ objectFit: 'contain' }}
           />
           <h2 className="font-serif text-4xl md:text-5xl text-blush-700 mb-6 tracking-tight">
