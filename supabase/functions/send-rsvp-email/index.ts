@@ -74,10 +74,8 @@ Deno.serve(async (req: Request) => {
     let emailSubject: string;
     let emailContent: string;
 
-    // Direct image URL from your Imgur upload - you'll need to get the direct link
-    // To get the direct link: Right-click on your image in Imgur and select "Copy image address"
-    // It should look like: https://i.imgur.com/XXXXXXX.png or similar
-    const flowerImageUrl = "https://i.imgur.com/8BhkCgQ.png"; // Replace with actual direct URL
+    // Your direct Imgur image URL
+    const flowerImageUrl = "https://i.imgur.com/FvNfTKL.png";
 
     if (body.attending) {
       emailSubject = "RSVP Confirmed - We Can't Wait to Celebrate with You! 💕";
