@@ -193,7 +193,7 @@ const WeddingInfo: React.FC = () => {
                       }}
                       logoText={{
                         topText: "Gift Card",
-                        bottomText: "Suggested Stores"
+                        bottomText: " "
                       }}
                       className="transform hover:scale-105 transition-transform duration-300"
                     />
