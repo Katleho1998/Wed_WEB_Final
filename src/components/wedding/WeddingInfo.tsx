@@ -201,9 +201,7 @@ const WeddingInfo: React.FC = () => {
                   </div>
                   
                 
-                  <p className="text-sage-500 text-sm italic">
-                    Hover over the gift card above to see the interactive effect!
-                  </p>
+                 
                 </div>
               </div>
             </div>
