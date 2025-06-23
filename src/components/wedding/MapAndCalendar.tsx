@@ -18,7 +18,7 @@ const MapAndCalendar: React.FC = () => {
   };
 
   return (
-    <section className="py-20 bg-gradient-to-br from-sage-50 via-cream-50 to-blush-50">
+    <section id="FindUs" className="py-20 bg-gradient-to-br from-sage-50 via-cream-50 to-blush-50">
       <div className="container mx-auto px-0 max-w-full">
         <h2 className="font-serif text-4xl md:text-5xl text-center text-blush-700 mb-12 tracking-tight">
           Find Us & Save the Date

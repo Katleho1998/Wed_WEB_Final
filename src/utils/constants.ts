@@ -5,8 +5,9 @@ export const NAV_ITEMS: NavItem[] = [
   { label: 'Our Story', href: '#our-story' },
   { label: 'Wedding Info', href: '#wedding-info' },
   { label: 'Gallery', href: '#gallery' },
-  { label: 'Share Photos', href: '#photo-upload' },
   { label: 'RSVP', href: '#rsvp' },
+  {label: 'Find Us', href: '#FindUs'},
+  { label: 'Share Photos', href: '#photo-upload' }
 ];
 
 export const WEDDING_DATE = new Date('2024-09-27T10:00:00');
